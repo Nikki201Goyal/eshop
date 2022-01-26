@@ -1,0 +1,9 @@
+<script src="{{asset('FrontEnd/assets/js/jquery.min.js')}}"></script>
+    <script src="{{asset('FrontEnd/assets/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('FrontEnd/assets/js/jquery.waypoints.min.js')}}"></script>
+    <script src="{{asset('FrontEnd/assets/js/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('FrontEnd/assets/js/main.js')}}"></script>
+    <script src="{{asset('FrontEnd/assets/js/Js.js')}}"></script>
+    <script src="{{asset('FrontEnd/assets/js/styleswitcher.js')}}"></script>
+    <script src="{{asset('FrontEnd/assets/js/jquery.sticky-kit.min.js')}}"></script>
+    <script src="{{asset('FrontEnd/assets/js/nouisliderjs')}}"></script>
