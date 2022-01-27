@@ -68,10 +68,6 @@ class WishlistController extends Controller
             return response()->json(['message' => 'login']);
         }
 
-
-
-
-
     }
 
     /**
