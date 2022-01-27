@@ -7,7 +7,8 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="intro-slider-container slider-container-ratio mb-2 mb-lg-0">
-                        <div class="intro-slider owl-carousel owl-simple owl-dark owl-nav-inside" data-toggle="owl" data-owl-options='{
+                        <div class="intro-slider owl-carousel owl-simple owl-dark owl-nav-inside" data-toggle="owl"
+                            data-owl-options='{
                                         "nav": false,
                                         "dots": true,
                                         "responsive": {
@@ -17,25 +18,25 @@
                                             }
                                         }
                                     }'>
-                                    @foreach ( $slider as $slide )
+                            @foreach ( $slider as $slide )
 
                             <div class="intro-slide">
                                 <figure class="slide-image">
                                     <picture>
-                                        <source media="(max-width: 480px)" srcset="{{asset($slide->cover)}}" >
+                                        <source media="(max-width: 480px)" srcset="{{asset($slide->cover)}}">
                                         <img src="{{asset($slide->cover)}}" alt="Image Desc">
                                     </picture>
                                 </figure><!-- End .slide-image -->
 
                                 <div class="intro-content">
                                     <h1 class="intro-title">
-                                      {{$slide ->category->name}}
+                                        {{$slide ->category->name}}
                                     </h1><!-- End .intro-title -->
 
                                     <div class="intro-price">
                                         <sup>Today:</sup>
                                         <span class="text-primary">
-                                          Rs. {{ $slide->price }}
+                                            Rs. {{ $slide->price }}
                                         </span>
                                     </div><!-- End .intro-price -->
 
@@ -45,7 +46,7 @@
                                     </a>
                                 </div><!-- End .intro-content -->
                             </div><!-- End .intro-slide -->
-@endforeach
+                            @endforeach
 
                         </div><!-- End .intro-slider owl-carousel owl-simple -->
 
@@ -64,12 +65,15 @@
                             </a>
 
                             <div class="banner-content">
-                                <h4 class="banner-subtitle d-lg-none d-xl-block"><a href="#">{{ $feat->category->name }}</a></h4><!-- End .banner-subtitle -->
-                                <h3 class="banner-title"><a href="#">{{ $feat->name }}</a></h3><!-- End .banner-title -->
-                                <a href="{{ route('product', $feat->slug) }}" class="banner-link">Shop Now<i class="icon-long-arrow-right"></i></a>
+                                <h4 class="banner-subtitle d-lg-none d-xl-block"><a href="#">{{ $feat->category->name
+                                        }}</a></h4><!-- End .banner-subtitle -->
+                                <h3 class="banner-title"><a href="#">{{ $feat->name }}</a></h3>
+                                <!-- End .banner-title -->
+                                <a href="{{ route('product', $feat->slug) }}" class="banner-link">Shop Now<i
+                                        class="icon-long-arrow-right"></i></a>
                             </div><!-- End .banner-content -->
                         </div><!-- End .banner -->
-@endforeach
+                        @endforeach
 
                     </div><!-- End .intro-banners -->
                 </div><!-- End .col-lg-4 -->
@@ -94,12 +98,14 @@
 
                                     <div class="banner-content">
 
-                                        <h3 class="banner-title text-white"><a href="#">{{ $bann->name }}</a></h3><!-- End .banner-title -->
-                                        <a href="{{ route('product', $bann->slug) }}" class="banner-link">Shop Now<i class="icon-long-arrow-right"></i></a>
+                                        <h3 class="banner-title text-white"><a href="#">{{ $bann->name }}</a></h3>
+                                        <!-- End .banner-title -->
+                                        <a href="{{ route('product', $bann->slug) }}" class="banner-link">Shop Now<i
+                                                class="icon-long-arrow-right"></i></a>
                                     </div><!-- End .banner-content -->
                                 </div><!-- End .banner -->
                             </div><!-- End .col-md-6 -->
-@endforeach
+                            @endforeach
 
                         </div><!-- End .row -->
                     </div><!-- End .col-lg-3 col-xxl-4-5col -->
@@ -148,11 +154,13 @@
                     </a>
 
                     <a href="#" class="brand">
-                        <img src="{{asset('FrontEnd/assets/images/Image/Products/Untitled design (8).png')}}" alt="Brand Name">
+                        <img src="{{asset('FrontEnd/assets/images/Image/Products/Untitled design (8).png')}}"
+                            alt="Brand Name">
                     </a>
 
                     <a href="#" class="brand">
-                        <img src="{{asset('FrontEnd/assets/images/Image/Products/Untitled design (9).png')}}" alt="Brand Name">
+                        <img src="{{asset('FrontEnd/assets/images/Image/Products/Untitled design (9).png')}}"
+                            alt="Brand Name">
                     </a>
 
                     <a href="#" class="brand">
@@ -179,20 +187,27 @@
                         <div class="heading-right">
                             <ul class="nav nav-pills justify-content-center" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="trending-all-link" data-toggle="tab" href="#trending-all-tab" role="tab" aria-controls="trending-all-tab" aria-selected="true">All</a>
+                                    <a class="nav-link active" id="trending-all-link" data-toggle="tab"
+                                        href="#trending-all-tab" role="tab" aria-controls="trending-all-tab"
+                                        aria-selected="true">All</a>
                                 </li>
                                 @foreach($categories as $cate)
                                 <li class="nav-item">
-                                    <a class="nav-link" id="trending-{{ $cate->slug }}-link" data-toggle="tab" href="#trending-{{ $cate->slug }}-tab" role="tab" aria-controls="trending-{{ $cate->slug }}-tab" aria-selected="false">{{ $cate->name }}</a>
+                                    <a class="nav-link" id="trending-{{ $cate->slug }}-link" data-toggle="tab"
+                                        href="#trending-{{ $cate->slug }}-tab" role="tab"
+                                        aria-controls="trending-{{ $cate->slug }}-tab" aria-selected="false">{{
+                                        $cate->name }}</a>
                                 </li>
-                               @endforeach
+                                @endforeach
                             </ul>
                         </div><!-- End .heading-right -->
                     </div><!-- End .heading -->
 
                     <div class="tab-content tab-content-carousel">
-                        <div class="tab-pane p-0 fade show active" id="trending-all-tab" role="tabpanel" aria-labelledby="trending-all-link">
-                            <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" data-owl-options='{
+                        <div class="tab-pane p-0 fade show active" id="trending-all-tab" role="tabpanel"
+                            aria-labelledby="trending-all-link">
+                            <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow"
+                                data-toggle="owl" data-owl-options='{
                                             "nav": false,
                                             "dots": true,
                                             "margin": 20,
@@ -220,7 +235,7 @@
                                                 }
                                             }
                                         }'>
-                                        @foreach ($ProductAll as $All )
+                                @foreach ($ProductAll as $All )
 
 
                                 <div class="product text-center">
@@ -231,13 +246,17 @@
                                         </a>
 
                                         <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist" user="1" product="{{ $All->id }}"><span>add to wishlist</span></a>
-                                            <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                            <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"
+                                                user="1" product="{{ $All->id }}"><span>add to wishlist</span></a>
+                                            <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
+                                                title="Quick view"><span>Quick view</span></a>
+                                            <a href="#" class="btn-product-icon btn-compare"
+                                                title="Compare"><span>Compare</span></a>
                                         </div><!-- End .product-action-vertical -->
 
                                         <div class="product-action">
-                                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
+                                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to
+                                                    cart</span></a>
                                         </div><!-- End .product-action -->
                                     </figure><!-- End .product-media -->
 
@@ -245,28 +264,32 @@
                                         <div class="product-cat">
                                             <a href="#">{{ $All->category->name }}</a>
                                         </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="{{route('product',$All->slug)}}">{{ $All->name }}</a></h3><!-- End .product-title -->
+                                        <h3 class="product-title"><a href="{{route('product',$All->slug)}}">{{
+                                                $All->name }}</a></h3><!-- End .product-title -->
                                         <div class="product-price">
-                                           {{$All->price}}
+                                            {{$All->price}}
                                         </div><!-- End .product-price -->
                                         <div class="ratings-container">
                                             <div class="ratings">
-                                                <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
+                                                <div class="ratings-val" style="width: 100%;"></div>
+                                                <!-- End .ratings-val -->
                                             </div><!-- End .ratings -->
                                             <span class="ratings-text">( 2 Reviews )</span>
                                         </div><!-- End .rating-container -->
                                     </div><!-- End .product-body -->
                                 </div><!-- End .product -->
 
-      @endforeach
+                                @endforeach
 
                             </div><!-- End .owl-carousel -->
                         </div><!-- .End .tab-pane -->
                         @foreach ( $categories as $cate )
 
 
-                        <div class="tab-pane p-0 fade" id="trending-{{ $cate->slug }}-tab" role="tabpanel" aria-labelledby="trending-{{ $cate->slug }}-link">
-                            <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" data-owl-options='{
+                        <div class="tab-pane p-0 fade" id="trending-{{ $cate->slug }}-tab" role="tabpanel"
+                            aria-labelledby="trending-{{ $cate->slug }}-link">
+                            <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow"
+                                data-toggle="owl" data-owl-options='{
                                             "nav": false,
                                             "dots": true,
                                             "margin": 20,
@@ -294,38 +317,45 @@
                                                 }
                                             }
                                         }'>
-                                        @foreach ($cate->products as $prod )
+                                @foreach ($cate->products as $prod )
 
 
                                 <div class="product text-center">
                                     <figure class="product-media">
                                         <a href="{{route('product',$prod->slug)}}">
-                                            <img src="{{asset($prod->image)}}" alt="Product image" class="product-image">
+                                            <img src="{{asset($prod->image)}}" alt="Product image"
+                                                class="product-image">
 
                                         </a>
 
                                         <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                            <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                            <a href="#" class="btn-product-icon btn-wishlist"
+                                                title="Add to wishlist"><span>add to wishlist</span></a>
+                                            <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
+                                                title="Quick view"><span>Quick view</span></a>
 
-                                            <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+                                            <a href="#" class="btn-product-icon btn-compare"
+                                                title="Compare"><span>Compare</span></a>
                                         </div><!-- End .product-action-vertical -->
 
                                         <div class="product-action">
-                                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
+                                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to
+                                                    cart</span></a>
                                         </div><!-- End .product-action -->
                                     </figure><!-- End .product-media -->
 
                                     <div class="product-body">
 
-                                        <h3 class="product-title"><a href="{{route('product',$prod->slug)}}">{{ $prod->name}}</a></h3><!-- End .product-title -->
+                                        <h3 class="product-title"><a href="{{route('product',$prod->slug)}}">{{
+                                                $prod->name}}</a></h3><!-- End .product-title -->
                                         <div class="product-price">
-                                           Rs. {{$prod->price}}
+                                            Rs. {{$prod->price}}
                                         </div><!-- End .product-price -->
 
                                         <div class="ratings-container">
                                             <div class="ratings">
-                                                <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
+                                                <div class="ratings-val" style="width: 100%;"></div>
+                                                <!-- End .ratings-val -->
                                             </div><!-- End .ratings -->
                                             <span class="ratings-text">( 2 Reviews )</span>
                                         </div><!-- End .rating-container -->
@@ -346,7 +376,8 @@
                 <div class="row cat-banner-row electronics">
                     <div class="col-xl-3 col-xxl-4">
                         <div class="cat-banner row no-gutters">
-                            <div class="cat-banner-list col-sm-6 d-xl-none d-xxl-flex" style="background-image: url({{ asset($cate->image) }}); ">
+                            <div class="cat-banner-list col-sm-6 d-xl-none d-xxl-flex"
+                                style="background-image: url({{ asset($cate->image) }}); ">
                                 <div class="banner-list-content">
                                     <h2><a href="#">{{ $cate->name }}</a></h2>
 
@@ -362,9 +393,12 @@
                                     </a>
 
                                     <div class="banner-content intro-banners">
-                                        <h4 class="banner-subtitle text-white"><a href="#">Best Deals</a></h4><!-- End .banner-subtitle -->
-                                        <h3 class="banner-title text-white"><a href="#">Canon EOS <br>Mega Sale <br><span>Up To 20% Off</span></a></h3><!-- End .banner-title -->
-                                        <a href="#" class="banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
+                                        <h4 class="banner-subtitle text-white"><a href="#">Best Deals</a></h4>
+                                        <!-- End .banner-subtitle -->
+                                        <h3 class="banner-title text-white"><a href="#">Canon EOS <br>Mega Sale
+                                                <br><span>Up To 20% Off</span></a></h3><!-- End .banner-title -->
+                                        <a href="#" class="banner-link">Shop Now <i
+                                                class="icon-long-arrow-right"></i></a>
                                     </div><!-- End .banner-content -->
                                 </div><!-- End .banner -->
                             </div><!-- End .col-sm-6 -->
@@ -373,7 +407,8 @@
 
                     <div class="col-xl-9 col-xxl-8">
 
-                        <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl" data-owl-options='{
+                        <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
+                            data-owl-options='{
                                         "nav": true,
                                         "dots": false,
                                         "margin": 20,
@@ -405,19 +440,24 @@
                                 <figure class="product-media">
 
                                     <a href="{{route('product',$elec->slug)}}">
-                                        <img src="{{asset($elec->image)}}" alt="Product image" class="product-image" style=" height: 330px;
+                                        <img src="{{asset($elec->image)}}" alt="Product image" class="product-image"
+                                            style=" height: 330px;
                                         object-fit: cover;">
                                     </a>
 
                                     <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                        <a href="#" class="btn-product-icon btn-wishlist"
+                                            title="Add to wishlist"><span>add to wishlist</span></a>
+                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
+                                            title="Quick view"><span>Quick view</span></a>
 
-                                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+                                        <a href="#" class="btn-product-icon btn-compare"
+                                            title="Compare"><span>Compare</span></a>
                                     </div><!-- End .product-action-vertical -->
 
                                     <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
+                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to
+                                                cart</span></a>
                                     </div><!-- End .product-action -->
                                 </figure><!-- End .product-media -->
 
@@ -425,13 +465,16 @@
                                     <div class="product-cat">
                                         <a href="#">Laptops</a>
                                     </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="{{route('product',$elec->slug)}}">{{$elec->name}}</a></h3><!-- End .product-title -->
+                                    <h3 class="product-title"><a
+                                            href="{{route('product',$elec->slug)}}">{{$elec->name}}</a></h3>
+                                    <!-- End .product-title -->
                                     <div class="product-price">
                                         {{$elec->price}}
                                     </div><!-- End .product-price -->
                                     <div class="ratings-container">
                                         <div class="ratings">
-                                            <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
+                                            <div class="ratings-val" style="width: 100%;"></div>
+                                            <!-- End .ratings-val -->
                                         </div><!-- End .ratings -->
                                         <span class="ratings-text">( 4 Reviews )</span>
                                     </div><!-- End .rating-container -->
@@ -524,8 +567,10 @@
                                     </a>
 
                                     <div class="banner-content banner-content-top banner-content-right text-right">
-                                        <h3 class="banner-title text-white"><a href="#">{{ $feature->name }}</a></h3><!-- End .banner-title -->
-                                        <a href="#" class="banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
+                                        <h3 class="banner-title text-white"><a href="#">{{ $feature->name }}</a></h3>
+                                        <!-- End .banner-title -->
+                                        <a href="#" class="banner-link">Shop Now <i
+                                                class="icon-long-arrow-right"></i></a>
                                     </div><!-- End .banner-content -->
                                 </div><!-- End .banner banner-overlay -->
                             </div><!-- End .widget widget-banner -->
@@ -536,16 +581,19 @@
                                 <h4 class="widget-title"><span>Bestsellers</span></h4><!-- End .widget-title -->
 
                                 <div class="products">
-                                @foreach($bests as $sell)
+                                    @foreach($bests as $sell)
                                     <div class="product product-sm">
                                         <figure class="product-media">
                                             <a href="{{route('product',$sell->slug)}}">
-                                                <img src="{{asset($sell->image)}}" alt="Product image" class="product-image">
+                                                <img src="{{asset($sell->image)}}" alt="Product image"
+                                                    class="product-image">
                                             </a>
                                         </figure>
 
                                         <div class="product-body">
-                                            <h5 class="product-title"><a href="{{route('product',$sell->slug)}}">{{$sell->name}}</a></h5><!-- End .product-title -->
+                                            <h5 class="product-title"><a
+                                                    href="{{route('product',$sell->slug)}}">{{$sell->name}}</a></h5>
+                                            <!-- End .product-title -->
                                             <div class="product-price">
                                                 {{$sell->price}}
                                             </div><!-- End .product-price -->
@@ -571,17 +619,21 @@
                                             <figure class="product-media">
                                                 <span class="product-label label-sale">Deal of the week</span>
                                                 <a href="{{route('product',$offer->slug)}}">
-                                                    <img src="{{asset($offer->image)}}" alt="Product image" class="product-image">
+                                                    <img src="{{asset($offer->image)}}" alt="Product image"
+                                                        class="product-image">
                                                 </a>
 
                                                 <div class="product-action-vertical">
-                                                    <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
+                                                    <a href="#" class="btn-product-icon btn-wishlist"
+                                                        title="Add to wishlist"><span>add to wishlist</span></a>
 
-                                                    <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare"
+                                                        title="Compare"><span>Compare</span></a>
                                                 </div><!-- End .product-action-vertical -->
 
                                                 <div class="product-action">
-                                                    <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
+                                                    <a href="#" class="btn-product btn-cart"
+                                                        title="Add to cart"><span>add to cart</span></a>
                                                 </div><!-- End .product-action -->
                                             </figure><!-- End .product-media -->
 
@@ -589,7 +641,8 @@
                                                 <div class="product-cat">
                                                     <a href="#">{{ $offer->category->name }}</a>
                                                 </div><!-- End .product-cat -->
-                                                <h3 class="product-title"><a href="{{route('product',$offer->slug)}}">{{ $offer->name }}</a></h3><!-- End .product-title -->
+                                                <h3 class="product-title"><a href="{{route('product',$offer->slug)}}">{{
+                                                        $offer->name }}</a></h3><!-- End .product-title -->
                                                 <div class="product-price">
                                                     <span class="new-price">{{ $offer->price }}</span>
 
@@ -598,7 +651,8 @@
                                             </div><!-- End .product-body -->
 
                                             <div class="deal-bottom" style="margin-left: 20%;">
-                                                <div class="deal-countdown offer-countdown" data-until="+11d"></div><!-- End .deal-countdown -->
+                                                <div class="deal-countdown offer-countdown" data-until="+11d"></div>
+                                                <!-- End .deal-countdown -->
                                             </div><!-- End .deal-bottom -->
 
                                             <!-- <div class="product-countdown" data-until="+44h" data-relative="true" data-labels-short="true"></div>End .product-countdown -->
@@ -620,7 +674,7 @@
                                                 "loop": false,
                                                 "autoHeight": true
                                             }'>
-                                            @foreach ($blogs as $blog )
+                                    @foreach ($blogs as $blog )
 
                                     <article class="entry">
                                         <figure class="entry-media">
@@ -644,7 +698,7 @@
                                             </div><!-- End .entry-content -->
                                         </div><!-- End .entry-body -->
                                     </article><!-- End .entry -->
-@endforeach
+                                    @endforeach
                                 </div><!-- End .owl-carousel -->
                             </div><!-- End .widget widget-posts -->
                         </div><!-- End .col-sm-6 col-xl-12 -->
@@ -661,14 +715,17 @@
             <div class="col-sm-10 col-md-8 col-lg-6">
                 <div class="cta-heading text-center">
                     <h3 class="cta-title">Sign Up for news letter updates</h3><!-- End .cta-title -->
-                    <p class="cta-desc">and receive <span class="font-weight-normal">$20 coupon</span> for first shopping</p><!-- End .cta-desc -->
+                    <p class="cta-desc">and receive <span class="font-weight-normal">$20 coupon</span> for first
+                        shopping</p><!-- End .cta-desc -->
                 </div><!-- End .text-center -->
 
                 <form action="#">
                     <div class="input-group">
-                        <input type="email" class="form-control" placeholder="Enter your Email Address" aria-label="Email Adress" required>
+                        <input type="email" class="form-control" placeholder="Enter your Email Address"
+                            aria-label="Email Adress" required>
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="submit" title="Sing up"><i class="icon-long-arrow-right"></i></button>
+                            <button class="btn btn-primary" type="submit" title="Sing up"><i
+                                    class="icon-long-arrow-right"></i></button>
                         </div><!-- .End .input-group-append -->
                     </div><!-- .End .input-group -->
                 </form>
@@ -681,26 +738,45 @@
 @section('page-scripts')
 
 <script>
-$('.btn-wishlist').click(function(e){
+    $('.btn-wishlist').click(function(e){
     e.preventDefault();
     $user = $(this).attr('user');
     $product = $(this).attr('product');
 
-    $.post("{{ route('wishlists') }}", {user_id: $user, product_id: $product}, function(data){
+    $.post("{{ route('wishlists') }}", {_token:"{{ csrf_token() }}",user_id: $user, product_id: $product}, function(data){
         console.log(data);
         if(data.message == "login"){
             $('#signin-modal').modal('show');
         }
-        if(data.message == "exists"){
-            alert('already on wishlist');
+        else if(data.message == "exists"){
+            alert('Product already on wishlist.');
+        }
+        else if(data.message == "success"){
+            alert('Product added to wishlist');
         }
         else{
-            alert('Product added to wishlist');
+            console.log('oops');
         }
     });
 
 
 });
+// $('.btn-wishlist').click(function(e){
+//     e.preventDefault();
+//     $user = $(this).attr('user');
+//     $product = $(this).attr('product');
+//     addWishlist($user,$product);
+// });
+// function addWishlist($user,$product){
+
+//     var request = $.ajax({
+//     url: "{{ route('wishlists') }}",
+//     method: "POST",
+//     data:  {_token:"{{ csrf_token() }}",user_id: $user, product_id: $product},
+//     dataType: "html"
+// });
+
+// }
 
 </script>
 @endsection

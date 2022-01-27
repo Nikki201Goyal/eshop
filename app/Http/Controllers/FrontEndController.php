@@ -13,11 +13,12 @@ use App\Models\Shoes;
 use Illuminate\Http\Request;
 use App\Models\contact;
 use App\Models\products;
+use Illuminate\Support\Facades\Auth;
 
 class FrontEndController extends Controller
 {
     public function home(){
-
+// dd(Auth::check());
         $categories=Category::all();
         $bests=products::inRandomOrder()->get()->take(3);
         $offers=products::inRandomOrder()->get()->take(2);

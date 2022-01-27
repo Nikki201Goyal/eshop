@@ -74,3 +74,4 @@ Route::resource('admin/orders', OrderController::class);
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Wishlist
+Route::post('/wishlists',[App\Http\Controllers\WishlistController::class,'store'])->name('wishlists');

@@ -46,10 +46,12 @@ class WishlistController extends Controller
 
 
         ]);
+        // return response()->json($user);
         if(Auth::check()){
-            $product= products::find($request->product_id);
+            $product= Wishlist::where('product_id',$request->product_id)->first();
+
             if($product){
-                return response()->json('exists');
+                return response()->json(['message' => 'exists']);
             }
             else{
                 $wishlist=Wishlist::create([
@@ -57,9 +59,8 @@ class WishlistController extends Controller
                     'user_id' => $request->user_id,
                     'product_id' => $request->product_id,
 
-
                 ]);
-                return response()->json($wishlist);
+                return response()->json(['message' => 'success']);
             }
 
         }
