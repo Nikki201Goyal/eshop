@@ -48,7 +48,7 @@ class WishlistController extends Controller
         ]);
         // return response()->json($user);
         if(Auth::check()){
-            $product= Wishlist::where('product_id',$request->product_id)->first();
+            $product= Wishlist::where('user_id', Auth::user()->id)->where('product_id',$request->product_id)->first();
 
             if($product){
                 return response()->json(['message' => 'exists']);
@@ -110,8 +110,10 @@ class WishlistController extends Controller
      * @param  \App\Models\Wishlist  $wishlist
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Wishlist $wishlist)
+    public function destroy($id)
     {
-        //
+        Wishlist::find($id)->delete();
+        return back()->with('success', 'product from wishlist deleted sucessfully');
+
     }
 }

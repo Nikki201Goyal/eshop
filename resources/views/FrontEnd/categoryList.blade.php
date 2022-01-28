@@ -109,13 +109,13 @@
                                                     <a href="#" class="btn-product btn-compare" title="Compare"><span>compare</span></a>
                                                 </div><!-- End .product-action -->
 
-                                                <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                                <a href="#" class="btn-product btn-cart" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $pro->id }}"><span>add to cart</span></a>
                                             </div><!-- End .product-list-action -->
                                         </div><!-- End .col-sm-6 col-lg-3 -->
 
                                         <div class="col-lg-6">
                                             <div class="product-body product-action-inner">
-                                                <a href="#" class="btn-product btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
+                                                <a href="#" class="btn-product btn-wishlist" title="Add to wishlist"  user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $pro->id }}"><span>add to wishlist</span></a>
 
                                                 <h3 class="product-title"><a href="{{route('product', $pro->slug)}}">{{ $pro->name }}</a></h3><!-- End .product-title -->
 

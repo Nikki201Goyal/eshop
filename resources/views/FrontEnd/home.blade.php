@@ -247,7 +247,7 @@
 
                                         <div class="product-action-vertical">
                                             <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"
-                                                user="1" product="{{ $All->id }}"><span>add to wishlist</span></a>
+                                                user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $All->id }}"><span>add to wishlist</span></a>
                                             <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
                                                 title="Quick view"><span>Quick view</span></a>
                                             <a href="#" class="btn-product-icon btn-compare"
@@ -255,7 +255,7 @@
                                         </div><!-- End .product-action-vertical -->
 
                                         <div class="product-action">
-                                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to
+                                            <a href="#" class="btn-product btn-cart" title="Add to cart" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $All->id }}"><span>add to
                                                     cart</span></a>
                                         </div><!-- End .product-action -->
                                     </figure><!-- End .product-media -->
@@ -330,7 +330,7 @@
 
                                         <div class="product-action-vertical">
                                             <a href="#" class="btn-product-icon btn-wishlist"
-                                                title="Add to wishlist"><span>add to wishlist</span></a>
+                                                title="Add to wishlist"  user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $prod->id }}"><span>add to wishlist</span></a>
                                             <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
                                                 title="Quick view"><span>Quick view</span></a>
 
@@ -339,7 +339,7 @@
                                         </div><!-- End .product-action-vertical -->
 
                                         <div class="product-action">
-                                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to
+                                            <a href="#" class="btn-product btn-cart" title="Add to cart" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $prod->id }}"><span>add to
                                                     cart</span></a>
                                         </div><!-- End .product-action -->
                                     </figure><!-- End .product-media -->
@@ -447,7 +447,7 @@
 
                                     <div class="product-action-vertical">
                                         <a href="#" class="btn-product-icon btn-wishlist"
-                                            title="Add to wishlist"><span>add to wishlist</span></a>
+                                            title="Add to wishlist"  user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $elec->id }}"><span>add to wishlist</span></a>
                                         <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
                                             title="Quick view"><span>Quick view</span></a>
 
@@ -456,7 +456,7 @@
                                     </div><!-- End .product-action-vertical -->
 
                                     <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to
+                                        <a href="#" class="btn-product btn-cart" title="Add to cart" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $elec->id }}"><span>add to
                                                 cart</span></a>
                                     </div><!-- End .product-action -->
                                 </figure><!-- End .product-media -->
@@ -625,7 +625,7 @@
 
                                                 <div class="product-action-vertical">
                                                     <a href="#" class="btn-product-icon btn-wishlist"
-                                                        title="Add to wishlist"><span>add to wishlist</span></a>
+                                                        title="Add to wishlist"  user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{$offer->id }}"><span>add to wishlist</span></a>
 
                                                     <a href="#" class="btn-product-icon btn-compare"
                                                         title="Compare"><span>Compare</span></a>
@@ -633,7 +633,7 @@
 
                                                 <div class="product-action">
                                                     <a href="#" class="btn-product btn-cart"
-                                                        title="Add to cart"><span>add to cart</span></a>
+                                                        title="Add to cart" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $offer->id }}"><span>add to cart</span></a>
                                                 </div><!-- End .product-action -->
                                             </figure><!-- End .product-media -->
 
@@ -735,48 +735,6 @@
 </div><!-- End .cta -->
 @endSection
 
-@section('page-scripts')
-
-<script>
-    $('.btn-wishlist').click(function(e){
-    e.preventDefault();
-    $user = $(this).attr('user');
-    $product = $(this).attr('product');
-
-    $.post("{{ route('wishlists') }}", {_token:"{{ csrf_token() }}",user_id: $user, product_id: $product}, function(data){
-        console.log(data);
-        if(data.message == "login"){
-            $('#signin-modal').modal('show');
-        }
-        else if(data.message == "exists"){
-            alert('Product already on wishlist.');
-        }
-        else if(data.message == "success"){
-            alert('Product added to wishlist');
-        }
-        else{
-            console.log('oops');
-        }
-    });
 
 
-});
-// $('.btn-wishlist').click(function(e){
-//     e.preventDefault();
-//     $user = $(this).attr('user');
-//     $product = $(this).attr('product');
-//     addWishlist($user,$product);
-// });
-// function addWishlist($user,$product){
 
-//     var request = $.ajax({
-//     url: "{{ route('wishlists') }}",
-//     method: "POST",
-//     data:  {_token:"{{ csrf_token() }}",user_id: $user, product_id: $product},
-//     dataType: "html"
-// });
-
-// }
-
-</script>
-@endsection

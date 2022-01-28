@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Appliances;
 use App\Models\Blog;
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Clothing;
 use App\Models\electronics;
@@ -13,6 +14,7 @@ use App\Models\Shoes;
 use Illuminate\Http\Request;
 use App\Models\contact;
 use App\Models\products;
+use App\Models\Wishlist;
 use Illuminate\Support\Facades\Auth;
 
 class FrontEndController extends Controller
@@ -101,14 +103,36 @@ class FrontEndController extends Controller
         return view('FrontEnd.product', compact('product'));
     }
     public function cart(){
-        return view('FrontEnd.cart');
+        if(Auth::check()){
+            $user=Auth::user();
+            $cart=Cart::where('user_id', $user->id)->get();
+             return view('FrontEnd.cart', compact('cart'));
+
+        }
+        else{
+            return redirect()->route('login');
+        }
     }
     public function checkout(){
         return view('FrontEnd.checkout');
     }
 
+    public function dashboard(){
+        return view('FrontEnd.dashboard');
+
+    }
+
     public function wishlist(){
-        return view('FrontEnd.Wishlist');
+        if(Auth::check()){
+            $user=Auth::user();
+            $wishlist=Wishlist::where('user_id', $user->id)->get();
+             return view('FrontEnd.Wishlist', compact('wishlist'));
+
+        }
+        else{
+            return redirect()->route('login');
+        }
+
 
     }
 

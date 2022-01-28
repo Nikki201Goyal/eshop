@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Address;
 use App\Models\Blog;
 use App\Models\Cart;
 use Illuminate\Database\Seeder;
@@ -26,6 +27,7 @@ class DatabaseSeeder extends Seeder
         Order::factory(10)->create();
         Blog::factory(10)->create();
         Wishlist::factory(200)->create();
+       Address::factory(200)->create();
         Cart::factory(200)->create();
         Rating::factory(200)->create();
         OrderDeatils::factory(10)->create();

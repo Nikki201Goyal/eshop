@@ -28,69 +28,38 @@
 									</thead>
 
 									<tbody>
+                                        @foreach ($cart as $carts)
+
 										<tr>
 											<td class="product-col">
 												<div class="product">
 													<figure class="product-media">
 														<a href="#">
-															<img src="{{asset('FrontEnd/assets/images/Image/Products/products/product-16.jpg')}}" alt="Product image">
+															<img src="{{asset($carts->product->image)}}" alt="Product image">
 														</a>
 													</figure>
 
 													<h3 class="product-title">
-														<a href="#">Beige knitted elastic runner shoes</a>
+														<a href="#">{{ $carts->product->name }}</a>
 													</h3><!-- End .product-title -->
 												</div><!-- End .product -->
 											</td>
-											<td class="price-col">$84.00</td>
+											<td class="price-col">{{ $carts->product->price }}</td>
 											<td class="quantity-col">
                                                 <div class="cart-product-quantity">
-                                                    <input type="number" class="form-control" value="1" min="1" max="10" step="1" data-decimals="0" required>
+                                                    <input type="number" class="form-control" value="{{ $carts->quantity }}" min="1" max="10" step="1" data-decimals="0" required>
                                                 </div><!-- End .cart-product-quantity -->
                                             </td>
-											<td class="total-col">$84.00</td>
+											<td class="total-col">Rs.{{ $carts->product->price * $carts->quantity }} </td>
 											<td class="remove-col"><button class="btn-remove"><i class="icon-close"></i></button></td>
 										</tr>
-										<tr>
-											<td class="product-col">
-												<div class="product">
-													<figure class="product-media">
-														<a href="#">
-															<img src="{{asset('FrontEnd/assets/images/Image/Products/products/product-5.jpg')}}" alt="Product image">
-														</a>
-													</figure>
+                                        @endforeach
 
-													<h3 class="product-title">
-														<a href="#">Blue utility pinafore denim dress</a>
-													</h3><!-- End .product-title -->
-												</div><!-- End .product -->
-											</td>
-											<td class="price-col">$76.00</td>
-											<td class="quantity-col">
-                                                <div class="cart-product-quantity">
-                                                    <input type="number" class="form-control" value="1" min="1" max="10" step="1" data-decimals="0" required>
-                                                </div><!-- End .cart-product-quantity -->                                 
-                                            </td>
-											<td class="total-col">$76.00</td>
-											<td class="remove-col"><button class="btn-remove"><i class="icon-close"></i></button></td>
-										</tr>
+
 									</tbody>
 								</table><!-- End .table table-wishlist -->
 
-	                			<div class="cart-bottom">
-			            			<div class="cart-discount">
-			            				<form action="#">
-			            					<div class="input-group">
-				        						<input type="text" class="form-control" required placeholder="coupon code">
-				        						<div class="input-group-append">
-													<button class="btn btn-outline-primary-2" type="submit"><i class="icon-long-arrow-right"></i></button>
-												</div><!-- .End .input-group-append -->
-			        						</div><!-- End .input-group -->
-			            				</form>
-			            			</div><!-- End .cart-discount -->
 
-			            			<a href="#" class="btn btn-outline-dark-2"><span>UPDATE CART</span><i class="icon-refresh"></i></a>
-		            			</div><!-- End .cart-bottom -->
 	                		</div><!-- End .col-lg-9 -->
 	                		<aside class="col-lg-3">
 	                			<div class="summary summary-cart">
@@ -137,10 +106,10 @@
 	                							<td>$50.00</td>
 	                						</tr><!-- End .summary-shipping-row -->
 
-	                						<!-- <tr class="summary-shipping-estimate">
+	                						<tr class="summary-shipping-estimate">
 	                							<td>Estimate for Your Country<br> <a href="dashboard.html">Change address</a></td>
 	                							<td>&nbsp;</td>
-	                						</tr>End .summary-shipping-estimate -->
+	                						</tr><!--End .summary-shipping-estimate -->
 
 	                						<tr class="summary-total">
 	                							<td>Total:</td>
@@ -152,7 +121,7 @@
 	                				<a href="{{route('checkout')}}" class="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO CHECKOUT</a>
 	                			</div><!-- End .summary -->
 
-		            			<a href="{{route('category')}}" class="btn btn-outline-dark-2 btn-block mb-3"><span>CONTINUE SHOPPING</span><i class="icon-refresh"></i></a>
+		            			<a href=categury class="btn btn-outline-dark-2 btn-block mb-3"><span>CONTINUE SHOPPING</span><i class="icon-refresh"></i></a>
 	                		</aside><!-- End .col-lg-3 -->
 	                	</div><!-- End .row -->
 	                </div><!-- End .container -->

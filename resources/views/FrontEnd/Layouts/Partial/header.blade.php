@@ -60,6 +60,7 @@
             </div>
 
             <div class="header-right">
+                @auth
                 <div class="dropdown compare-dropdown">
                     <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Compare Products" aria-label="Compare Products">
                         <div class="icon">
@@ -72,7 +73,7 @@
                 </div><!-- End .compare-dropdown -->
 
                 <div class="wishlist">
-                    <a href="wishlist.html" title="Wishlist">
+                    <a href="{{ route('wishlist') }}" title="Wishlist">
                         <div class="icon">
                             <i class="icon-heart-o"></i>
 
@@ -82,7 +83,7 @@
                 </div><!-- End .compare-dropdown -->
 
                 <div class="dropdown cart-dropdown">
-                    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
+                    <a href="{{ route('cart') }}" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Cart">
                         <div class="icon">
                             <i class="icon-shopping-cart"></i>
 
@@ -92,6 +93,7 @@
 
 
                 </div><!-- End .cart-dropdown -->
+                @endauth
             </div><!-- End .header-right -->
         </div><!-- End .container -->
     </div><!-- End .header-middle -->
@@ -130,7 +132,7 @@
 
 
                         </li>
-                       
+
                         <!-- <li>
                             <a href="product.html">Product</a>
 

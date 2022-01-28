@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Http\Requests\StoreCartRequest;
 use App\Http\Requests\UpdateCartRequest;
+use App\Models\Wishlist;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -34,9 +37,37 @@ class CartController extends Controller
      * @param  \App\Http\Requests\StoreCartRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCartRequest $request)
+    public function store(Request $request)
     {
-        //
+        $request->validate([
+            'user_id' => 'required',
+            'product_id' => 'required',
+
+
+        ]);
+        // return response()->json($user);
+        if(Auth::check()){
+            $product= Cart::where('user_id', Auth::user()->id)->where('product_id',$request->product_id)->first();
+
+            if($product){
+                $newCount = $product->quantity+1;
+                $product->update(['quantity'=>$newCount]);
+                return response()->json(['message' => 'success']);
+            }
+            else{
+                $cart=Cart::create([
+
+                    'user_id' => $request->user_id,
+                    'product_id' => $request->product_id,
+
+                ]);
+                return response()->json(['message' => 'success']);
+            }
+
+        }
+        else{
+            return response()->json(['message' => 'login']);
+        }
     }
 
     /**
@@ -82,5 +113,17 @@ class CartController extends Controller
     public function destroy(Cart $cart)
     {
         //
+    }
+
+    public function fromWishlist($id){
+        $product = Wishlist::findOrFail($id);
+        $data=[
+            'user_id'=>$product->user_id,
+            'product_id'=>$product->product_id,
+
+        ];
+        Cart::create($data);
+        $product->delete();
+        return back()->with('sucess', 'product added to cart sucessfully');
     }
 }

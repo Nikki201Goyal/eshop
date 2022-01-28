@@ -27,6 +27,7 @@ Route::get('/contact', [App\HTTP\Controllers\FrontEndController::class, 'contact
 Route::get('/faq', [App\HTTP\Controllers\FrontEndController::class, 'faq'])->name('faq');
 Route::get('/terms', [App\HTTP\Controllers\FrontEndController::class, 'terms'])->name('terms');
 Route::get('/privacy', [App\HTTP\Controllers\FrontEndController::class, 'privacy'])->name('privacy');
+Route::get('/dashboard', [App\HTTP\Controllers\FrontEndController::class, 'dashboard'])->name('dashboard');
 Route::get('/return', [App\HTTP\Controllers\FrontEndController::class, 'return'])->name('return');
 Route::get('/category/{slug}', [App\HTTP\Controllers\FrontEndController::class, 'category'])->name('category');
 Route::get('/categoryList/{slug}', [App\HTTP\Controllers\FrontEndController::class, 'categoryList'])->name('categoryList');
@@ -34,8 +35,6 @@ Route::get('/category2grid/{slug}', [App\HTTP\Controllers\FrontEndController::cl
 Route::get('/category4grid/{slug}', [App\HTTP\Controllers\FrontEndController::class, 'category4Grid'])->name('category4grid');
 Route::get('/blogs', [App\HTTP\Controllers\FrontEndController::class, 'blogs'])->name('blogs');
 Route::get('/product/{slug}/show', [App\HTTP\Controllers\FrontEndController::class, 'product'])->name('product');
-Route::get('/cart', [App\HTTP\Controllers\FrontEndController::class, 'cart'])->name('cart');
-Route::get('/wishlist', [App\HTTP\Controllers\FrontEndController::class, 'wishlist'])->name('wishlist');
 Route::get('/checkout', [App\HTTP\Controllers\FrontEndController::class, 'checkout'])->name('checkout');
 Route::get('/storeContact',[App\Http\Controllers\FrontEndController::class,'storeContact'])->name('storeContact');
 
@@ -69,9 +68,18 @@ Route::get('admin/users/{id}/changeStatus', [App\Http\Controllers\UserController
 //order
 Route::resource('admin/orders', OrderController::class);
 
- Auth::routes();
+Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Wishlist
 Route::post('/wishlists',[App\Http\Controllers\WishlistController::class,'store'])->name('wishlists');
+Route::post('/carts',[App\Http\Controllers\CartController::class,'store'])->name('carts');
+
+Route::group(['middleware'=>'auth'], function(){
+Route::get('/wishlist', [App\HTTP\Controllers\FrontEndController::class, 'wishlist'])->name('wishlist');
+Route::get('/wishlist/{id}/Cart', [App\HTTP\Controllers\CartController::class, 'fromWishlist'])->name('wishlist.Cart');
+Route::get('/wishlist/{id}/Delete', [App\HTTP\Controllers\WishlistController::class, 'destroy'])->name('wishlist.Delete');
+Route::get('/cart', [App\HTTP\Controllers\FrontEndController::class, 'cart'])->name('cart');
+
+});

@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class CartFactory extends Factory
+class AdditionalInfoFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,9 +14,7 @@ class CartFactory extends Factory
     public function definition()
     {
         return [
-            'user_Id'=>$this->faker->numberBetween(1,10),
-            'product_Id'=>$this->faker->numberBetween(1,50),
-            'quantity'=>$this->faker->randomDigit(),
+            //
         ];
     }
 }
