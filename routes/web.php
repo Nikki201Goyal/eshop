@@ -81,5 +81,7 @@ Route::get('/wishlist', [App\HTTP\Controllers\FrontEndController::class, 'wishli
 Route::get('/wishlist/{id}/Cart', [App\HTTP\Controllers\CartController::class, 'fromWishlist'])->name('wishlist.Cart');
 Route::get('/wishlist/{id}/Delete', [App\HTTP\Controllers\WishlistController::class, 'destroy'])->name('wishlist.Delete');
 Route::get('/cart', [App\HTTP\Controllers\FrontEndController::class, 'cart'])->name('cart');
-
+Route::post('/address',  [App\HTTP\Controllers\AddressController::class, 'store'])->name('address');
+Route::post('/address/edit',  [App\HTTP\Controllers\AddressController::class, 'update'])->name('address.edit');
+Route::post('/address/{id}/activate',  [App\HTTP\Controllers\AddressController::class, 'activate'])->name('address.activate');
 });

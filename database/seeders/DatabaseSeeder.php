@@ -11,6 +11,7 @@ use App\Models\Order;
 use App\Models\Rating;
 use App\Models\OrderDeatils;
 use App\Models\products;
+use App\Models\query;
 use App\Models\Wishlist;
 
 class DatabaseSeeder extends Seeder
@@ -27,9 +28,10 @@ class DatabaseSeeder extends Seeder
         Order::factory(10)->create();
         Blog::factory(10)->create();
         Wishlist::factory(200)->create();
-       Address::factory(200)->create();
+    //    Address::factory(200)->create();
         Cart::factory(200)->create();
         Rating::factory(200)->create();
+        query::factory(10)->create();
         OrderDeatils::factory(10)->create();
         // products::factory(10)->create();
         $this->call([

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Address;
 use App\Http\Requests\StoreAddressRequest;
 use App\Http\Requests\UpdateAddressRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AddressController extends Controller
 {
@@ -25,7 +27,7 @@ class AddressController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -34,9 +36,30 @@ class AddressController extends Controller
      * @param  \App\Http\Requests\StoreAddressRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreAddressRequest $request)
+    public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' =>'required',
+            'address' => 'required',
+            'contact'=> 'required',
+            'email'=>'required',
+            'postcode'=>'required',
+
+
+        ]);
+
+        Address::create([
+            'name' => $request->name,
+             'address' => $request->address,
+             'email' => $request->email,
+             'contact' => $request->contact,
+             'user_id' => Auth::user()->id,
+             'postcode' => $request->postcode,
+
+         ]);
+         return redirect()->back();
+
+
     }
 
     /**
@@ -56,9 +79,10 @@ class AddressController extends Controller
      * @param  \App\Models\Address  $address
      * @return \Illuminate\Http\Response
      */
-    public function edit(Address $address)
+    public function edit()
     {
-        //
+
+
     }
 
     /**
@@ -68,9 +92,24 @@ class AddressController extends Controller
      * @param  \App\Models\Address  $address
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAddressRequest $request, Address $address)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'contact' => 'required',
+            'address' => 'required',
+            'email' => 'required',
+            'postcode' => 'required',
+        ]);
+
+        $address = Address::findorFail($request->id);
+        $address->name = $request->name;
+        $address->contact = $request->contact;
+        $address->address = $request->address;
+        $address->postcode = $request->postcode;
+        $address->email = $request->email;
+        $address->save();
+        return redirect()->back();
     }
 
     /**
@@ -82,5 +121,17 @@ class AddressController extends Controller
     public function destroy(Address $address)
     {
         //
+    }
+
+    public function activate($id){
+        $address = Address::where('user_id', Auth::user()->id)->get();
+        foreach($address as $a){
+            $a->update(['status'=>0]);
+
+        }
+        $add=Address::findOrFail($id);
+        $add->update(['status'=>1]);
+        return redirect()->back();
+
     }
 }

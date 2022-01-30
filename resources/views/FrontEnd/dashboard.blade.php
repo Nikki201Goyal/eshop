@@ -47,34 +47,45 @@
 
 
                             <div class="tab-pane fade" id="tab-address" role="tabpanel" aria-labelledby="tab-address-link">
-                                <p>The following addresses will be used on the checkout page by default.</p>  <a href="#">Add <i class="icon-plus"></i></a>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="card card-dashboard">
-                                            <div class="card-body">
-                                                <h3 class="card-title">Billing Address</h3><!-- End .card-title -->
-
-                                                <p>User Name<br>
-                                                User Company<br>
-                                                John str<br>
-                                                New York, NY 10001<br>
-                                                1-234-987-6543<br>
-                                                yourmail@mail.com<br>
-                                                <a href="#">Edit <i class="icon-edit"></i></a></p>
-                                            </div><!-- End .card-body -->
-                                        </div><!-- End .card-dashboard -->
-                                    </div><!-- End .col-lg-6 -->
+                                <p>The following addresses will be used on the checkout page by default.</p>  <a href="#" data-toggle="modal" data-target="#exampleModal">Add <i class="icon-plus"></i></a>
+                                <div class="row">@foreach ($address as $i=>$add )
 
                                     <div class="col-lg-6">
                                         <div class="card card-dashboard">
                                             <div class="card-body">
-                                                <h3 class="card-title">Shipping Address</h3><!-- End .card-title -->
+                                                <h3 class="card-title">Address {{ $i+1 }}</h3><!-- End .card-title -->
 
-                                                <p>You have not set up this type of address yet.<br>
-                                                <a href="#">Edit <i class="icon-edit"></i></a></p>
+                                                <p>User Name : {{ $add->name }}<br>
+                                                Address : {{ $add->address }}<br>
+                                               Contact : {{ $add->contact }}<br>
+                                                Email : {{ $add->email }}<br>
+                                                Postal Code : {{ $add->postcode }}<br>
+
+                                                <a href="#" data-toggle="modal" data-target="#editAddress"
+                                                data-name="{{ $add->name }}"
+                                                data-address="{{ $add->address }}"
+                                                data-contact="{{ $add->contact }}"
+                                                data-email="{{ $add->email }}"
+                                                data-postcode="{{ $add->postcode }}"
+                                                data-id="{{ $add->id }}"
+                                                >Edit <i class="icon-edit"></i></a></p>
+@if ($add->status == 0)
+
+                                                <form action="{{ route('address.activate', $add->id) }}" method="POST">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-info btn-sm">Set Default</button>
+                                                </form>
+                                                @else
+                                                <button class="btn btn-success btn-sm">Active</button>
+
+@endif
+
                                             </div><!-- End .card-body -->
                                         </div><!-- End .card-dashboard -->
                                     </div><!-- End .col-lg-6 -->
+                                    @endforeach
+
+
                                 </div><!-- End .row -->
                             </div><!-- .End .tab-pane -->
 
@@ -121,4 +132,129 @@
         </div><!-- End .dashboard -->
     </div><!-- End .page-content -->
 </main><!-- End .main -->
+
+
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="{{ route('address') }}" method="POST" class="p-2">
+            @csrf
+            <div class="form-group">
+                <label for="register-email">Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div><!-- End .form-group -->
+
+            <div class="form-group">
+                <label for="register-email">Your email address *</label>
+                <input type="email" class="form-control" id="register-email" name="email" required>
+            </div><!-- End .form-group -->
+
+            <div class="form-group">
+                <label for="register-email">Contact *</label>
+                <input type="text" class="form-control" id="contact" name="contact" required>
+            </div><!-- End .form-group -->
+
+            <div class="form-group">
+                <label for="register-email">Address *</label>
+                <input type="text" class="form-control" id="address" name="address" required>
+            </div><!-- End .form-group -->
+
+            <div class="form-group">
+                <label for="register-email">Post Code *</label>
+                <input type="text" class="form-control" id="postcode" name="postcode" required>
+            </div><!-- End .form-group -->
+
+            <div class="form-group">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+              </div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+<div class="modal fade" id="editAddress" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="{{ route('address.edit') }}" method="POST" class="p-2">
+        @csrf
+        <input type="hidden" name="id" id="id_edit">
+        <div class="form-group">
+            <label for="register-email">Name</label>
+            <input type="text" class="form-control" id="name_edit" name="name" required>
+        </div><!-- End .form-group -->
+
+        <div class="form-group">
+            <label for="register-email">Your email address *</label>
+            <input type="email" class="form-control" id="email_edit" name="email" required>
+        </div><!-- End .form-group -->
+
+        <div class="form-group">
+            <label for="register-email">Contact *</label>
+            <input type="text" class="form-control" id="contact_edit" name="contact" required>
+        </div><!-- End .form-group -->
+
+        <div class="form-group">
+            <label for="register-email">Address *</label>
+            <input type="text" class="form-control" id="address_edit" name="address" required>
+        </div><!-- End .form-group -->
+
+        <div class="form-group">
+            <label for="register-email">Post Code *</label>
+            <input type="text" class="form-control" id="postcode_edit" name="postcode" required>
+        </div><!-- End .form-group -->
+
+        <div class="form-group">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+@endsection
+
+
+@section('page-scripts')
+
+
+<script>
+    $('#editAddress').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var address = button.data('address') // Extract info from data-* attributes
+  var email = button.data('email') // Extract info from data-* attributes
+  var contact = button.data('contact') // Extract info from data-* attributes
+  var postcode = button.data('postcode') // Extract info from data-* attributes
+  var name = button.data('name') // Extract info from data-* attributes
+  var id = button.data('id') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('#name_edit').val(name)
+  modal.find('#email_edit').val(email)
+  modal.find('#address_edit').val(address)
+  modal.find('#contact_edit').val(contact)
+  modal.find('#postcode_edit').val(postcode)
+  modal.find('#id_edit').val(id)
+//   modal.find('.modal-body input').val(recipient)
+})
+</script>
 @endsection

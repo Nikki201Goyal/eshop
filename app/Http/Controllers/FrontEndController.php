@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Address;
 use App\Models\Appliances;
 use App\Models\Blog;
 use App\Models\Cart;
@@ -118,7 +119,8 @@ class FrontEndController extends Controller
     }
 
     public function dashboard(){
-        return view('FrontEnd.dashboard');
+        $address= Address::where('user_id', Auth::user()->id)->get();
+        return view('FrontEnd.dashboard', compact('address'));
 
     }
 
