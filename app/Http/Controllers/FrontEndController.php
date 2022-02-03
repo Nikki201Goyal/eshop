@@ -14,6 +14,7 @@ use App\Models\Instruments;
 use App\Models\Shoes;
 use Illuminate\Http\Request;
 use App\Models\contact;
+use App\Models\Order;
 use App\Models\products;
 use App\Models\Wishlist;
 use Illuminate\Support\Facades\Auth;
@@ -38,6 +39,10 @@ class FrontEndController extends Controller
 
     public function contact(){
         return view('FrontEnd.contact');
+    }
+
+    public function orderCompleted(){
+        return view('FrontEnd.orderCompleted');
     }
 
     public function about(){
@@ -103,24 +108,40 @@ class FrontEndController extends Controller
         // dd($avg);
         return view('FrontEnd.product', compact('product'));
     }
+
     public function cart(){
         if(Auth::check()){
+            $address=Address::where('user_id', Auth::user()->id)->where('status', 1)->first();
             $user=Auth::user();
             $cart=Cart::where('user_id', $user->id)->get();
-             return view('FrontEnd.cart', compact('cart'));
+             return view('FrontEnd.cart', compact('cart', 'address'));
 
         }
         else{
             return redirect()->route('login');
         }
     }
+
     public function checkout(){
-        return view('FrontEnd.checkout');
+        if(Auth::check()){
+            $address=Address::where('user_id', Auth::user()->id)->where('status', 1)->first();
+            $user=Auth::user();
+            $cart=Cart::where('user_id', $user->id)->get();
+            $total = 0;
+            foreach($cart as $carts){
+                $total += $carts->quantity * $carts->product->price;
+            }
+        return view('FrontEnd.checkout', compact('address', 'cart', 'total'));
     }
+    else{
+        return redirect()->route('login');
+    }
+}
 
     public function dashboard(){
+        $order=Order::where('user_id', Auth::user()->id)->get();
         $address= Address::where('user_id', Auth::user()->id)->get();
-        return view('FrontEnd.dashboard', compact('address'));
+        return view('FrontEnd.dashboard', compact('address', 'order'));
 
     }
 

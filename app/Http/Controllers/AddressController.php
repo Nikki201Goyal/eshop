@@ -48,7 +48,7 @@ class AddressController extends Controller
 
         ]);
 
-        Address::create([
+       $address= Address::create([
             'name' => $request->name,
              'address' => $request->address,
              'email' => $request->email,
@@ -56,7 +56,15 @@ class AddressController extends Controller
              'user_id' => Auth::user()->id,
              'postcode' => $request->postcode,
 
+
+
          ]);
+         $addresses = Address::where('user_id', Auth::user()->id)->get();
+         foreach($addresses as $a){
+             $a->update(['status'=>0]);
+
+         }
+         $address->update(['status'=>1]);
          return redirect()->back();
 
 

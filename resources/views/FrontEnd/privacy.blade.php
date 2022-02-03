@@ -4,14 +4,14 @@
             <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
                 <div class="container">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-   
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+
                         <li class="breadcrumb-item active" aria-current="page">Privacy Policy</li>
                     </ol>
                 </div><!-- End .container -->
             </nav><!-- End .breadcrumb-nav -->
 
-            	
+
 		 <div class="container pb-60">
 			<div class="row">
 				<div class="col-md-12">

@@ -20,6 +20,8 @@ class CreateOrdersTable extends Migration
             $table->string('total');
             $table->longText('discount');
             $table->foreignId('user_id')->default('1');
+            $table->foreignId('address_id')->default('1');
+            $table->longText('order_notes');
         });
     }
 

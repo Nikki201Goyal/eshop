@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
 Route::get('/', function () {
     return view('welcome');
@@ -37,7 +38,24 @@ Route::get('/blogs', [App\HTTP\Controllers\FrontEndController::class, 'blogs'])-
 Route::get('/product/{slug}/show', [App\HTTP\Controllers\FrontEndController::class, 'product'])->name('product');
 Route::get('/checkout', [App\HTTP\Controllers\FrontEndController::class, 'checkout'])->name('checkout');
 Route::get('/storeContact',[App\Http\Controllers\FrontEndController::class,'storeContact'])->name('storeContact');
+Route::post('/wishlists',[App\Http\Controllers\WishlistController::class,'store'])->name('wishlists');
+Route::post('/carts',[App\Http\Controllers\CartController::class,'store'])->name('carts');
 
+Route::group(['middleware'=>'auth'], function(){
+
+Route::get('/wishlist', [App\HTTP\Controllers\FrontEndController::class, 'wishlist'])->name('wishlist');
+Route::get('/wishlist/{id}/Cart', [App\HTTP\Controllers\CartController::class, 'fromWishlist'])->name('wishlist.Cart');
+Route::get('/wishlist/{id}/Delete', [App\HTTP\Controllers\WishlistController::class, 'destroy'])->name('wishlist.Delete');
+Route::get('/cart', [App\HTTP\Controllers\FrontEndController::class, 'cart'])->name('cart');
+Route::post('/address',  [App\HTTP\Controllers\AddressController::class, 'store'])->name('address');
+Route::post('/address/edit',  [App\HTTP\Controllers\AddressController::class, 'update'])->name('address.edit');
+Route::post('/address/{id}/activate',  [App\HTTP\Controllers\AddressController::class, 'activate'])->name('address.activate');
+Route::post('/placeOrder',   [App\HTTP\Controllers\OrderController::class, 'placeOrder'])->name('placeOrder');
+Route::get('/orderCompleted',   [App\HTTP\Controllers\FrontEndController::class, 'orderCompleted'])->name('orderCompleted');
+
+});
+
+Route::group(['middleware'=>'role:super|admin'], function(){
 //Backend
 Route::get('/admin', [App\HTTP\Controllers\BackEndController::class, 'admin'])->name('admin');
 Route::get('/Contact', [App\Http\Controllers\BackEndController::class,'Contact'])->name('Contact');
@@ -67,21 +85,10 @@ Route::get('admin/users/{id}/changeStatus', [App\Http\Controllers\UserController
 
 //order
 Route::resource('admin/orders', OrderController::class);
+});
 
-Auth::routes();
-
+Route::get('/mail/OrderConfirmed', [App\Http\Controllers\MailController::class, 'orderConfirmed'])->name('mail.OrderConfirmed');
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Wishlist
-Route::post('/wishlists',[App\Http\Controllers\WishlistController::class,'store'])->name('wishlists');
-Route::post('/carts',[App\Http\Controllers\CartController::class,'store'])->name('carts');
 
-Route::group(['middleware'=>'auth'], function(){
-Route::get('/wishlist', [App\HTTP\Controllers\FrontEndController::class, 'wishlist'])->name('wishlist');
-Route::get('/wishlist/{id}/Cart', [App\HTTP\Controllers\CartController::class, 'fromWishlist'])->name('wishlist.Cart');
-Route::get('/wishlist/{id}/Delete', [App\HTTP\Controllers\WishlistController::class, 'destroy'])->name('wishlist.Delete');
-Route::get('/cart', [App\HTTP\Controllers\FrontEndController::class, 'cart'])->name('cart');
-Route::post('/address',  [App\HTTP\Controllers\AddressController::class, 'store'])->name('address');
-Route::post('/address/edit',  [App\HTTP\Controllers\AddressController::class, 'update'])->name('address.edit');
-Route::post('/address/{id}/activate',  [App\HTTP\Controllers\AddressController::class, 'activate'])->name('address.activate');
-});

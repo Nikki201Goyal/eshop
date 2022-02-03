@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
+use App\Models\Cart;
+use App\Models\OrderDeatils;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -87,5 +91,43 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         //
+    }
+
+    public function placeOrder(Request $request){
+        $request->validate([
+            'address_id' => 'required',
+            'total'=> 'required',
+            'discount'=>'required',
+            'payment_method'=>'required',
+            'order_notes'=>'required',
+
+
+        ]);
+        $order= Order::create([
+            'address_id' => $request->address_id,
+             'total' => $request->total,
+             'discount' => $request->discount,
+             'payment_method' => $request->payment_method,
+             'order_notes' => $request->order_notes,
+         ]);
+
+         $cart=Cart::where('user_id', Auth::user()->id)->get();
+
+         foreach($cart as $carts){
+            $orderDetails=OrderDeatils::create([
+                'quantity' => $carts->quantity,
+                'price' => $carts->product->price,
+                'product_id' => $carts->product->id,
+                'order_id' => $order->id,
+            ]);
+            $carts->delete();
+
+         }
+         return view('FrontEnd.OrderCompleted');
+
+
+
+
+
     }
 }

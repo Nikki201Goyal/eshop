@@ -5,8 +5,7 @@
             <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
                 <div class="container">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Contact us</li>
                     </ol>
                 </div><!-- End .container -->
@@ -52,11 +51,11 @@
                 						<ul class="contact-list">
                 							<li>
                 								<i class="icon-clock-o"></i>
-	                							<span class="text-dark">Sunday-Friday</span> <br>11am-7pm 
+	                							<span class="text-dark">Sunday-Friday</span> <br>11am-7pm
 	                						</li>
                 							<li>
                 								<i class="icon-calendar"></i>
-                								<span class="text-dark">Sunday</span> <br>11am-6pm 
+                								<span class="text-dark">Sunday</span> <br>11am-6pm
                 							</li>
                 						</ul><!-- End .contact-list -->
                 					</div><!-- End .contact-info -->
@@ -105,7 +104,7 @@
 
                 	<hr class="mt-4 mb-5">
 
-     
+
                 </div><!-- End .container -->
             	<div id="map"></div><!-- End #map -->
             </div><!-- End .page-content -->

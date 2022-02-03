@@ -18,6 +18,8 @@ class OrderFactory extends Factory
             'total' => $this->faker->randomDigit(),
             'discount' =>$this->faker->randomDigit(),
             'payment_method'=>'esewa',
+            'address_id' =>$this->faker->numberBetween(1,10),
+            'order_notes' =>$this->faker->text(100),
         ];
     }
 }

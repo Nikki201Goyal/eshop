@@ -4,8 +4,7 @@
             <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
                 <div class="container">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">About us</li>
                     </ol>
                 </div><!-- End .container -->
@@ -23,7 +22,7 @@
                             <h2 class="title">Our Vision</h2><!-- End .title -->
                             <p style="text-justify: auto;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
                         </div><!-- End .col-lg-6 -->
-                        
+
                         <div class="col-lg-6">
                             <h2 class="title">Our Mission</h2><!-- End .title -->
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
@@ -44,7 +43,7 @@
                                 </div><!-- End .icon-box-content -->
                             </div><!-- End .icon-box -->
                         </div><!-- End .col-lg-4 col-sm-6 -->
-    
+
                         <div class="col-lg-4 col-sm-6">
                             <div class="icon-box icon-box-sm text-center">
                                 <span class="icon-box-icon">
@@ -56,7 +55,7 @@
                                 </div><!-- End .icon-box-content -->
                             </div><!-- End .icon-box -->
                         </div><!-- End .col-lg-4 col-sm-6 -->
-    
+
                         <div class="col-lg-4 col-sm-6">
                             <div class="icon-box icon-box-sm text-center">
                                 <span class="icon-box-icon">
@@ -64,14 +63,14 @@
                                 </span>
                                 <div class="icon-box-content">
                                     <h3 class="icon-box-title">Made With Love</h3><!-- End .icon-box-title -->
-                                    <p>Pellentesque a diam sit amet mi ullamcorper <br>vehicula. Nullam quis massa sit amet <br>nibh viverra malesuada.</p> 
+                                    <p>Pellentesque a diam sit amet mi ullamcorper <br>vehicula. Nullam quis massa sit amet <br>nibh viverra malesuada.</p>
                                 </div><!-- End .icon-box-content -->
                             </div><!-- End .icon-box -->
                         </div><!-- End .col-lg-4 col-sm-6 -->
                     </div><!-- End .row -->
                 </div><!-- End .container -->
 
-                
+
 
                 <div class="bg-light-2 pt-6 pb-5 mb-6 mb-lg-8">
                     <div class="container">
@@ -107,7 +106,7 @@
                         </div><!-- End .col-lg-5 -->
 
 
-                        
+
                         <div class="col-lg-7">
                             <div class="brands-display">
                                 <div class="row justify-content-center">
@@ -180,7 +179,7 @@
                                         <h3 class="count-title text-white">Happy Customer</h3><!-- End .count-title -->
                                     </div><!-- End .count-container -->
                                 </div><!-- End .col-6 col-md-3 -->
-    
+
                                 <div class="col-6 col-md-3">
                                     <div class="count-container text-center">
                                         <div class="count-wrapper text-white">
@@ -189,7 +188,7 @@
                                         <h3 class="count-title text-white">Years in Business</h3><!-- End .count-title -->
                                     </div><!-- End .count-container -->
                                 </div><!-- End .col-6 col-md-3 -->
-    
+
                                 <div class="col-6 col-md-3">
                                     <div class="count-container text-center">
                                         <div class="count-wrapper text-white">
@@ -198,7 +197,7 @@
                                         <h3 class="count-title text-white">Return Clients</h3><!-- End .count-title -->
                                     </div><!-- End .count-container -->
                                 </div><!-- End .col-6 col-md-3 -->
-    
+
                                 <div class="col-6 col-md-3">
                                     <div class="count-container text-center">
                                         <div class="count-wrapper text-white">
@@ -224,7 +223,7 @@
                                     <figcaption class="member-overlay">
                                         <div class="member-overlay-content">
                                             <h3 class="member-title">Nikki Goyal<span>Founder & CEO</span></h3><!-- End .member-title -->
-                                            <p>Sed pretium, ligula sollicitudin viverra, tortor libero sodales leo, eget blandit nunc.</p> 
+                                            <p>Sed pretium, ligula sollicitudin viverra, tortor libero sodales leo, eget blandit nunc.</p>
                                             <div class="social-icons social-icons-simple">
                                                 <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
                                                 <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
@@ -247,7 +246,7 @@
                                     <figcaption class="member-overlay">
                                         <div class="member-overlay-content">
                                             <h3 class="member-title">Krish Goyal<span>Sales & Marketing Manager</span></h3><!-- End .member-title -->
-                                            <p>Sed pretium, ligula sollicitudin viverra, tortor libero sodales leo, eget blandit nunc.</p> 
+                                            <p>Sed pretium, ligula sollicitudin viverra, tortor libero sodales leo, eget blandit nunc.</p>
                                             <div class="social-icons social-icons-simple">
                                                 <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
                                                 <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
@@ -270,7 +269,7 @@
                                     <figcaption class="member-overlay">
                                         <div class="member-overlay-content">
                                             <h3 class="member-title">Nikesh Agarwal<span>Product Manager</span></h3><!-- End .member-title -->
-                                            <p>Sed pretium, ligula sollicitudin viverra, tortor libero sodales leo, eget blandit nunc.</p> 
+                                            <p>Sed pretium, ligula sollicitudin viverra, tortor libero sodales leo, eget blandit nunc.</p>
                                             <div class="social-icons social-icons-simple">
                                                 <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
                                                 <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
@@ -293,9 +292,9 @@
                     <div class="container">
                         <h2 class="title text-center mb-3">What Customer Say About Us</h2><!-- End .title text-center -->
 
-                        <div class="owl-carousel owl-simple owl-testimonials-photo" data-toggle="owl" 
+                        <div class="owl-carousel owl-simple owl-testimonials-photo" data-toggle="owl"
                             data-owl-options='{
-                                "nav": false, 
+                                "nav": false,
                                 "dots": true,
                                 "margin": 20,
                                 "loop": false,
