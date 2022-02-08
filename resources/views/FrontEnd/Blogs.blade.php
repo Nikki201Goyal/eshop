@@ -51,7 +51,6 @@
             </div><!-- End .entry-container -->
             <div class="d-flex justify-content-center">
                 {{ $blogs->links() }}
-
             </div>
         </div><!-- End .container -->
     </div><!-- End .page-content -->

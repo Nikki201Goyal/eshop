@@ -18,6 +18,7 @@ use App\Models\Order;
 use App\Models\products;
 use App\Models\Wishlist;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class FrontEndController extends Controller
 {
@@ -168,7 +169,7 @@ class FrontEndController extends Controller
             'subject'=>'required',
             'message'=>'required',
         ]);
-        contact::create([
+       $contact= contact::create([
             'name' => $request->name,
              'phone' => $request->phone,
              'email' => $request->email,
@@ -177,7 +178,8 @@ class FrontEndController extends Controller
 
 
          ]);
-
+         Mail::to('nikkigoyal107@gmail.com')->send(new
+         \App\Mail\ContactMessage($contact));
          return redirect()->back();
 
       }

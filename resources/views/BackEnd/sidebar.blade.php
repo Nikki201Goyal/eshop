@@ -20,7 +20,7 @@
 
         <li class="nav-item menu-open">
           <a href="{{route('Contact')}}" class="nav-link">
-          <i class="fas fa-file-contract"></i>
+            <i class="fas fa-id-card-alt"></i>
             <p>
              Contact
             </p>
@@ -36,7 +36,7 @@
         </li>
         <li class="nav-item menu-open">
           <a href="{{route('categories.index')}}" class="nav-link">
-          <i class="fab fa-blogger"></i>
+          <i class="fas fa-list-ul"></i>
             <p>
            Categories
             </p>
@@ -45,7 +45,7 @@
 
         <li class="nav-item menu-open">
             <a href="{{route('products.index')}}" class="nav-link">
-            <i class="fab fa-blogger"></i>
+            <i class="fab fa-product-hunt"></i>
               <p>
              Products
               </p>
@@ -54,7 +54,7 @@
 
           <li class="nav-item menu-open">
             <a href="{{ route('users.index') }}" class="nav-link">
-            <i class="fab fa-blogger"></i>
+            <i class="fas fa-user"></i>
               <p>
              User
               </p>
@@ -63,7 +63,8 @@
 
           <li class="nav-item menu-open">
             <a href="{{ route('orders.index') }}" class="nav-link">
-            <i class="fab fa-blogger"></i>
+                <i class="fas fa-cart-plus"></i>
+
               <p>
             Order
               </p>
@@ -72,7 +73,7 @@
 
           <li class="nav-item menu-open">
             <a href="" class="nav-link">
-            <i class="fab fa-blogger"></i>
+                <i class="fas fa-info"></i>
               <p>
             Order Details
               </p>

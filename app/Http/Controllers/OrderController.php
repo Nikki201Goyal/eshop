@@ -10,6 +10,7 @@ use App\Models\OrderDeatils;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -121,7 +122,8 @@ class OrderController extends Controller
                 'order_id' => $order->id,
             ]);
             $carts->delete();
-
+            Mail::to(Auth::user()->email)->send(new
+            \App\Mail\OrderConfirmed($order));
          }
          return view('FrontEnd.OrderCompleted');
 
