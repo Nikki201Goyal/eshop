@@ -142,7 +142,7 @@
                                             </tr>
                                             <tr>
                                                 <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;"> Purchased Item (1) </td>
-                                                <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;"> {{ $ }} </td>
+                                                <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;"> {{ $order->orderDetails->count() }} </td>
                                             </tr>
                                             <tr>
                                                 <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;"> Shipping + Handling </td>
@@ -183,16 +183,7 @@
                                                 </tr>
                                             </table>
                                         </div>
-                                        <div style="display:inline-block; max-width:50%; min-width:240px; vertical-align:top; width:100%;">
-                                            <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:300px;">
-                                                <tr>
-                                                    <td align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">
-                                                        <p style="font-weight: 800;">Estimated Delivery Date</p>
-                                                        <p>January 1st, 2016</p>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </div>
+
                                     </td>
                                 </tr>
                             </table>
@@ -218,23 +209,7 @@
                             </table>
                         </td>
                     </tr>
-                    <tr>
-                        <td align="center" style="padding: 35px; background-color: #ffffff;" bgcolor="#ffffff">
-                            <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
-                                <tr>
-                                    <td align="center"> <img src="logo-footer.png" width="37" height="37" style="display: block; border: 0px;" /> </td>
-                                </tr>
-                                <tr>
-                                    <td align="center" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 24px; padding: 5px 0 10px 0;">
-                                        <p style="font-size: 14px; font-weight: 800; line-height: 18px; color: #333333;"> 675 Parko Avenue<br> LA, CA 02232 </p>
-                                    </td>
-                                </tr>
-                                <tr>
-
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
+                   
                 </table>
             </td>
         </tr>
