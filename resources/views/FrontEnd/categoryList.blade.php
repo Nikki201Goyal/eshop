@@ -104,7 +104,13 @@
                                                 </div><!-- End .rating-container -->
 
                                                 <div class="product-action">
-                                                    <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
+                                                   <a href="#" class="btn-product-icon btn-quickview" data-toggle="modal"
+                                            data-target="#quickview"
+                                            data-name="{{ $pro->name }}"
+                                            data-price="{{ $pro->price }}"
+                                            data-image="{{ $pro->image }}"
+                                            data-id="{{ $pro->id }}"
+                                                title="Quick view"><span>Quick view</span></a>
                                                     <a href="#" class="btn-product btn-compare" title="Compare"><span>compare</span></a>
                                                 </div><!-- End .product-action -->
 

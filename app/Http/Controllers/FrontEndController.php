@@ -105,9 +105,12 @@ class FrontEndController extends Controller
     public function product($slug){
 
         $product=products::where('slug', $slug)->first();
+        $likeProducts=products::inRandomOrder()->get()->take(3);
+
+
         // $avg=$product()->avg('rating');
         // dd($avg);
-        return view('FrontEnd.product', compact('product'));
+        return view('FrontEnd.product', compact('product', 'likeProducts'));
     }
 
     public function cart(){
