@@ -186,6 +186,10 @@ class FrontEndController extends Controller
          return redirect()->back();
 
       }
+
+      public function compare(){
+          return view('FrontEnd.compare');
+      }
 }
 
 
