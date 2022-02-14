@@ -2,13 +2,13 @@
 
 namespace App\Mail;
 
-use App\Models\Order;
+use App\Models\contact;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class OrderConfirmed extends Mailable
+class ContactMessage extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -17,10 +17,10 @@ class OrderConfirmed extends Mailable
      *
      * @return void
      */
-    public $order;
-    public function __construct(Order $order)
+    public $contact;
+    public function __construct(contact $contact)
     {
-        $this->order = $order;
+        $this->contact = $contact;
     }
 
     /**
@@ -30,6 +30,6 @@ class OrderConfirmed extends Mailable
      */
     public function build()
     {
-        return $this->view('FrontEnd.Mail.OrderConfirmed');
+        return $this->view('FrontEnd.Mail.ContactMessage');
     }
 }

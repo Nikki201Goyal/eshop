@@ -92,7 +92,13 @@
 
                                         <div class="product-action-vertical">
                                             <a href="#" class="btn-product-icon btn-wishlist"  user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $pro->id }}"><span>add to wishlist</span></a>
-                                            <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                            <a href="#" class="btn-product-icon btn-quickview" data-toggle="modal"
+                                            data-target="#quickview"
+                                            data-name="{{ $proAll->name }}"
+                                            data-price="{{ $pro->price }}"
+                                            data-image="{{ $pro->image }}"
+                                            data-id="{{ $pro->id }}"
+                                                title="Quick view"><span>Quick view</span></a>
 
                                             <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                                         </div><!-- End .product-action-vertical -->

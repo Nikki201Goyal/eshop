@@ -90,7 +90,9 @@ Route::resource('admin/orders', OrderController::class);
 });
 
 Route::get('/mail/OrderConfirmed', [App\Http\Controllers\MailController::class, 'orderConfirmed'])->name('mail.OrderConfirmed');
+
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//Wishlist
+//compare
+Route::get('/compare', [App\HTTP\Controllers\FrontEndController::class, 'compare'])->name('compare');
 

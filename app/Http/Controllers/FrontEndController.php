@@ -18,6 +18,7 @@ use App\Models\Order;
 use App\Models\products;
 use App\Models\Wishlist;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class FrontEndController extends Controller
 {
@@ -104,9 +105,12 @@ class FrontEndController extends Controller
     public function product($slug){
 
         $product=products::where('slug', $slug)->first();
+        $likeProducts=products::inRandomOrder()->get()->take(3);
+
+
         // $avg=$product()->avg('rating');
         // dd($avg);
-        return view('FrontEnd.product', compact('product'));
+        return view('FrontEnd.product', compact('product', 'likeProducts'));
     }
 
     public function cart(){
@@ -173,7 +177,7 @@ class FrontEndController extends Controller
             'subject'=>'required',
             'message'=>'required',
         ]);
-        contact::create([
+       $contact= contact::create([
             'name' => $request->name,
              'phone' => $request->phone,
              'email' => $request->email,
@@ -182,9 +186,14 @@ class FrontEndController extends Controller
 
 
          ]);
-
+         Mail::to('nikkigoyal107@gmail.com')->send(new
+         \App\Mail\ContactMessage($contact));
          return redirect()->back();
 
+      }
+
+      public function compare(){
+          return view('FrontEnd.compare');
       }
 }
 
