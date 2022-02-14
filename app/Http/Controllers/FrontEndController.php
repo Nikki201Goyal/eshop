@@ -114,7 +114,12 @@ class FrontEndController extends Controller
             $address=Address::where('user_id', Auth::user()->id)->where('status', 1)->first();
             $user=Auth::user();
             $cart=Cart::where('user_id', $user->id)->get();
-             return view('FrontEnd.cart', compact('cart', 'address'));
+            $total=0;
+            foreach ($cart as $item){
+                $total+=$item->product->price*$item->quantity;
+            }
+
+             return view('FrontEnd.cart', compact('cart', 'address','total'));
 
         }
         else{

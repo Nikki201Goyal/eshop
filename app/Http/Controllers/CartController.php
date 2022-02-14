@@ -99,9 +99,11 @@ class CartController extends Controller
      * @param  \App\Models\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCartRequest $request, Cart $cart)
+    public function update(Request $request)
     {
-        //
+        $cart = Cart::find($request->id);
+        $cart->update($request->all());
+        return response()->json(['message' => 'success']);
     }
 
     /**
@@ -110,9 +112,11 @@ class CartController extends Controller
      * @param  \App\Models\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cart $cart)
+    public function destroy($id)
     {
-        //
+        $cart = Cart::findOrFail($id);
+        $cart->delete();
+        return back();
     }
 
     public function fromWishlist($id){

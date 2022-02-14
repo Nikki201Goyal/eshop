@@ -24,7 +24,12 @@
                                     </div><!-- End .header-menu -->
                                 </div>
                             </li>
+                            @auth
+                            <li><a href="#signin-modal">Logout</a></li>
+
+                            @else
                             <li><a href="#signin-modal" data-toggle="modal">Login / Register</a></li>
+                            @endauth
                         </ul>
                     </li>
                 </ul><!-- End .top-menu -->
@@ -53,7 +58,8 @@
                         <div class="header-search-wrapper search-wrapper-wide">
                             <label for="q" class="sr-only">Search</label>
                             <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
-                            <input type="search" class="form-control" name="q" id="q" placeholder="Search product ..." required>
+                            <input type="search" class="form-control" name="q" id="q" placeholder="Search product ..."
+                                required>
                         </div><!-- End .header-search-wrapper -->
                     </form>
                 </div><!-- End .header-search -->
@@ -62,7 +68,9 @@
             <div class="header-right">
                 @auth
                 <div class="dropdown compare-dropdown">
-                    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Compare Products" aria-label="Compare Products">
+                    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false" data-display="static" title="Compare Products"
+                        aria-label="Compare Products">
                         <div class="icon">
                             <i class="icon-random"></i>
                         </div>
@@ -83,7 +91,7 @@
                 </div><!-- End .compare-dropdown -->
 
                 <div class="dropdown cart-dropdown">
-                    <a href="{{ route('cart') }}" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Cart">
+                    <a href="{{ route('cart') }}" class="dropdown-toggle" title="Cart">
                         <div class="icon">
                             <i class="icon-shopping-cart"></i>
 
@@ -99,30 +107,31 @@
     </div><!-- End .header-middle -->
 
     <div class="header-bottom sticky-header">
-                <div class="container">
-                    <div class="header-left">
-                        <div class="dropdown category-dropdown">
-                            <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Browse Categories">
-                                Browse Categories <i class="icon-angle-down"></i>
-                            </a>
+        <div class="container">
+            <div class="header-left">
+                <div class="dropdown category-dropdown">
+                    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false" data-display="static" title="Browse Categories">
+                        Browse Categories <i class="icon-angle-down"></i>
+                    </a>
 
-                            <div class="dropdown-menu">
-                                <nav class="side-nav">
-                                    <ul class="menu-vertical sf-arrows">
-                                        @foreach ($cats as $category )
+                    <div class="dropdown-menu">
+                        <nav class="side-nav">
+                            <ul class="menu-vertical sf-arrows">
+                                @foreach ($cats as $category )
 
-                                        <li>
-                                            <a  href="{{ route('category', $category->slug) }}">{{ $category->name }}</a>
+                                <li>
+                                    <a href="{{ route('category', $category->slug) }}">{{ $category->name }}</a>
 
 
-                                        </li>
-                                        @endforeach
+                                </li>
+                                @endforeach
 
-                                    </ul><!-- End .menu-vertical -->
-                                </nav><!-- End .side-nav -->
-                            </div><!-- End .dropdown-menu -->
-                        </div><!-- End .category-dropdown -->
-                    </div><!-- End .header-left -->
+                            </ul><!-- End .menu-vertical -->
+                        </nav><!-- End .side-nav -->
+                    </div><!-- End .dropdown-menu -->
+                </div><!-- End .category-dropdown -->
+            </div><!-- End .header-left -->
 
             <div class="header-center">
                 <nav class="main-nav">
@@ -165,4 +174,9 @@
             </div><!-- End .header-center -->
         </div><!-- End .container -->
     </div><!-- End .header-bottom -->
+    @if ($errors->any())
+    @foreach ($errors->all() as $error)
+    <div>{{$error}}</div>
+    @endforeach
+    @endif
 </header><!-- End .header -->
