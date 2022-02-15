@@ -37,7 +37,7 @@
 
                             <div class="ratings-container">
                                 <div class="ratings">
-                                    <div class="ratings-val" style="width: {{$product->rating->avg('rating')  }}0%;"></div><!-- End .ratings-val -->
+                                    <div class="ratings-val" style="width: 0%;"></div><!-- End .ratings-val -->
                                 </div><!-- End .ratings -->
                                 <a class="ratings-text" href="#product-accordion" id="review-link">( 2 Reviews )</a>
                             </div><!-- End .rating-container -->
@@ -46,7 +46,7 @@
                                {{$product->price}}
                             </div><!-- End .product-price -->
 
-   {{ $product->rating->avg('rating') }}
+
 
                             <div class="details-filter-row details-row-size">
                                 <label for="qty">Qty:</label>
@@ -141,17 +141,17 @@
                                         user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $like->id }}"><span>add to wishlist</span></a>
                                         <a href="#" class="btn-product-icon btn-quickview" data-toggle="modal"
                                         data-target="#quickview"
-                                        data-name="{{ $All->name }}"
-                                        data-price="{{ $All->price }}"
-                                        data-image="{{ $All->image }}"
-                                        data-id="{{ $All->id }}"
+                                        data-name="{{ $like->name }}"
+                                        data-price="{{ $like->price }}"
+                                        data-image="{{ $like->image }}"
+                                        data-id="{{ $like->id }}"
                                             title="Quick view"><span>Quick view</span></a>
                                     <a href="#" class="btn-product-icon btn-compare"
                                         title="Compare"><span>Compare</span></a>
                                 </div><!-- End .product-action-vertical -->
 
                                 <div class="product-action">
-                                    <a href="#" class="btn-product btn-cart" title="Add to cart" user="@if(Aut w5h::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $like->id }}"><span>add to
+                                    <a href="#" class="btn-product btn-cart" title="Add to cart" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $like->id }}"><span>add to
                                             cart</span></a>
                                 </div><!-- End .product-action -->
                             </figure><!-- End .product-media -->
@@ -160,7 +160,7 @@
                                 <div class="product-cat">
                                     <a href="#">{{ $like->category->name }}</a>
                                 </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="{{route('product',$All->slug)}}">{{ $like->name }}</a></h3><!-- End .product-title -->
+                                <h3 class="product-title"><a href="{{route('product',$like->slug)}}">{{ $like->name }}</a></h3><!-- End .product-title -->
                                 <div class="product-price">
                                   Rs.{{ $like->price }}
                                 </div><!-- End .product-price -->

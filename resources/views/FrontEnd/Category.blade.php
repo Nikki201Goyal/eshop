@@ -15,11 +15,11 @@
             <div class="row">
                 <div class="col-lg-9">
                     <div class="toolbox">
-                        <div class="toolbox-left">
-                            <div class="toolbox-info">
-                                Showing <span>9 of 56</span> Products
-                            </div><!-- End .toolbox-info -->
-                        </div><!-- End .toolbox-left -->
+{{--                        <div class="toolbox-left">--}}
+{{--                            <div class="toolbox-info">--}}
+{{--                                Showing <span>9 of 56</span> Products--}}
+{{--                            </div><!-- End .toolbox-info -->--}}
+{{--                        </div><!-- End .toolbox-left -->--}}
 
                         <div class="toolbox-right">
                             <div class="toolbox-sort">
@@ -94,7 +94,7 @@
                                             <a href="#" class="btn-product-icon btn-wishlist"  user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $pro->id }}"><span>add to wishlist</span></a>
                                             <a href="#" class="btn-product-icon btn-quickview" data-toggle="modal"
                                             data-target="#quickview"
-                                            data-name="{{ $proAll->name }}"
+                                            data-name="{{ $pro->name }}"
                                             data-price="{{ $pro->price }}"
                                             data-image="{{ $pro->image }}"
                                             data-id="{{ $pro->id }}"
@@ -152,62 +152,15 @@
                             <div class="collapse show" id="widget-1">
                                 <div class="widget-body">
                                     <div class="filter-items filter-items-count">
+                                        @foreach($cats as $cat)
                                         <div class="filter-item">
                                             <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="cat-1">
-                                                <label class="custom-control-label" for="cat-1">Electronics</label>
+                                                <input type="checkbox" class="custom-control-input" id="cat-1" {{ $cat->id == $category->id? 'checked':null }}>
+                                                <label class="custom-control-label" for="cat-1">{{ $cat->name }}</label>
                                             </div><!-- End .custom-checkbox -->
-                                            <span class="item-count">3</span>
+                                            <span class="item-count">{{ $category->products->count() }}</span>
                                         </div><!-- End .filter-item -->
-
-                                        <div class="filter-item">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="cat-2">
-                                                <label class="custom-control-label" for="cat-2">Furniture</label>
-                                            </div><!-- End .custom-checkbox -->
-                                            <span class="item-count">0</span>
-                                        </div><!-- End .filter-item -->
-
-                                        <div class="filter-item">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="cat-3">
-                                                <label class="custom-control-label" for="cat-3">Bags</label>
-                                            </div><!-- End .custom-checkbox -->
-                                            <span class="item-count">4</span>
-                                        </div><!-- End .filter-item -->
-
-                                        <div class="filter-item">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="cat-4">
-                                                <label class="custom-control-label" for="cat-4">Shoes</label>
-                                            </div><!-- End .custom-checkbox -->
-                                            <span class="item-count">2</span>
-                                        </div><!-- End .filter-item -->
-
-                                        <div class="filter-item">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="cat-5">
-                                                <label class="custom-control-label" for="cat-5">Musical Instruments</label>
-                                            </div><!-- End .custom-checkbox -->
-                                            <span class="item-count">2</span>
-                                        </div><!-- End .filter-item -->
-
-                                        <div class="filter-item">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="cat-6">
-                                                <label class="custom-control-label" for="cat-6">Cooking Appliances</label>
-                                            </div><!-- End .custom-checkbox -->
-                                            <span class="item-count">1</span>
-                                        </div><!-- End .filter-item -->
-
-                                        <div class="filter-item">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="cat-7">
-                                                <label class="custom-control-label" for="cat-7">Clothing</label>
-                                            </div><!-- End .custom-checkbox -->
-                                            <span class="item-count">1</span>
-                                        </div><!-- End .filter-item -->
-                                    </div><!-- End .filter-items -->
+                                            @endforeach
                                 </div><!-- End .widget-body -->
                             </div><!-- End .collapse -->
 
