@@ -18,10 +18,11 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
+Route::get('/', [App\HTTP\Controllers\FrontEndController::class, 'home'])->name('home');
 Route::get('/home', [App\HTTP\Controllers\FrontEndController::class, 'home'])->name('home');
 Route::get('/about', [App\HTTP\Controllers\FrontEndController::class, 'about'])->name('about');
 Route::get('/contact', [App\HTTP\Controllers\FrontEndController::class, 'contact'])->name('contact');

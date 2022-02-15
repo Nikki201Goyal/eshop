@@ -195,6 +195,14 @@ class FrontEndController extends Controller
       public function compare(){
           return view('FrontEnd.compare');
       }
+      public function compareData($slug){
+          $category = Category::where('slug', $slug)->first();
+          return response()->json($category->products);
+      }
+      public function compareProduct($id){
+        $product = products::find($id);
+        return response()->json($product);
+    }
 }
 
 

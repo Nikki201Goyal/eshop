@@ -17,4 +17,7 @@ class products extends Model
     public function ratings(){
         return $this->hasMany(Rating::class, 'product_Id');
     }
+    public function avgRating(){
+        return $this->ratings()->avg('rating');
+    }
 }

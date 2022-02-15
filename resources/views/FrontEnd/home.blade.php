@@ -276,10 +276,11 @@
                                         </div><!-- End .product-price -->
                                         <div class="ratings-container">
                                             <div class="ratings">
-                                                <div class="ratings-val" style="width: 100%;"></div>
+                                                <div class="ratings-val" style="width: {{ round($All->avgRating())*20 }}%;"></div>
+
                                                 <!-- End .ratings-val -->
                                             </div><!-- End .ratings -->
-                                            <span class="ratings-text">( 2 Reviews )</span>
+                                            <span class="ratings-text">( {{ $All->ratings->count() }} Reviews )</span>
                                         </div><!-- End .rating-container -->
                                     </div><!-- End .product-body -->
                                 </div><!-- End .product -->
