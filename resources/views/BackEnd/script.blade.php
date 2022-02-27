@@ -13,7 +13,7 @@
     $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
 
     $(".datatable").DataTable({ //table search ko
-      "responsive": true, 
+      "responsive": true,
        "autoWidth": false,
     });
 
@@ -40,11 +40,11 @@
 
     $('.toggle-class').change(function() {
 
-        var status = $(this).prop('checked') == true ? 1 : 0; 
+        var status = $(this).prop('checked') == true ? 1 : 0;
 
-        var user_id = $(this).data('id'); 
+        var user_id = $(this).data('id');
 
-         
+
 
         $.ajax({
 
@@ -69,3 +69,4 @@
   })
 </script>
 @stack('scripts')
+@yield('admin-scripts')

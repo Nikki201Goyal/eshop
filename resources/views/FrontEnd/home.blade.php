@@ -366,10 +366,10 @@
 
                                         <div class="ratings-container">
                                             <div class="ratings">
-                                                <div class="ratings-val" style="width: 100%;"></div>
+                                                <div class="ratings-val" style="width: {{ round($prod->avgRating())*20 }}%;"></div>
                                                 <!-- End .ratings-val -->
                                             </div><!-- End .ratings -->
-                                            <span class="ratings-text">( 2 Reviews )</span>
+                                            <span class="ratings-text">( {{ $prod->ratings->count() }} Reviews )</span>
                                         </div><!-- End .rating-container -->
 
                                     </div><!-- End .product-body -->
@@ -488,10 +488,10 @@
                                     </div><!-- End .product-price -->
                                     <div class="ratings-container">
                                         <div class="ratings">
-                                            <div class="ratings-val" style="width: 100%;"></div>
+                                            <div class="ratings-val" style="width: {{ round($elec->avgRating())*20 }}%;"></div>
                                             <!-- End .ratings-val -->
                                         </div><!-- End .ratings -->
-                                        <span class="ratings-text">( 4 Reviews )</span>
+                                        <span class="ratings-text">( {{ $elec->ratings->count() }} Reviews )</span>
                                     </div><!-- End .rating-container -->
                                 </div><!-- End .product-body -->
 

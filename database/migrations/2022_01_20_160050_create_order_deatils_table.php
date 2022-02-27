@@ -20,6 +20,7 @@ class CreateOrderDeatilsTable extends Migration
             $table->longText('price');
             $table->foreignId('product_id')->default('1');
             $table->foreignId('order_id')->default('1');
+            $table->integer('status')->default('0');
         });
     }
 

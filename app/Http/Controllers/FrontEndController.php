@@ -148,11 +148,17 @@ class FrontEndController extends Controller
 }
 
     public function dashboard(){
+        if(Auth::check()){
         $order=Order::where('user_id', Auth::user()->id)->get();
+
         $address= Address::where('user_id', Auth::user()->id)->get();
         return view('FrontEnd.dashboard', compact('address', 'order'));
 
     }
+    else{
+        return redirect()->route('login');
+    }
+}
 
     public function wishlist(){
         if(Auth::check()){

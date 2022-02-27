@@ -110,7 +110,8 @@ class OrderController extends Controller
              'discount' => $request->discount,
              'payment_method' => $request->payment_method,
              'order_notes' => $request->order_notes,
-         ]);
+             'user_id' => Auth::user()->id
+            ]);
 
          $cart=Cart::where('user_id', Auth::user()->id)->get();
 
@@ -127,9 +128,14 @@ class OrderController extends Controller
          }
          return view('FrontEnd.OrderCompleted');
 
-
-
-
-
     }
+
+
+    public function changeStatus(Request $request){
+        $Order = OrderDeatils::FindOrFail( $request->id);
+        $Order->update(['status' => $request->status]);
+        return back()->with('Success', 'Order status changed successfully');
+    }
+
+    
 }

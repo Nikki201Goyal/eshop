@@ -18,6 +18,8 @@ class OrderDeatilsFactory extends Factory
             'price' =>$this->faker->randomDigit(),
             'quantity' =>$this->faker->randomDigit(),
             'order_id' => $this->faker->numberBetween(1,10),
+            'status' =>$this->faker->boolean(true),
+
         ];
     }
 }

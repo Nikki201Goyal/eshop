@@ -80,6 +80,8 @@
 
         </div>
       </div>
+    </div>
+    
 
     @include('FrontEnd.Layouts.Partial.script')
     @yield('page-scripts')

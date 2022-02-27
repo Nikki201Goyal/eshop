@@ -40,3 +40,5 @@
     <link rel="alternate stylesheet" type="text/css" title="purple" href="{{asset('FrontEnd/assets/css/skins/purple.css')}}" />
     <link rel="alternate stylesheet" type="text/css" title="red" href="{{asset('FrontEnd/assets/css/skins/red.css')}}" />
     <link rel="alternate stylesheet" type="text/css" title="yellowgreen" href="{{asset('FrontEnd/assets/css/skins/yellowgreen.css')}}" />
+
+    @yield('page-styles')

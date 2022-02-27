@@ -1,4 +1,4 @@
-{{-- <div id="switcher" class="">
+ <div id="switcher" class="">
     <div class="content-switcher">
         <h4>STYLE SWITCHER</h4>
         <ul>
@@ -46,4 +46,4 @@
         <div id="hideSwitcher">&times;</div>
     </div>
 </div>
-<div id="showSwitcher" class="styleSecondColor"><i class="fa fa-cog fa-spin"></i></div> --}}
+<div id="showSwitcher" class="styleSecondColor"><i class="fa fa-cog fa-spin"></i></div>

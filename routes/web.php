@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -88,6 +89,8 @@ Route::get('admin/users/{id}/changeStatus', [App\Http\Controllers\UserController
 
 //order
 Route::resource('admin/orders', OrderController::class);
+Route::post('admin/order/changeStatus', [App\Http\Controllers\OrderController::class, 'changeStatus'])->name('Order.changeStatus');
+
 });
 
 Route::get('/mail/OrderConfirmed', [App\Http\Controllers\MailController::class, 'orderConfirmed'])->name('mail.OrderConfirmed');
@@ -96,4 +99,5 @@ Route::get('/mail/OrderConfirmed', [App\Http\Controllers\MailController::class, 
 
 //compare
 Route::get('/compare', [App\HTTP\Controllers\FrontEndController::class, 'compare'])->name('compare');
+Route::post('/rating', [App\Http\Controllers\RatingController::class, 'rating'])->name('rating');
 

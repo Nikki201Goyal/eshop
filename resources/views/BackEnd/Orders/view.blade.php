@@ -39,6 +39,7 @@
                                     <th>Total</th>
                                     <th>Discount</th>
                                     <th>Payment-Method</th>
+
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -51,15 +52,10 @@
                                     <td>{{$ord->total}}</td>
                                     <td>{{$ord->discount}}</td>
                                     <td>{{$ord->payment_method}}</td>
-
-                                    <td>
+<td>
                                         <a href="{{ route('orders.show', $ord->id) }}" class="btn btn-sm btn-success">
                                             <i class="fa fa-desktop"></i>Details
                                         </a>
-
-
-
-
                                     </td>
                                 </tr>
                                 @endforeach
