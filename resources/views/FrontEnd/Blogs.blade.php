@@ -13,7 +13,7 @@
 
     <div class="page-content">
         <div class="container">
-
+            <div class="row mt-5">
 
             <div class="entry-container max-col-2" data-layout="fitRows">
                 <div class="entry-item lifestyle shopping col-sm-6">
@@ -51,6 +51,7 @@
             </div><!-- End .entry-container -->
             <div class="d-flex justify-content-center">
                 {{ $blogs->links() }}
+            </div>
             </div>
         </div><!-- End .container -->
     </div><!-- End .page-content -->

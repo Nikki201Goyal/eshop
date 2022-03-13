@@ -195,9 +195,7 @@ class FrontEndController extends Controller
          Mail::to('nikkigoyal107@gmail.com')->send(new
          \App\Mail\ContactMessage($contact));
          return redirect()->back();
-
       }
-
       public function compare(){
           return view('FrontEnd.compare');
       }
@@ -208,6 +206,30 @@ class FrontEndController extends Controller
       public function compareProduct($id){
         $product = products::find($id);
         return response()->json($product);
+    }
+
+    public function search(Request $request){
+        $products= products::query()
+        ->where('name', 'LIKE', "%{$request->q}%")
+        ->get();
+        return view('FrontEnd.search', compact('products'));
+    }
+
+    public function SortBy(Request $request,$slug){
+        $sort = $request->sortBy;
+        $category=Category::where('slug', $slug)->first();
+        $PopularProducts=products::inRandomOrder()->get()->take(5);
+        if($sort=='higher_price'){
+            $products = $category->products()->orderBy('price','desc')->paginate(10);
+        }
+        elseif($sort=='lower_price'){
+            $products = $category->products()->orderBy('price','asc')->paginate(10);
+        }
+        elseif($sort=='newness'){
+            $products = $category->products()->orderBy('created_at','desc')->paginate(10);
+        }
+
+        return view('FrontEnd.Category', compact('products','category','PopularProducts'));
     }
 }
 

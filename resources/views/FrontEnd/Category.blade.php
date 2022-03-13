@@ -26,9 +26,9 @@
                                 <label for="sortby">Sort by:</label>
                                 <div class="select-custom">
                                     <select name="sortby" id="sortby" class="form-control">
-                                        <option value="popularity" selected="selected">Higher Price</option>
-                                        <option value="rating">Lower Price</option>
-                                        <option value="date">Sort by newness</option>
+                                        <option value="higher_price" selected="selected">Higher Price</option>
+                                        <option value="lower_price">Lower Price</option>
+                                        <option value="newness">Sort by newness</option>
                                     </select>
                                 </div>
                             </div><!-- End .toolbox-sort -->
@@ -115,9 +115,9 @@
                                         </div><!-- End .product-price -->
                                         <div class="ratings-container">
                                             <div class="ratings">
-                                                <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
+                                                <div class="ratings-val"  style="width: {{ round($pro->avgRating())*20 }}%;"></div><!-- End .ratings-val -->
                                             </div><!-- End .ratings -->
-                                            <span class="ratings-text">( 4 Reviews )</span>
+                                            <span class="ratings-text"> {{ $pro->ratings->count() }} Reviews )</span>
                                         </div><!-- End .rating-container -->
 
 
@@ -164,48 +164,9 @@
                                 </div><!-- End .widget-body -->
                             </div><!-- End .collapse -->
 
-                            <div class="widget widget-collapsible">
-                                <h3 class="widget-title">
-                                    <a data-toggle="collapse" href="#widget-5" role="button" aria-expanded="true" aria-controls="widget-5">
-                                        Price
-                                    </a>
-                                </h3><!-- End .widget-title -->
 
-                                <div class="collapse show" id="widget-5">
-                                    <div class="widget-body">
-                                        <div class="filter-price">
-                                            <div class="filter-price-text">
-                                                Price Range:
-                                                <span id="filter-price-range"></span>
-                                            </div><!-- End .filter-price-text -->
 
-                                            <div id="price-slider" class="noUi-target noUi-ltr noUi-horizontal">
-                                                <div class="noUi-base">
-                                                    <div class="noUi-connects">
-                                                        <div class="noUi-connect" style="transform: translate(0%, 0px) scale(0.9, 1);">
-                                                        </div>
-                                                    </div>
-                                                    <div class="noUi-origin" style="transform: translate(-100%, 0px); z-index: 5;">
-                                                        <div class="noUi-handle noUi-handle-lower" data-handle="0" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="0.0" aria-valuemax="700.0" aria-valuenow="0.0" aria-valuetext="$0">
-                                                            <div class="noUi-touch-area">
-                                                                </div>
-                                                                <div class="noUi-tooltip">$0</div>
-                                                            </div></div>
-                                                            <div class="noUi-origin" style="transform: translate(-10%, 0px); z-index: 4;">
-                                                                <div class="noUi-handle noUi-handle-upper" data-handle="1" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="200.0" aria-valuemax="1000.0" aria-valuenow="900.0" aria-valuetext="$900">
-                                                                    <div class="noUi-touch-area">
-                                                                        </div>
-                                                                        <div class="noUi-tooltip">$900</div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- End .filter-price -->
-                                    </div><!-- End .widget-body -->
-                                </div><!-- End .collapse -->
-                            </div><!-- End .widget -->
-
-                            <div class="widget mercado-widget widget-product">
+                            <div class="widget mercado-widget widget-product mt-2">
                                 <h2 class="widget-title">Popular Products</h2>
                                 <div class="widget-content">
                                     <div class="products">
@@ -240,4 +201,28 @@
         </div><!-- End .container -->
     </div><!-- End .page-content -->
 </main><!-- End .main -->
+@endsection
+@section('page-scripts')
+
+<script>
+    // $('#sortby').on('change',function(){
+    //     let by = $(this).val();
+    //     console.log(by);
+    // })
+    $('#sortby').change(function () {
+        var by = $(this).val();
+        console.log(sortby);
+
+        // var url = $(this).attr('data-url');
+        var url = '{{ route('sortBy',':slug') }}';
+        n_url = url.replace(':slug', $category->slug);
+
+        console.log(n_url);
+
+        $.get(n_url,data+'?sortBy='+by,function(d){
+                console.log(d);
+        });
+
+    });
+</script>
 @endsection

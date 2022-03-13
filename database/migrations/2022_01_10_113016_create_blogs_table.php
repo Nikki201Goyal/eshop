@@ -22,7 +22,7 @@ class CreateBlogsTable extends Migration
             $table->string('title');
             $table->longText('description');
             $table->tinyInteger('status')->default('1');
-            $table->boolean('deleted')->default('false');
+            // $table->boolean('deleted')->default('false');
         });
     }
 

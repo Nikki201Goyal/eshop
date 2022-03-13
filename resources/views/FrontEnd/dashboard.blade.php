@@ -29,6 +29,10 @@
                             </li>
 
                             <li class="nav-item">
+                                <a class="nav-link" id="tab-review-link" data-toggle="tab" href="#tab-review" role="tab" aria-controls="tab-address" aria-selected="false">Reviews</a>
+                            </li>
+
+                            <li class="nav-item">
                                 <a class="nav-link" href="#">Sign Out</a>
                             </li>
                         </ul>
@@ -131,7 +135,7 @@
                                                 data-postcode="{{ $add->postcode }}"
                                                 data-id="{{ $add->id }}"
                                                 >Edit <i class="icon-edit"></i></a></p>
-@if ($add->status == 0)
+                                @if ($add->status == 0)
 
                                                 <form action="{{ route('address.activate', $add->id) }}" method="POST">
                                                     @csrf
@@ -140,7 +144,7 @@
                                                 @else
                                                 <button class="btn btn-success btn-sm">Active</button>
 
-@endif
+                                @endif
 
                                             </div><!-- End .card-body -->
                                         </div><!-- End .card-dashboard -->
@@ -187,6 +191,80 @@
                                     </button>
                                 </form>
                             </div><!-- .End .tab-pane -->
+
+
+                            <div class="tab-pane fade" id="tab-review" role="tabpanel" aria-labelledby="tab-review-link">
+
+                                <div class="products mb-3">
+                                 @forelse ($order as $orders )
+
+                                    <div class="product product-list">
+                                        @foreach ($orders->orderDetails as $detailsOfOrder)
+
+                                        <div class="row mb-2">
+                                            <div class="col-md-3">
+                                                <figure class="product-media" style="height: 80px; width:100px;">
+
+                                                        <img src="{{$detailsOfOrder->prod->image}}" alt="Product image" height="100px" class="product-image">
+                                                    </a>
+                                                </figure><!-- End .product-media -->
+                                            </div><!-- End .col-sm-6 col-lg-3 -->
+
+                                            <div class="col-md-3">
+                                                <div class="product-cat">
+                                                    <a href="#">{{$detailsOfOrder->prod->category->name}}</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title">{{$detailsOfOrder->prod->name}}</h3><!-- End .product-title -->
+                                                <h6>Price: Rs.{{$detailsOfOrder->price}}</h6>
+
+
+                                            </div><!-- End .col-lg-6 -->
+
+                                            <div class="col-md-3 ">
+                                                    <div class="product-Qunatity">
+                                                        QTY: {{$detailsOfOrder->quantity}}
+                                                    </div><!-- End .product-Qunatity -->
+                                            </div><!-- End .col-sm-6 col-lg-3 -->
+
+                                            <div class="col-md-3">
+                                                <h6 class="product-title">
+                                                    @if ($detailsOfOrder->status == 0)
+                                                    Processing
+                                                    @elseif($detailsOfOrder->status == 1)
+                                                    Confirmed
+                                                    @elseif ($detailsOfOrder->status == 2)
+                                                    In route
+                                                    @elseif ($detailsOfOrder->status == 3)
+                                                    Delivered
+                                                    @elseif ($detailsOfOrder->status == 4)
+                                                    Cancelled
+                                            @endif
+                                                    </h6><!-- End .product-title -->
+                                            </div><!-- End .col-lg-6 -->
+
+                                            <div class="col-12">
+                                                <h4>My Reviews</h4>
+                                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit earum perspiciatis, beatae velit reiciendis magnam quam quos perferendis nisi esse veritatis nulla! Natus, aut fuga est neque accusantium fugiat mollitia?</p>
+                                             </div>
+
+                                        </div><!-- End .row -->
+                                        @endforeach
+
+
+
+                                    </div><!-- End .product -->
+                                    @empty
+                                    @endforelse
+
+
+
+
+                                </div>
+
+
+
+                            </div><!-- .End .tab-pane -->
+
                         </div>
                     </div><!-- End .col-lg-9 -->
                 </div><!-- End .row -->

@@ -25,7 +25,7 @@ class RatingController extends Controller
         'rating' => $request->rating,
         'comment' => $request->comment,
         ]);
-        return redirect()->route('home');
+        return redirect()->back();
      }
      else{
         return response(403);

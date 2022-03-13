@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FrontEndController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
@@ -26,6 +27,8 @@ Auth::routes();
 Route::get('/', [App\HTTP\Controllers\FrontEndController::class, 'home'])->name('home');
 Route::get('/home', [App\HTTP\Controllers\FrontEndController::class, 'home'])->name('home');
 Route::get('/about', [App\HTTP\Controllers\FrontEndController::class, 'about'])->name('about');
+Route::get('/search', [App\HTTP\Controllers\FrontEndController::class, 'search'])->name('search');
+Route::get('/category/{slug}/sortby',[FrontEndController::class,'sortBy'])->name('sortBy');
 Route::get('/contact', [App\HTTP\Controllers\FrontEndController::class, 'contact'])->name('contact');
 Route::get('/faq', [App\HTTP\Controllers\FrontEndController::class, 'faq'])->name('faq');
 Route::get('/terms', [App\HTTP\Controllers\FrontEndController::class, 'terms'])->name('terms');
@@ -94,8 +97,6 @@ Route::post('admin/order/changeStatus', [App\Http\Controllers\OrderController::c
 });
 
 Route::get('/mail/OrderConfirmed', [App\Http\Controllers\MailController::class, 'orderConfirmed'])->name('mail.OrderConfirmed');
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //compare
 Route::get('/compare', [App\HTTP\Controllers\FrontEndController::class, 'compare'])->name('compare');
