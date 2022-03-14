@@ -26,9 +26,9 @@
                                 <label for="sortby">Sort by:</label>
                                 <div class="select-custom">
                                     <select name="sortby" id="sortby" class="form-control">
-                                        <option value="higher_price" selected="selected">Higher Price</option>
-                                        <option value="lower_price">Lower Price</option>
-                                        <option value="newness">Sort by newness</option>
+                                        <option value="higher_price" {{ request('sortBy') == 'higher_price' ? 'selected' : null }}>Higher Price</option>
+                                        <option value="lower_price" {{ request('sortBy') == 'lower_price' ? 'selected' : null }}>Lower Price</option>
+                                        <option value="newness" {{ request('sortBy') == 'newness' ? 'selected' : null }}>Latest</option>
                                     </select>
                                 </div>
                             </div><!-- End .toolbox-sort -->
@@ -155,8 +155,8 @@
                                         @foreach($cats as $cat)
                                         <div class="filter-item">
                                             <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="cat-1" {{ $cat->id == $category->id? 'checked':null }}>
-                                                <label class="custom-control-label" for="cat-1">{{ $cat->name }}</label>
+                                                <input type="checkbox" class="custom-control-input" id="{{ $cat->slug }}" {{ $cat->id == $category->id? 'checked':null }}>
+                                                <label class="custom-control-label" for="{{ $cat->slug }}">{{ $cat->name }}</label>
                                             </div><!-- End .custom-checkbox -->
                                             <span class="item-count">{{ $category->products->count() }}</span>
                                         </div><!-- End .filter-item -->
@@ -215,13 +215,13 @@
 
         // var url = $(this).attr('data-url');
         var url = '{{ route('sortBy',':slug') }}';
-        n_url = url.replace(':slug', $category->slug);
+        n_url = url.replace(':slug', '{{ $category->slug }}');
+        let redirect = n_url+'?sortBy='+by;
+       window.location.replace(redirect);
 
-        console.log(n_url);
-
-        $.get(n_url,data+'?sortBy='+by,function(d){
-                console.log(d);
-        });
+        // $.get(n_url,function(d){
+        //         console.log(d);
+        // });
 
     });
 </script>
