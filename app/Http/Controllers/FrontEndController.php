@@ -131,8 +131,10 @@ class FrontEndController extends Controller
         }
     }
 
-    public function checkout(){
+    public function checkout(Request $request){
+//        dd($request);
         if(Auth::check()){
+            $shipping = $request->shipping;
             $address=Address::where('user_id', Auth::user()->id)->where('status', 1)->first();
             $user=Auth::user();
             $cart=Cart::where('user_id', $user->id)->get();
@@ -140,7 +142,7 @@ class FrontEndController extends Controller
             foreach($cart as $carts){
                 $total += $carts->quantity * $carts->product->price;
             }
-        return view('FrontEnd.checkout', compact('address', 'cart', 'total'));
+        return view('FrontEnd.checkout', compact('address', 'cart', 'total','shipping'));
     }
     else{
         return redirect()->route('login');

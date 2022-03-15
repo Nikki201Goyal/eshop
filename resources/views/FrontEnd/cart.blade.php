@@ -64,14 +64,15 @@
 
                     </div><!-- End .col-lg-9 -->
                     <aside class="col-lg-3">
-                        <div class="summary summary-cart">
-                            <h3 class="summary-title">Cart Total</h3><!-- End .summary-title -->
+                        <form action="{{route('checkout')}}" method="GET">
+                            <div class="summary summary-cart">
+                                <h3 class="summary-title">Cart Total</h3><!-- End .summary-title -->
 
-                            <table class="table table-summary">
-                                <tbody>
+                                <table class="table table-summary">
+                                    <tbody>
                                     <tr class="summary-subtotal">
                                         <td>Subtotal:</td>
-                                        <td>Rs. {{ $total }}</td>
+                                        <td>Rs. <span id="sub">{{ $total }}</span></td>
                                     </tr><!-- End .summary-subtotal -->
                                     <tr class="summary-shipping">
                                         <td>Shipping:</td>
@@ -82,8 +83,9 @@
                                         <td>
                                             <div class="custom-control custom-radio">
                                                 <input type="radio" id="free-shipping" name="shipping"
-                                                    class="custom-control-input">
-                                                <label class="custom-control-label" for="free-shipping">Normal</label>
+                                                       value="0"
+                                                       class="custom-control-input" checked>
+                                                <label class="custom-control-label" for="free-shipping" >Normal</label>
                                             </div><!-- End .custom-control -->
                                         </td>
                                         <td>Free</td>
@@ -92,10 +94,10 @@
                                     <tr class="summary-shipping-row">
                                         <td>
                                             <div class="custom-control custom-radio">
-                                                <input type="radio" id="standart-shipping" name="shipping"
-                                                    class="custom-control-input">
+                                                <input type="radio" id="standart-shipping" name="shipping" value="100"
+                                                       class="custom-control-input">
                                                 <label class="custom-control-label"
-                                                    for="standart-shipping">Express</label>
+                                                       for="standart-shipping">Express</label>
                                             </div><!-- End .custom-control -->
                                         </td>
                                         <td>Rs. 100.00</td>
@@ -104,8 +106,8 @@
                                     <tr class="summary-shipping-row">
                                         <td>
                                             <div class="custom-control custom-radio">
-                                                <input type="radio" id="express-shipping" name="shipping"
-                                                    class="custom-control-input">
+                                                <input type="radio" id="express-shipping" name="shipping" value="200"
+                                                       class="custom-control-input">
                                                 <label class="custom-control-label" for="express-shipping">Same
                                                     day</label>
                                             </div><!-- End .custom-control -->
@@ -116,7 +118,7 @@
                                     <tr class="summary-shipping-estimate">
                                         <td>Active Address<br>
                                             @isset($address)
-                                            {{ $address->address }}
+                                                {{ $address->address }}
                                             @endisset<a href="{{ route('dashboard') }}">Change address</a></td>
                                         <td>&nbsp;</td>
                                     </tr>
@@ -124,17 +126,19 @@
 
                                     <tr class="summary-total">
                                         <td>Total:</td>
-                                        <td>$160.00</td>
+                                        <td >Rs. <span id="cart_total">{{ $total }}</span></td>
                                     </tr><!-- End .summary-total -->
-                                </tbody>
-                            </table><!-- End .table table-summary -->
+                                    </tbody>
+                                </table><!-- End .table table-summary -->
 
-                            <a href="{{route('checkout')}}"
-                                class="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO CHECKOUT</a>
-                        </div><!-- End .summary -->
+                                <button
+                                    class="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO CHECKOUT</button>
+                            </div><!-- End .summary -->
 
-                        <a href="{{ route('home') }}" class="btn btn-outline-dark-2 btn-block mb-3"><span>CONTINUE
+                            <a href="{{ route('home') }}" class="btn btn-outline-dark-2 btn-block mb-3"><span>CONTINUE
                                 SHOPPING</span><i class="icon-refresh"></i></a>
+                        </form>
+
                     </aside><!-- End .col-lg-3 -->
                 </div><!-- End .row -->
             </div><!-- End .container -->
@@ -160,6 +164,18 @@
                 location.reload();
             }
         });
+    });
+    let sub = $('#sub').html();
+
+    $(document).ready(function () {
+        let curShip = $('input[type=radio][name=shipping]:checked').val();
+        $('#cart_total').html(parseInt(sub)+parseInt(curShip));
+        // console.log();
+    });
+    $('input[type=radio][name=shipping]').change(function() {
+       let curShip = $(this).val();
+       let sub = $('#sub').text();
+        $('#cart_total').html(parseInt(sub)+parseInt(curShip));
     });
 </script>
 @endauth

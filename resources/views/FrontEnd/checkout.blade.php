@@ -81,7 +81,15 @@
                                         </tr><!-- End .summary-subtotal -->
                                         <tr>
                                             <td>Shipping:</td>
-                                            <td>Free shipping</td>
+                                            <td>
+                                                @if($shipping == 0)
+                                                    Free Shipping
+                                                    @elseif($shipping == 100)
+                                                    Express Shipping
+                                                    @elseif($shipping == 200)
+                                                Same Day Shipping
+                                                    @endif
+                                            </td>
                                         </tr>
                                         <tr class="summary-total">
                                             <td>Total:</td>
@@ -92,50 +100,37 @@
 
                                 <div class="accordion-summary" id="accordion-payment">
 
+                                    <form action="{{ route('placeOrder') }}" method="post">
+                                        @csrf
 
-
-
-                                    <div class="card">
-                                        <div class="card-header" id="heading-3">
-                                            <h2 class="card-title">
-                                                <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-3" aria-expanded="false" aria-controls="collapse-3">
-                                                    Cash on delivery
-                                                </a>
-                                            </h2>
-                                        </div><!-- End .card-header -->
-
-                                    </div><!-- End .card -->
-
-                                    <div class="card">
-                                        <div class="card-header" id="heading-4">
-                                            <h2 class="card-title">
-                                                <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-4" aria-expanded="false" aria-controls="collapse-4">
-                                                   ESEWA
-                                                </a>
-                                            </h2>
-                                        </div><!-- End .card-header -->
-
-                                    </div><!-- End .card -->
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="cash" name="payment" value="cash"
+                                                   class="custom-control-input">
+                                            <label class="custom-control-label" for="cash">Cash on Delivery</label>
+                                        </div><!-- End .custom-control -->
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="esewa" name="payment" value="esewa"
+                                                   class="custom-control-input">
+                                            <label class="custom-control-label" for="esewa">eSewa</label>
+                                        </div><!-- End .custom-control -->
 
 
                                 </div><!-- End .accordion -->
 
-<form action="{{ route('placeOrder') }}" method="post">
-    @csrf
-    <input type="hidden" name="payment_method" value="esewa">
-    <input type="hidden" name="total" value="{{ $total }}">
-    <input type="hidden" name="discount" value="0">
-    <input type="hidden" name="address_id" value="@isset($address)
-    {{ $address->id }}
 
-    @endisset">
-    <input type="hidden" name="order_notes" value="test">
+{{--                                    <input type="hidden" name="payment_method" value="esewa">--}}
+                                    <input type="hidden" name="total" value="{{ $total }}">
+                                    <input type="hidden" name="discount" value="0">
+                                    <input type="hidden" name="address_id" value="@isset($address)
+                                    {{ $address->id }}
+                                    @endisset">
+                                    <input type="hidden" name="order_notes" value="test">
 
-    <button type="submit" class="btn btn-outline-primary-2 btn-order btn-block">
-        <span class="btn-text">Place Order</span>
-        <span class="btn-hover-text">Place Order</span>
-    </button>
-</form>
+                                    <button type="submit" class="btn btn-outline-primary-2 btn-order btn-block">
+                                        <span class="btn-text">Place Order</span>
+                                        <span class="btn-hover-text">Place Order</span>
+                                    </button>
+                                </form>
 
                             </div><!-- End .summary -->
                         </aside><!-- End .col-lg-3 -->

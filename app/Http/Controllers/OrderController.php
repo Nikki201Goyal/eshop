@@ -95,11 +95,12 @@ class OrderController extends Controller
     }
 
     public function placeOrder(Request $request){
+//        dd($request->all());
         $request->validate([
             'address_id' => 'required',
             'total'=> 'required',
             'discount'=>'required',
-            'payment_method'=>'required',
+            'payment'=>'required',
             'order_notes'=>'required',
 
 
@@ -108,7 +109,7 @@ class OrderController extends Controller
             'address_id' => $request->address_id,
              'total' => $request->total,
              'discount' => $request->discount,
-             'payment_method' => $request->payment_method,
+             'payment_method' => $request->payment,
              'order_notes' => $request->order_notes,
              'user_id' => Auth::user()->id
             ]);
@@ -137,5 +138,5 @@ class OrderController extends Controller
         return back()->with('Success', 'Order status changed successfully');
     }
 
-    
+
 }

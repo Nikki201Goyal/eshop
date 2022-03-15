@@ -119,13 +119,10 @@
                                             </div><!-- End .ratings -->
                                             <span class="ratings-text"> {{ $pro->ratings->count() }} Reviews )</span>
                                         </div><!-- End .rating-container -->
-
-
                                     </div><!-- End .product-body -->
                                 </div><!-- End .product -->
                             </div><!-- End .col-sm-6 col-lg-4 -->
 @endforeach
-
 
                         </div><!-- End .row -->
                     </div><!-- End .products -->
