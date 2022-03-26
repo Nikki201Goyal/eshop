@@ -43,6 +43,7 @@ Route::get('/blogs', [App\HTTP\Controllers\FrontEndController::class, 'blogs'])-
 Route::get('/product/{slug}/show', [App\HTTP\Controllers\FrontEndController::class, 'product'])->name('product');
 Route::get('/checkout', [App\HTTP\Controllers\FrontEndController::class, 'checkout'])->name('checkout');
 Route::get('/storeContact',[App\Http\Controllers\FrontEndController::class,'storeContact'])->name('storeContact');
+Route::get('/storeSubscribe',[App\Http\Controllers\FrontEndController::class,'storeSubscribe'])->name('storeSubscribe');
 Route::post('/wishlists',[App\Http\Controllers\WishlistController::class,'store'])->name('wishlists');
 Route::post('/carts',[App\Http\Controllers\CartController::class,'store'])->name('carts');
 
@@ -67,6 +68,7 @@ Route::group(['middleware'=>'role:super|admin'], function(){
 Route::get('/admin', [App\HTTP\Controllers\BackEndController::class, 'admin'])->name('admin');
 Route::get('/Contact', [App\Http\Controllers\BackEndController::class,'Contact'])->name('Contact');
 Route::get('/conInfo/{id}',[App\Http\Controllers\BackEndController::class,'conInfo'])->name('conInfo');
+Route::get('/subscribe', [App\Http\Controllers\BackEndController::class,'subscribe'])->name('subscribe');
 
 
 //Blogs
@@ -101,4 +103,6 @@ Route::get('/mail/OrderConfirmed', [App\Http\Controllers\MailController::class, 
 //compare
 Route::get('/compare', [App\HTTP\Controllers\FrontEndController::class, 'compare'])->name('compare');
 Route::post('/rating', [App\Http\Controllers\RatingController::class, 'rating'])->name('rating');
+
+
 

@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use App\Models\contact;
 use App\Models\Order;
 use App\Models\products;
+use App\Models\Subscribe;
 use App\Models\Wishlist;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -198,6 +199,20 @@ class FrontEndController extends Controller
          \App\Mail\ContactMessage($contact));
          return redirect()->back();
       }
+
+       public function storeSubscribe(Request $request){
+
+        $request->validate([
+            'email'=>'required',
+
+        ]);
+       $subscibe= Subscribe::create([
+             'email' => $request->email,
+         ]);
+         return redirect()->back();
+
+      }
+
       public function compare(){
           return view('FrontEnd.compare');
       }

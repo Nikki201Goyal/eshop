@@ -53,12 +53,12 @@
                                         <a href="{{route('categories.edit', $cate->id)}}" class="btn btn-sm btn-info">
                                             <i class="fa fa-edit"></i>Edit
                                         </a>
-                                    </td>
-                                    <td>
+
                                         <a href="{{route('categories.show', $cate->id)}}" class="btn btn-sm btn-success">
                                             <i class="fa fa-desktop"></i>Details
                                         </a>
                                     </td>
+
                                 </tr>
                                 @endforeach
                             </tbody>

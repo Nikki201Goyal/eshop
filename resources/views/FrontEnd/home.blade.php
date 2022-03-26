@@ -685,6 +685,69 @@
                             </div><!-- End .widget widget-deals -->
                         </div><!-- End .col-sm-6 col-lg-xl -->
 
+                        <div class="col-12">
+                            <div class="widget widget-deals">
+                                <div class="mb-3" style="display: flex;justify-content:space-between;align-items:center">
+<h4 class="widget-title mb-0"><span>Flash Deal</span></h4>
+                                <p  id="demo" style="background:orange; padding:5px; color:white"></p>
+                                </div>
+
+                                <!-- End .widget-title -->
+                                <div class="row">
+                                    @foreach ($offers as $offer )
+
+                                    <div class="col-sm-6 col-xl-12">
+
+                                        <div class="product text-center">
+                                            <figure class="product-media">
+                                                <a href="{{route('product',$offer->slug)}}">
+                                                    <img src="{{asset($offer->image)}}" alt="Product image"
+                                                        class="product-image">
+                                                </a>
+
+
+                                                <div class="product-action-vertical">
+                                                    <a href="#" class="btn-product-icon btn-wishlist"
+                                                        title="Add to wishlist"  user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{$offer->id }}"><span>add to wishlist</span></a>
+                                                        <a href="#" class="btn-product-icon btn-quickview" data-toggle="modal"
+                                                        data-target="#quickview"
+                                                        data-name="{{ $offer->name }}"
+                                                        data-price="{{ $offer->price }}"
+                                                        data-image="{{ $offer->image }}"
+                                                        data-id="{{ $offer->id }}"
+                                                            title="Quick view"><span>Quick view</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare"
+                                                        title="Compare"><span>Compare</span></a>
+                                                </div><!-- End .product-action-vertical -->
+
+                                                <div class="product-action">
+                                                    <a href="#" class="btn-product btn-cart"
+                                                        title="Add to cart" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $offer->id }}"><span>add to cart</span></a>
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
+
+                                            <div class="product-body">
+                                                <div class="product-cat">
+                                                    <a href="#">{{ $offer->category->name }}</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title"><a href="{{route('product',$offer->slug)}}">{{
+                                                        $offer->name }}</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    <span class="new-price">{{ $offer->price }}</span>
+
+                                                </div><!-- End .product-price -->
+
+                                            </div><!-- End .product-body -->
+
+
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 col-xl-12 -->
+
+                                    @endforeach
+                                </div><!-- End .row -->
+                            </div><!-- End .widget widget-deals -->
+                        </div><!-- End .col-sm-6 col-lg-xl -->
+
                         <div class="col-sm-6 col-xl-12">
                             <div class="widget widget-posts">
                                 <h4 class="widget-title"><span>Latest Blog Posts</span></h4><!-- End .widget-title -->
@@ -736,13 +799,13 @@
             <div class="col-sm-10 col-md-8 col-lg-6">
                 <div class="cta-heading text-center">
                     <h3 class="cta-title">Sign Up for news letter updates</h3><!-- End .cta-title -->
-                    <p class="cta-desc">and receive <span class="font-weight-normal">$20 coupon</span> for first
-                        shopping</p><!-- End .cta-desc -->
+
                 </div><!-- End .text-center -->
 
-                <form action="#">
+                <form action="{{ route('storeSubscribe') }}">
+                    @csrf
                     <div class="input-group">
-                        <input type="email" class="form-control" placeholder="Enter your Email Address"
+                        <input type="email" class="form-control" placeholder="Enter your Email Address" name="email"
                             aria-label="Email Adress" required>
                         <div class="input-group-append">
                             <button class="btn btn-primary" type="submit" title="Sing up"><i
@@ -755,6 +818,41 @@
     </div><!-- End .container -->
 </div><!-- End .cta -->
 @endSection
+
+@section('page-scripts')
+<script>
+    // Set the date we're counting down to
+    var countDownDate = new Date("Jan 5, 2024 15:37:25").getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+
+      // Get today's date and time
+      var now = new Date().getTime();
+
+      // Find the distance between now and the count down date
+      var distance = countDownDate - now;
+
+      // Time calculations for days, hours, minutes and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Display the result in the element with id="demo"
+      document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+      + minutes + "m " + seconds + "s ";
+
+      // If the count down is finished, write some text
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = "EXPIRED";
+      }
+    }, 1000);
+    </script>
+
+
+
 
 
 

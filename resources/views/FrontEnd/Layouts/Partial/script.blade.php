@@ -6,7 +6,9 @@
     <script src="{{asset('FrontEnd/assets/js/Js.js')}}"></script>
     <script src="{{asset('FrontEnd/assets/js/styleswitcher.js')}}"></script>
     <script src="{{asset('FrontEnd/assets/js/jquery.sticky-kit.min.js')}}"></script>
-    <script src="{{asset('FrontEnd/assets/js/nouisliderjs')}}"></script>
+    <script src="{{asset('FrontEnd/assets/js/jquery.countdown.min.js')}}"></script>
+    <script src="{{asset('FrontEnd/assets/js/jquery.countTo.js')}}"></script>
+
 
     <script>
         $('.btn-wishlist').click(function(e){

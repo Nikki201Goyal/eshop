@@ -11336,6 +11336,11 @@ body:not(.layout-fixed).layout-navbar-fixed.text-sm .wrapper .main-sidebar .side
   background-color: #fff;
 }
 
+
+.layout-navbar-fixed .wrapper .sidebar-warning .brand-link:not([class*="navbar"]) {
+    background-color: #fcb941;
+  }
+
 .layout-navbar-fixed .wrapper .content-wrapper {
   margin-top: calc(3.5rem + 1px);
 }

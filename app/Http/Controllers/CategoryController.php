@@ -47,8 +47,6 @@ class CategoryController extends Controller
             'description' => 'required',
             'slug' => 'required',
 
-
-
         ]);
 
         $image = $request->file('photo');
