@@ -1,10 +1,6 @@
 @extends('BackEnd.starter')
 @section('content')
-@if ($message = Session::get('success'))
-<div class="alert alert-success">
-  <p>{{ $message }}</p>
-</div>
-@endif
+
 
 <div class="content-header">
   <div class="container-fluid">
@@ -31,7 +27,16 @@
         <div class="card card-primary card-outline">
           <div class="card-body">
             <h5 class="card-title">Create Categories</h5><br>
-
+            @if($errors->any())
+            <div class="alert alert-danger">
+                <p><strong>Opps Something went wrong</strong></p>
+                <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+                </ul>
+            </div>
+        @endif
             <form action="{{route('categories.store')}}" method="POST" enctype="multipart/form-data">
               @csrf
               <div class="card-body">
@@ -54,11 +59,7 @@
                   <input type="file" name="cover" class="form-control">
                 </div>
 
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Slug</label>
-                    <input type="text" class="form-control" name="slug" placeholder="Enter slug">
-
-                  </div><!-- /.card-body -->
+               
 
                 <div class="form-group">
                     <label for="description">Description</label>

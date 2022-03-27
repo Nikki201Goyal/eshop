@@ -1,10 +1,6 @@
 @extends('BackEnd.starter')
 @section('content')
-@if ($message = Session::get('success'))
-<div class="alert alert-success">
-  <p>{{ $message }}</p>
-</div>
-@endif
+
 
 <div class="content-header">
   <div class="container-fluid">
@@ -31,36 +27,45 @@
         <div class="card card-primary card-outline">
           <div class="card-body">
             <h5 class="card-title">Create Users</h5><br>
-
+            @if($errors->any())
+            <div class="alert alert-danger">
+                <p><strong>Opps Something went wrong</strong></p>
+                <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+                </ul>
+            </div>
+            @endif
             <form action="{{route('users.store')}}" method="POST" enctype="multipart/form-data">
               @csrf
               <div class="card-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Name</label>
-                  <input type="text" class="form-control" name="name" placeholder="Enter category name">
+                  <input type="text" class="form-control" name="name" placeholder="Enter user name" required>
 
                 </div><!-- /.card-body -->
 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Address</label>
-                  <input type="text" class="form-control" name="address" placeholder="Enter Price">
+                  <input type="text" class="form-control" name="address" placeholder="Enter Address" required>
 
                 </div><!-- /.card-body -->
 
                 <div class="form-group">
                   <label for="description">Contact</label>
-                  <input type="text" class="form-control" name="contact" placeholder="Enter Price">
+                  <input type="text" class="form-control" name="contact" placeholder="Enter Contact" required>
 
                 </div><!-- /.card-body -->
 
                 <div class="form-group">
                     <label for="description">Email</label>
-                    <input type="email" class="form-control" name="email" placeholder="Enter Price">
+                    <input type="email" class="form-control" name="email" placeholder="Enter Email">
 
-                  </div><!-- /.card-body -->
+                </div><!-- /.card-body -->
 
                   <div class="form-group">
-                    <label class="form-control-label" for="input-image">Images</label>
+                    <label class="form-control-label" for="input-image">Image</label>
                     <input type="file" name="image" class="form-control">
                   </div>
 

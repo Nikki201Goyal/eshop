@@ -1,10 +1,6 @@
 @extends('BackEnd.starter')
 @section('content')
-@if ($message = Session::get('success'))
-<div class="alert alert-success">
-  <p>{{ $message }}</p>
-</div>
-@endif
+
 
 <div class="content-header">
   <div class="container-fluid">
@@ -38,17 +34,17 @@
 
               <div class="form-group">
                   <label for="exampleInputEmail1">Title</label>
-                  <input type="text" class="form-control" name="title" value="{{$blog->name}}">
+                  <input type="text" class="form-control" name="title" value="{{$blog->title}}">
                 </div><!-- /.card-body -->
 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Authur Name</label>
-                  <input type="text" class="form-control" name="author" value="{{$blog->name}}">
+                  <input type="text" class="form-control" name="author" value="{{$blog->author}}">
                 </div><!-- /.card-body -->
 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Date</label>
-                  <input type="date" class="form-control" name="date"  value="{{$blog->price}}">
+                  <input type="date" class="form-control" name="date"  value="{{$blog->date}}">
 
                 </div><!-- /.card-body -->
 
@@ -63,7 +59,7 @@
                   <input type="file" name="image" class="form-control">
                 </div>
 
-              
+
               <div class="card-footer">
                 <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i>Submit</button>
               </div>

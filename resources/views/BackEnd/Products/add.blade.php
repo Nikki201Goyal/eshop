@@ -1,10 +1,6 @@
 @extends('BackEnd.starter')
 @section('content')
-@if ($message = Session::get('success'))
-<div class="alert alert-success">
-  <p>{{ $message }}</p>
-</div>
-@endif
+
 
 <div class="content-header">
   <div class="container-fluid">
@@ -31,13 +27,22 @@
         <div class="card card-primary card-outline">
           <div class="card-body">
             <h5 class="card-title">Create Products</h5><br>
-
+            @if($errors->any())
+            <div class="alert alert-danger">
+                <p><strong>Opps Something went wrong</strong></p>
+                <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+                </ul>
+            </div>
+            @endif
             <form action="{{route('products.store')}}" method="POST" enctype="multipart/form-data">
               @csrf
               <div class="card-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Name</label>
-                  <input type="text" class="form-control" name="name" placeholder="Enter category name">
+                  <input type="text" class="form-control" name="name" placeholder="Enter Products name">
                   @if($errors->has('name'))
                   <span class="text-danger">{{$errors->first('name')}}</span>
                   @endif
@@ -65,21 +70,28 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="form-control-label" for="input-image">Images</label>
+                  <label class="form-control-label" for="input-image">Image</label>
                   <input type="file" name="image" class="form-control">
                 </div>
 
                 <div class="form-group">
+                    <label class="form-control-label" for="input-image"> Cover Image</label>
+                    <input type="file" name="cover" class="form-control">
+                  </div>
+
+                {{-- <div class="form-group">
                     <label for="exampleInputEmail1">Stock</label>
                     <input type="text" class="form-control" name="stock" placeholder="Enter stock">
 
-                  </div><!-- /.card-body -->
+                  </div><!-- /.card-body --> --}}
 
                   <div class="form-group">
-                    <label for="exampleInputEmail1"> Slug</label>
-                    <input type="text" class="form-control" name="slug" placeholder="Enter slug">
-
-                  </div><!-- /.card-body -->
+                    <label>Stock</label>
+                    <select class=" form-control" aria-label="Default select example" name="stock">
+                      <option value="0">In stock</option>
+                      <option value="1">Out Of stock</option>
+                    </select>
+                </div>
 
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Submit</button>

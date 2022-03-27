@@ -29,7 +29,11 @@
                         <h5 class="card-title">Blogs</h5><br>
 
                         <a href="{{route('createBlogs')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Add Blogs</a><br><br>
-
+                        @if(session()->has('success'))
+                        <div class="alert alert-success">
+                            {{ session()->get('success') }}
+                        </div>
+                        @endif
                         <table class="table table-bordered datatable">
                             <thead>
                                 <tr>
@@ -52,7 +56,7 @@
                                     <td>{{$blog->date}}</td>
                                     <td><img src="{{asset($blog->image)}}" style="width: 60px; height: 60px;"></td>
                                     <td>{{$blog->description}}</td>
-                                   
+
                                     <td>
                                         <?php if ($blog->status == '1') { ?>
                                             <a href="{{url('/status-updateBlog',$blog->id)}}" class="btn btn-success">Active</a>

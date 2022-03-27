@@ -71,16 +71,18 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Stock</label>
-                    <input type="text" class="form-control" name="stock" value="{{$pro->stock}}">
-
-                  </div><!-- /.card-body -->
+                    <label class="form-control-label" for="input-image"> Cover Image</label>
+                    <input type="file" name="cover" class="form-control">
+                  </div>
 
                   <div class="form-group">
-                    <label for="exampleInputEmail1"> Slug</label>
-                    <input type="text" class="form-control" name="slug"value="{{$pro->slug}}">
+                    <label>Stock</label>
+                    <select class=" form-control" aria-label="Default select example" name="stock">
+                      <option value="0">In stock</option>
+                      <option value="1">Out Of stock</option>
+                    </select>
+                </div>
 
-                  </div><!-- /.card-body -->
 
 
               <div class="card-footer">

@@ -29,7 +29,11 @@
                         <h5 class="card-title">Categories</h5><br>
 
                         <a href="{{ route('categories.create') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Add Categories</a><br><br>
-
+                        @if(session()->has('success'))
+                        <div class="alert alert-success">
+                            {{ session()->get('success') }}
+                        </div>
+                    @endif
                         <table class="table table-bordered datatable">
                             <thead>
                                 <tr>
@@ -37,7 +41,6 @@
                                     <th> Name</th>
                                     <th> Photo</th>
                                     <th>Cover</th>
-                                    <th>Slug</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -48,7 +51,6 @@
                                     <td>{{$cate->name}}</td>
                                     <td><img src="{{asset($cate->photo)}}" style="width: 60px; height: 60px;"></td>
                                     <td><img src="{{asset($cate->cover)}}" style="width: 60px; height: 60px;"></td>
-                                    <td>{{$cate->slug}}</td>
                                     <td>
                                         <a href="{{route('categories.edit', $cate->id)}}" class="btn btn-sm btn-info">
                                             <i class="fa fa-edit"></i>Edit

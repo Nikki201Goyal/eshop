@@ -52,6 +52,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         return view('BackEnd.User.edit', compact('user'));
     }
+
     public function update(Request $request, $id)
     {
 
@@ -76,25 +77,25 @@ class UserController extends Controller
         $user->save();
 
         return redirect()->route('users.index')->with([
-            'successful_message' => 'updated successfully'
+            'success' => ' User Data updated successfully'
         ]);
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
         User::find($id)->delete();
         return redirect()->route('users.index')->with([
-            'successful_message' => 'Deleted successfully'
+            'success' => ' User Deleted successfully'
         ]);
     }
 
     public function toggleStatus($id){
-      
+
 
         $user = User::FindOrFail($id);
         $status = !$user->status;
         $user->update(['status' => $status]);
-        return back()->with('Success', 'Product status changed successfully');
+        return back()->with('Success', 'User status changed successfully');
 
     }
 }

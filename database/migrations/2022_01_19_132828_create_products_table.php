@@ -25,6 +25,7 @@ class CreateProductsTable extends Migration
             $table->string('slug');
             $table->string('stock');
             $table->string('cover');
+            $table->softDeletes();
 
         });
     }

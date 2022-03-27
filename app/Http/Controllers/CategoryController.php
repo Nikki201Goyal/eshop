@@ -41,11 +41,10 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|min:2|max:50|unique:Clothing',
+            'name' => 'required|min:2|max:50|unique:categories',
             'photo' => 'required',
             'cover' => 'required',
             'description' => 'required',
-            'slug' => 'required',
 
         ]);
 
@@ -65,7 +64,7 @@ class CategoryController extends Controller
             'slug' =>Str::slug($request->name),
         ]);
 
-        return redirect()->route('categories.index')->with('success', 'You have successfully updated a post!');
+        return redirect()->route('categories.index')->with('success', 'You have successfully added a Category!');
     }
 
     public function edit($id)
@@ -80,7 +79,6 @@ class CategoryController extends Controller
         $request->validate([
             'name' => 'required',
             'description' => 'required',
-            'slug' => 'required'
         ]);
         if ($request->hasFile('photo')) {
             $image = $request->photo;
@@ -97,11 +95,11 @@ class CategoryController extends Controller
         $category = category::findOrFail($id);
         $category->name = $request->name;
         $category->description = $request->description;
-        $category->slug = $request->slug;
+        $category->slug =  Str::slug($request->name);
         $category->save();
 
         return redirect()->route('categories.index')->with([
-            'successful_message' => 'updated successfully'
+            'success' => 'Categories updated successfully'
         ]);
     }
 
@@ -110,7 +108,7 @@ class CategoryController extends Controller
         return view('BackEnd.Categories.show', compact('category'));
     }
 
-
+    
 
 
 

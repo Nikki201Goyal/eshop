@@ -54,11 +54,7 @@
                   <input type="file" name="cover" class="form-control">
                 </div>
 
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Slug</label>
-                    <input type="text" class="form-control" name="slug" value="{{ $cate->slug}}">
-
-                  </div><!-- /.card-body -->
+              
 
                 <div class="form-group">
                     <label for="description">Description</label>

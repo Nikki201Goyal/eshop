@@ -15,4 +15,8 @@ class OrderDeatils extends Model
         // dd('uhguh');
         return $this->belongsTo(products::class,'product_id');
     }
+
+    public function order(){
+        return $this->belongsTo(Order::class);
+    }
 }

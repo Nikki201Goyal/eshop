@@ -24,7 +24,7 @@ class BlogController extends Controller
         ]);
 
         $image = $request->file('image');
-        $imageName = time().$image->getClientOriginalName();  
+        $imageName = time().$image->getClientOriginalName();
         $image->move('uploads/product/images/', $imageName);
 
         Blog::create([
@@ -35,7 +35,7 @@ class BlogController extends Controller
             'image'=> 'uploads/product/images/'.$imageName,
         ]);
 
-         return redirect()->route('viewBlogs')->with('success', 'You have successfully updated a post!');
+         return redirect()->route('viewBlogs')->with('success', 'You have successfully added a blogs!');
 
     }
 
@@ -54,7 +54,7 @@ class BlogController extends Controller
     }
     public function update(Request $request, $id)
     {
-       
+
         $request->validate([
             'author' => 'required',
             'date' => 'required',
@@ -76,7 +76,7 @@ class BlogController extends Controller
         $blogs->save();
 
         return redirect()->route('viewBlogs')->with([
-            'successful_message' => 'updated successfully'
+            'success' => 'updated successfully'
         ]);
     }
 
@@ -84,7 +84,7 @@ class BlogController extends Controller
     {
         Blog::find($id)->delete();
         return redirect()->route('viewBlogs')->with([
-            'successful_message' => 'Deleted successfully'
+            'success' => 'Deleted successfully'
         ]);
     }
 
@@ -93,7 +93,7 @@ class BlogController extends Controller
         ->select('status')
         ->where('id','=',$id)
         ->first();
- 
+
         if($statustype->status == '1'){
             $status = '0';
         }else{
@@ -101,7 +101,7 @@ class BlogController extends Controller
         }
         $values = array('status' => $status);
         Blog::find($id)->where('id','=', $id)->update($values);
- 
+
         return back()->with('success','you have successfully update');
     }
 }

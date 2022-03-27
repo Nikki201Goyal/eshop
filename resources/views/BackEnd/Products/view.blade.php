@@ -29,7 +29,11 @@
                         <h5 class="card-title">Product List</h5><br>
 
                         <a href="{{route('products.create')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Add Products</a><br><br>
-
+                        @if(session()->has('success'))
+                        <div class="alert alert-success">
+                            {{ session()->get('success') }}
+                        </div>
+                        @endif
                         <table class="table table-bordered datatable">
                             <thead>
                                 <tr>
@@ -37,9 +41,9 @@
                                     <th> Name</th>
                                     <th> Price</th>
                                     <th>Description</th>
-                                    <th>image</th>
+                                    <th>Image</th>
+                                    <th>Cover Image</th>
                                     <th>Category</th>
-                                    <th>slug</th>
                                     <th>stock</th>
                                     <th>Status</th>
                                     <th>Action</th>
@@ -53,8 +57,8 @@
                                     <td>{{$pro->price}}</td>
                                     <td>{{$pro->description}}</td>
                                     <td><img src="{{asset($pro->image)}}" style="width: 60px; height: 60px;"></td>
+                                    <td><img src="{{asset($pro->cover)}}" style="width: 60px; height: 60px;"></td>
                                     <td>{{$pro->category->name}}</td>
-                                    <td>{{$pro->slug}}</td>
                                     <td>{{$pro->stock}}</td>
 
                                     <td>@if($pro->status == true) <a href="{{ route('Product.toggleStatus', $pro->id) }}" class="btn btn-primary">Enabled</a>
@@ -63,6 +67,10 @@
                                     <td>
                                         <a href="{{route('products.edit', $pro->id)}}" class="btn btn-sm btn-info">
                                             <i class="fa fa-edit"></i>Edit
+                                        </a>
+
+                                        <a href="{{route('products.show', $pro->id)}}" class="btn btn-sm btn-success">
+                                            <i class="fa fa-desktop"></i>Details
                                         </a>
 
                                         <a href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="products-delete-{{$pro->id}}">

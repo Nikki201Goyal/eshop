@@ -51,7 +51,7 @@ class ProductsController extends Controller
             'description' => 'required',
             'category_id' => 'required',
             'stock' => 'required',
-            'slug' => 'required',
+            'cover' => 'required',
 
         ]);
 
@@ -59,11 +59,15 @@ class ProductsController extends Controller
         $imageName = time() . $image->getClientOriginalName();
         $image->move('uploads/product/images/', $imageName);
 
+        $cover = $request->file('cover');
+        $coverName = time() . $image->getClientOriginalName();
+        $cover->move('uploads/product/images/', $coverName);
 
         products::create([
             'name' => $request->name,
             'description' => $request->description,
             'image' => 'uploads/product/images/' . $imageName,
+            'cover' => 'uploads/product/images/' . $coverName,
             'price' => $request->price,
             'stock' => $request->stock,
             'category_id' => $request->category_id,
@@ -72,7 +76,7 @@ class ProductsController extends Controller
 
         ]);
 
-        return redirect()->route('products.index')->with('success', 'You have successfully updated a post!');
+        return redirect()->route('products.index')->with('success', 'You have successfully added a products!');
     }
 
     public function edit($id)
@@ -91,7 +95,6 @@ class ProductsController extends Controller
             'price' => 'required',
             'category_id' => 'required',
             'stock' => 'required',
-            'slug' => 'required'
         ]);
         if ($request->hasFile('image')) {
             $image = $request->image;
@@ -99,17 +102,24 @@ class ProductsController extends Controller
             $image->move('uploads/product/images/', $image_new_name);
         }
 
+        if ($request->hasFile('cover')) {
+            $cover = $request->cover;
+            $covername = time() . $cover->getClientOriginalName();
+            $cover->move('uploads/product/images/', $covername);
+        }
+
         $products = products::find($id);
         $products->name = $request->name;
         $products->description = $request->description;
         $products->price = $request->price;
         $products->category_id = $request->category_id;
-        $products->slug = $request->slug;
+        $products->slug =  Str::slug($request->name);
         $products->stock = $request->stock;
+
         $products->save();
 
         return redirect()->route('products.index')->with([
-            'successful_message' => 'updated successfully'
+            'success' => 'Product updated successfully'
         ]);
     }
 
@@ -118,7 +128,7 @@ class ProductsController extends Controller
     {
         products::find($id)->delete();
         return redirect()->route('products.index')->with([
-            'successful_message' => 'Deleted successfully'
+            'success' => 'Deleted successfully'
         ]);
     }
 
@@ -128,6 +138,11 @@ class ProductsController extends Controller
         $product->update(['status' => $status]);
         return back()->with('Success', 'Product status changed successfully');
 
+    }
+
+    public function show($id){
+        $product = products::findOrFail($id);
+        return view('BackEnd.Products.show', compact('product'));
     }
 
 
