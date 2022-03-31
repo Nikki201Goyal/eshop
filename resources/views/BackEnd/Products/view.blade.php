@@ -77,7 +77,7 @@
                                             <i class="fa fa-trash"></i>Delete
                                         </a>
 
-                                        <form id="products-delete-{{$pro->id}}" action="{{route('products.destroy', $pro->id)}}">
+                                        <form id="products-delete-{{$pro->id}}" action="{{route('admin.delete', $pro->id)}}">
                                             @csrf
                                             @method('DELETE')
 

@@ -39,9 +39,7 @@
                                             <figure class="product-main-image">
                                                 <img id="product-zoom" class="product-image" src=""  alt="product image">
 
-                                                <a href="#" id="btn-product-gallery" class="btn-product-gallery">
-                                                    <i class="icon-arrows"></i>
-                                                </a>
+                                               
                                             </figure><!-- End .product-main-image -->
 
                                         </div><!-- End .row -->
@@ -81,7 +79,7 @@
         </div>
       </div>
     </div>
-    
+
 
     @include('FrontEnd.Layouts.Partial.script')
     @yield('page-scripts')

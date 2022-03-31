@@ -60,7 +60,7 @@ class FrontEndController extends Controller
     }
 
     public function return(){
-        return view('FrontEnd.return');
+        return view('FrontEnd.returnPolicy');
     }
 
     public function privacy(){
@@ -98,9 +98,17 @@ class FrontEndController extends Controller
     }
 
     public function blogs(){
-        $blogs = Blog::where('status','=',1)->paginate(5);
+        $blogs = Blog::where('status','=',1)->paginate(6);
 
         return view('FrontEnd.Blogs', compact('blogs'));
+    }
+
+
+    public function singleBlog($slug){
+        $blogs = Blog::inRandomOrder()->get()->take(10);
+        $blog=Blog::where('slug', $slug)->first();
+
+        return view('FrontEnd.BlogSingle',compact('blogs', 'blog'));
     }
 
     public function product($slug){

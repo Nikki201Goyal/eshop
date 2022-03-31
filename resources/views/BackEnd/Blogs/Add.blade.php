@@ -52,6 +52,12 @@
                 </div><!-- /.card-body -->
 
                 <div class="form-group">
+                    <label class="form-control-label" for="input-image">Author Image</label>
+                    <input type="file" name="AuthorPic" class="form-control">
+                  </div>
+
+
+                <div class="form-group">
                   <label for="exampleInputEmail1">Date</label>
                   <input type="text" class="form-control" name="date" placeholder="Nov 12, 2019">
 
@@ -59,7 +65,7 @@
 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Description</label>
-                  <input type="text" class="form-control" name="description" placeholder="Enter description">
+                  <textarea name="description" id="editor1" cols="30" rows="5"></textarea>
 
                 </div><!-- /.card-body -->
 
@@ -84,3 +90,11 @@
   </div><!-- /.container-fluid -->
 
   @endsection
+  @section('admin-scripts')
+  <script src="https://cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script>
+  <script>
+    CKEDITOR.replace( 'description' );
+</script>
+  @endsection
+
+

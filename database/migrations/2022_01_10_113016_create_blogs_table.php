@@ -19,9 +19,12 @@ class CreateBlogsTable extends Migration
             $table->string('author');
             $table->string('date');
             $table->string('image');
+            $table->string('AuthorPic');
             $table->string('title');
+            $table->string('slug');
             $table->longText('description');
             $table->tinyInteger('status')->default('1');
+
         });
     }
 

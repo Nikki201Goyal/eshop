@@ -1,4 +1,7 @@
+
+
 <aside class="main-sidebar .sidebar-dark-warning elevation-4" style="background-color:  rgb(40, 40, 41) ">
+
 
 
         <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -12,6 +15,7 @@
         </div>
         <div class="info">
           <a href="#" class="d-block">ADMIN PANEL </a>
+
         </div>
     </div>
 
@@ -82,7 +86,7 @@
 
         <li class="nav-item menu-open mt-3">
             <a href="{{route('subscribe')}}" class="nav-link">
-            <i class="fab fa-blogger">&nbsp;</i>
+            <i class="fa fa-users">&nbsp;</i>
               <p>
                Subscribers
               </p>

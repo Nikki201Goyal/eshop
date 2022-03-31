@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Blog;
+use Illuminate\Support\Str;
+
 
 class BlogController extends Controller
 {
@@ -27,12 +29,20 @@ class BlogController extends Controller
         $imageName = time().$image->getClientOriginalName();
         $image->move('uploads/product/images/', $imageName);
 
+        $photo = $request->file('AuthorPic');
+        $photoName = time().$photo->getClientOriginalName();
+        $photo->move('uploads/product/images/', $photoName);
+
+
         Blog::create([
             'author' => $request->author,
             'title' => $request->title,
             'date' =>$request->date,
             'description' =>$request->description,
             'image'=> 'uploads/product/images/'.$imageName,
+            'AuthorPic'=> 'uploads/product/images/'.$photoName,
+            'slug' =>Str::slug($request->title),
+
         ]);
 
          return redirect()->route('viewBlogs')->with('success', 'You have successfully added a blogs!');
@@ -67,11 +77,18 @@ class BlogController extends Controller
             $image->move('uploads/product/images/', $image_new_name);
         }
 
+        if($request->hasFile('AuthorPic')){
+            $photo = $request->AuthorPic;
+            $photoname = time().$photo->getClientOriginalName();
+            $photo->move('uploads/product/images/', $photoname);
+        }
+
         $blogs = Blog::find($id);
         $blogs->title = $request->title;
         $blogs->author = $request->author;
         $blogs->date = $request->date;
         $blogs->description = $request->description;
+        $blogs->slug =  Str::slug($request->title);
 
         $blogs->save();
 

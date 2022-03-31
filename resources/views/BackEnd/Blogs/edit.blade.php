@@ -38,9 +38,14 @@
                 </div><!-- /.card-body -->
 
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Authur Name</label>
+                  <label for="exampleInputEmail1">Author Name</label>
                   <input type="text" class="form-control" name="author" value="{{$blog->author}}">
                 </div><!-- /.card-body -->
+
+                <div class="form-group">
+                    <label class="form-control-label" for="input-image">Author Image</label>
+                    <input type="file" name="AuthorPic" class="form-control">
+                  </div>
 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Date</label>

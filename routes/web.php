@@ -40,6 +40,7 @@ Route::get('/categoryList/{slug}', [App\HTTP\Controllers\FrontEndController::cla
 Route::get('/category2grid/{slug}', [App\HTTP\Controllers\FrontEndController::class, 'category2Grid'])->name('category2grid');
 Route::get('/category4grid/{slug}', [App\HTTP\Controllers\FrontEndController::class, 'category4Grid'])->name('category4grid');
 Route::get('/blogs', [App\HTTP\Controllers\FrontEndController::class, 'blogs'])->name('blogs');
+Route::get('/blogsSingle/{slug}/show', [App\HTTP\Controllers\FrontEndController::class, 'singleBlog'])->name('blogsSingle');
 Route::get('/product/{slug}/show', [App\HTTP\Controllers\FrontEndController::class, 'product'])->name('product');
 Route::get('/checkout', [App\HTTP\Controllers\FrontEndController::class, 'checkout'])->name('checkout');
 Route::get('/storeContact',[App\Http\Controllers\FrontEndController::class,'storeContact'])->name('storeContact');
@@ -86,11 +87,13 @@ Route::resource('admin/categories', CategoryController::class);
 //Products
 Route::resource('admin/products', ProductsController::class);
 Route::get('admin/products/{id}/changeStatus', [App\Http\Controllers\ProductsController::class, 'toggleStatus'])->name('Product.toggleStatus');
+Route::get('admin/delete/{id}', [App\Http\Controllers\ProductsController::class, 'delete'])->name('admin.delete');
 
 
 //user
 Route::resource('admin/users', UserController::class);
 Route::get('admin/users/{id}/changeStatus', [App\Http\Controllers\UserController::class, 'toggleStatus'])->name('user.toggleStatus');
+Route::get('users/delete/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('user.delete');
 
 //order
 Route::resource('admin/orders', OrderController::class);

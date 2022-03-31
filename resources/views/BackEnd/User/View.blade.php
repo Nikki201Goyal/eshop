@@ -68,7 +68,7 @@
                                             <i class="fa fa-trash"></i>Delete
                                         </a>
 
-                                        <form id="users-delete-{{$user->id}}" action="{{route('users.destroy', $user->id)}}">
+                                        <form id="users-delete-{{$user->id}}" action="{{route('user.delete', $user->id)}}">
                                             @csrf
                                             @method('DELETE')
 

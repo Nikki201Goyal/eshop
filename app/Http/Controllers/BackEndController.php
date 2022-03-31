@@ -4,13 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\contact;
+use App\Models\Order;
+use App\Models\products;
 use App\Models\Subscribe;
+use App\Models\User;
 use Carbon\Carbon;
 
 class BackEndController extends Controller
 {
      public function admin(){
-         return view('BackEnd.home');
+         $products=products::all();
+        $users=User::all();
+        $order=Order::all();
+        $subscribe=Subscribe::all();
+         return view('BackEnd.home', compact('products', 'users', 'order', 'subscribe'));
+
      }
 
      public function Contact(){

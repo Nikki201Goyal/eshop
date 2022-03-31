@@ -23,14 +23,14 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
+                <h3>{{ $products->count() }}</h3>
 
                 <p>Products</p>
               </div>
               <div class="icon">
-                <i class="ion ion-bag"></i>
+                <i class="fa fa-shopping-bag"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{route('products.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -38,14 +38,14 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53</h3>
+                <h3>{{ $order->count() }}</h3>
 
                 <p>Orders</p>
               </div>
               <div class="icon">
-                <i class="ion ion-stats-bars"></i>
+                <i class="fa fa-shopping-cart"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route('orders.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -53,14 +53,14 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3 style="color: white;">44</h3>
+                <h3 style="color: white;">{{ $users->count() }}</h3>
 
                 <p style="color: white;">User</p>
               </div>
               <div class="icon">
-                <i class="ion ion-person-add"></i>
+                <i class=" fa fa-user-plus"></i>
               </div>
-              <a href="#" class="small-box-footer" style="color: white">More info<i class="fas fa-arrow-circle-right" style="color: white"></i></a>
+              <a href="{{ route('users.index') }}" class="small-box-footer" style="color: white">More info<i class="fas fa-arrow-circle-right" style="color: white"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -73,7 +73,7 @@
                 <p>Sales</p>
               </div>
               <div class="icon">
-                <i class="ion ion-pie-graph"></i>
+                <i class="fa fa-signal"></i>
               </div>
               <a href="#" class="small-box-footer" >More info <i class="fas fa-arrow-circle-right" ></i></a>
             </div>
@@ -83,14 +83,14 @@
             <!-- small box -->
             <div class="small-box" style="background-color: rgb(255, 76, 5); ">
               <div class="inner">
-                <h3 style="color: white;">65</h3>
+                <h3 style="color: white;">{{ $subscribe->count() }}</h3>
 
                 <p style="color: white;">Subscribers</p>
               </div>
               <div class="icon">
-                <i class="ion ion-pie-graph"></i>
+                <i class="fa fa-users"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{route('subscribe')}}"  class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

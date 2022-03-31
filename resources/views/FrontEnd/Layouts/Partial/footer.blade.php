@@ -44,9 +44,9 @@
                         <h4 class="widget-title">My Account</h4><!-- End .widget-title -->
 
                         <ul class="widget-list">
-                            <li><a href="#">Sign In</a></li>
-                            <li><a href="cart.html">View Cart</a></li>
-                            <li><a href="#">My Wishlist</a></li>
+                            <li><a href="{{ route('dashboard') }}">My Profile</a></li>
+                            <li><a href="{{ route('cart') }}">View Cart</a></li>
+                            <li><a href="{{ route('wishlist') }}">My Wishlist</a></li>
                         </ul><!-- End .widget-list -->
                     </div><!-- End .widget -->
                 </div><!-- End .col-sm-6 col-lg-3 -->
@@ -56,7 +56,7 @@
 
     <div class="footer-bottom">
         <div class="container">
-            <p class="footer-copyright">Copyright © 2019 Molla Store. All Rights Reserved.</p><!-- End .footer-copyright -->
+            <p class="footer-copyright">Copyright © 2020 Nikki Goyal. All Rights Reserved.</p><!-- End .footer-copyright -->
             <figure class="footer-payments">
                 <img src="{{asset('FrontEnd/assets/images/payments.png')}}" alt="Payment methods" width="272" height="20">
             </figure><!-- End .footer-payments -->
@@ -92,7 +92,7 @@
             <div class="tab-pane fade show active" id="mobile-menu-tab" role="tabpanel" aria-labelledby="mobile-menu-link">
                 <nav class="mobile-nav">
                     <ul class="mobile-menu">
-                        <li class="active">
+                        {{-- <li class="active">
                             <a href="index.html">Home</a>
                             <ul>
                                 <li>
@@ -108,28 +108,25 @@
                                 <li><a href="#">Healthy & Beauty</a></li>
                                 <li><a href="#">Shoes & Boots</a></li>
                             </ul>
-                        </li>
+                        </li> --}}
                         <li>
-                            <a href="category.html">Shop</a>
+                            <a href="{{route('home')}}">Home</a>
                         </li>
-                        <li>
-                            <a href="product.html">Product</a>
 
-                        </li>
                         <li>
                             <a href="#">Pages</a>
                             <ul>
                                 <li>
-                                    <a href="about.html">About</a>
+                                    <a href="{{route('about')}}">About</a>
                                 </li>
                                 <li>
-                                    <a href="contact.html">Contact</a>
+                                    <a href="{{route('contact')}}">Contact</a>
                                 </li>
-                                <li><a href="faq.html">FAQs</a></li>
+                                <li><a href="{{route('faq')}}">FAQs</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="blog.html">Blog</a>
+                            <a href="{{route('blogs')}}">Blog</a>
 
 
                         </li>
@@ -140,29 +137,23 @@
             <div class="tab-pane fade" id="mobile-cats-tab" role="tabpanel" aria-labelledby="mobile-cats-link">
                 <nav class="mobile-cats-nav">
                     <ul class="mobile-cats-menu">
-                        <li>
-                            <a href="#">Electronics</a>
-                        </li>
-                        <li>
-                            <a href="#">Furniture</a>
-                        </li>
-                        <li>
-                            <a href="#">Clothing</a>
-                        </li>
-                        <li><a href="#">Home Appliances</a></li>
-                        <li><a href="#">Healthy & Beauty</a></li>
-                        <li><a href="#">Shoes & Boots</a></li>
+                        <ul class="menu-vertical sf-arrows">
+                            @foreach ($cats as $category )
+
+                            <li>
+                                <a href="{{ route('category', $category->slug) }}">{{ $category->name }}</a>
+
+
+                            </li>
+                            @endforeach
+
+                        </ul><!-- End .menu-vertical -->
                     </ul><!-- End .mobile-cats-menu -->
                 </nav><!-- End .mobile-cats-nav -->
             </div><!-- .End .tab-pane -->
         </div><!-- End .tab-content -->
 
-        <div class="social-icons">
-            <a href="#" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
-            <a href="#" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
-            <a href="#" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>
-            <a href="#" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a>
-        </div><!-- End .social-icons -->
+
     </div><!-- End .mobile-menu-wrapper -->
 </div><!-- End .mobile-menu-container -->
 

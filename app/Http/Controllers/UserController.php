@@ -31,6 +31,7 @@ class UserController extends Controller
             'name' => $request->name,
             'address' => $request->address,
             'contact' =>$request->contact,
+            'password' =>bcrypt('password'),
             'email' =>$request->email,
             'image'=> 'uploads/product/images/'.$imageName,
         ]);
@@ -88,6 +89,16 @@ class UserController extends Controller
             'success' => ' User Deleted successfully'
         ]);
     }
+
+
+
+    // public function show($id)
+    // {
+    //     User::find($id)->delete();
+    //     return redirect()->route('users.index')->with([
+    //         'success' => ' User Deleted successfully'
+    //     ]);
+    // }
 
     public function toggleStatus($id){
 

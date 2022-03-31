@@ -40,6 +40,7 @@
                                     <th>SN</th>
                                     <th>Title</th>
                                     <th>Author Name</th>
+                                    <th>Author Image</th>
                                     <th> Date of Blog</th>
                                     <th>image</th>
                                     <th>Description</th>
@@ -53,6 +54,7 @@
                                     <th scope="row">{{$i++}}</th>
                                     <td>{{$blog->title}}</td>
                                     <td>{{$blog->author}}</td>
+                                    <td><img src="{{asset($blog->AuthorPic)}}" style="width: 60px; height: 60px;"></td>
                                     <td>{{$blog->date}}</td>
                                     <td><img src="{{asset($blog->image)}}" style="width: 60px; height: 60px;"></td>
                                     <td>{{$blog->description}}</td>

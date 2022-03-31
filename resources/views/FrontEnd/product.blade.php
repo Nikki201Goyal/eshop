@@ -22,9 +22,7 @@
                                 <figure class="product-main-image">
                                     <img id="product-zoom" src="{{asset($product->image)}}" data-zoom-image="{{asset($product->image)}}" alt="product image">
 
-                                    <a href="#" id="btn-product-gallery" class="btn-product-gallery">
-                                        <i class="icon-arrows"></i>
-                                    </a>
+
                                 </figure><!-- End .product-main-image -->
 
                             </div><!-- End .row -->
@@ -58,25 +56,21 @@
 
 
                             <div class="product-details-action">
-                                <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                <a href="#" class="btn-product btn-cart" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $product->id }}"><span>add to cart</span></a>
 
                                 <div class="details-action-wrapper">
-                                    <a href="#" class="btn-product btn-wishlist" title="Wishlist"><span>Add to Wishlist</span></a>
+                                    <a href="#" class="btn-product btn-wishlist" title="Wishlist" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $product->id }}"><span>Add to Wishlist</span></a>
                                     <a href="#" class="btn-product btn-compare" title="Compare"><span>Add to Compare</span></a>
+
                                 </div><!-- End .details-action-wrapper -->
                             </div><!-- End .product-details-action -->
 
-                            <div class="product-details-footer">
+                            <div>
+                               <button> <a href="#" class="btn-product" style="border-block-color: orange;"><span>Buy NOW</span></a></button>
+
+                            </div>
 
 
-                                <div class="social-icons social-icons-sm">
-                                    <span class="social-label">Share:</span>
-                                    <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
-                                    <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
-                                    <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
-                                    <a href="#" class="social-icon" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
-                                </div>
-                            </div><!-- End .product-details-footer -->
                         </div><!-- End .product-details -->
                     </div><!-- End .col-md-6 -->
                 </div><!-- End .row -->

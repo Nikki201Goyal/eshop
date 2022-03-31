@@ -16,9 +16,7 @@
                 <div class="col-lg-9">
                     <div class="toolbox">
                         <div class="toolbox-left">
-                            <div class="toolbox-info">
-                                Showing <span>9 of 56</span> Products
-                            </div><!-- End .toolbox-info -->
+
                         </div><!-- End .toolbox-left -->
 
                         <div class="toolbox-right">
@@ -85,7 +83,6 @@
                             <div class="col-6 col-md-4 col-lg-4 col-xl-3">
                                 <div class="product product-7 text-center">
                                     <figure class="product-media">
-                                        <span class="product-label label-new">New</span>
                                         <a href="{{route('product', $pro->slug)}}">
                                             <img src="{{asset($pro->image)}}" alt="Product image" class="product-image">
                                         </a>

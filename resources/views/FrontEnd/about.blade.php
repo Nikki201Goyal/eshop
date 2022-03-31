@@ -225,7 +225,7 @@
                                             <h3 class="member-title">Nikki Goyal<span>Founder & CEO</span></h3><!-- End .member-title -->
                                             <p>Sed pretium, ligula sollicitudin viverra, tortor libero sodales leo, eget blandit nunc.</p>
                                             <div class="social-icons social-icons-simple">
-                                                <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+                                                <a href="https://www.facebook.com" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
                                                 <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
                                                 <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
                                             </div><!-- End .soial-icons -->
@@ -248,7 +248,7 @@
                                             <h3 class="member-title">Krish Goyal<span>Sales & Marketing Manager</span></h3><!-- End .member-title -->
                                             <p>Sed pretium, ligula sollicitudin viverra, tortor libero sodales leo, eget blandit nunc.</p>
                                             <div class="social-icons social-icons-simple">
-                                                <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+                                                <a href="https://www.facebook.com" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
                                                 <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
                                                 <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
                                             </div><!-- End .soial-icons -->
@@ -271,7 +271,7 @@
                                             <h3 class="member-title">Nikesh Agarwal<span>Product Manager</span></h3><!-- End .member-title -->
                                             <p>Sed pretium, ligula sollicitudin viverra, tortor libero sodales leo, eget blandit nunc.</p>
                                             <div class="social-icons social-icons-simple">
-                                                <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+                                                <a href="https://www.facebook.com" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
                                                 <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
                                                 <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
                                             </div><!-- End .soial-icons -->

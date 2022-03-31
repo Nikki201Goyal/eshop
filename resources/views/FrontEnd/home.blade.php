@@ -762,23 +762,23 @@
 
                                     <article class="entry">
                                         <figure class="entry-media">
-                                            <a href="single.html">
+                                            <a href={{route('blogsSingle',$blog->slug)}}>
                                                 <img src="{{asset($blog->image)}}" alt="image desc">
                                             </a>
                                         </figure><!-- End .entry-media -->
 
                                         <div class="entry-body">
                                             <div class="entry-meta">
-                                                <a href="#">{{ $blog->date }}</a>
+                                                <a href={{route('blogsSingle',$blog->slug)}}>{{ $blog->date }}</a>
                                             </div><!-- End .entry-meta -->
 
                                             <h5 class="entry-title">
-                                                <a href="single.html">{{ $blog->title }}</a>
+                                                <a href={{route('blogsSingle',$blog->slug)}}>{{ $blog->title }}</a>
                                             </h5><!-- End .entry-title -->
 
                                             <div class="entry-content">
                                                 <p>{{ Str::limit($blog->description, 50) }}</p>
-                                                <a href="single.html" class="read-more">Read More</a>
+                                                <a href={{route('blogsSingle',$blog->slug)}} class="read-more">Read More</a>
                                             </div><!-- End .entry-content -->
                                         </div><!-- End .entry-body -->
                                     </article><!-- End .entry -->
