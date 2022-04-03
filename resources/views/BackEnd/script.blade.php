@@ -7,6 +7,12 @@
 <script src="{{asset('BackEnd/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{asset('BackEnd/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
 <script src="{{asset('BackEnd/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<script src="{{asset('BackEnd/plugins/chart.js/Chart.bundle.js')}}"></script>
+<script src="{{asset('BackEnd/plugins/chart.js/Chart.bundle.min.js')}}"></script>
+<script src="{{asset('BackEnd/plugins/chart.js/Chart.css')}}"></script>
+<script src="{{asset('BackEnd/plugins/chart.js/Chart.js')}}"></script>
+<script src="{{asset('BackEnd/plugins/chart.js/Chart.min.css')}}"></script>
+<script src="{{asset('BackEnd/plugins/chart.js/Chart.min.js')}}"></script>
 <!-- sweet alert -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
