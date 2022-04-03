@@ -22,7 +22,7 @@ class ProductsFactory extends Factory
             'status' =>$this->faker->boolean(true),
             'description' => $this->faker->realText(1000),
             'slug' => Str::slug($this->faker->name),
-            'stock' => $this->faker->name,
+            'stock' => $this->faker->numberBetween(0,100),
 
         ];
     }

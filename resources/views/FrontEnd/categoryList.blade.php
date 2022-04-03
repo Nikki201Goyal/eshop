@@ -9,7 +9,6 @@
                     </ol>
                 </div><!-- End .container -->
             </nav><!-- End .breadcrumb-nav -->
-
             <div class="page-content">
                 <div class="container">
                 	<div class="row">
