@@ -15,8 +15,6 @@
             <div class="row">
                 <div class="col-lg-9">
                     <div class="toolbox">
-
-
                         <div class="toolbox-right">
                             <div class="toolbox-sort">
                                 <label for="sortby">Sort by:</label>
@@ -100,7 +98,13 @@
                                         </div><!-- End .product-action-vertical -->
 
                                         <div class="product-action">
-                                            <a href="#" class="btn-product btn-cart" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $pro->id }}"><span>add to cart</span></a>
+                                            @if ($pro->stock == 1)
+                                            <a href="#" class="btn-product btn-cart" title="Add to cart" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $pro->id }}"><span>add to
+                                                cart</span></a>
+                                            @else
+                                            <button href="#" class="btn-product btn-cart" title="Add to cart" disabled ><span>Out Of Stock</span></button>
+                                            @endif
+
                                         </div><!-- End .product-action -->
                                     </figure><!-- End .product-media -->
 
@@ -144,17 +148,28 @@
 
                             <div class="collapse show" id="widget-1">
                                 <div class="widget-body">
-                                    <div class="filter-items filter-items-count">
-                                        @foreach($cats as $cat)
-                                        <div class="filter-item">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="{{ $cat->slug }}" {{ $cat->id == $category->id? 'checked':null }}>
-                                                <label class="custom-control-label" for="{{ $cat->slug }}">{{ $cat->name }}</label>
-                                            </div><!-- End .custom-checkbox -->
-                                            <span class="item-count">{{ $category->products->count() }}</span>
-                                        </div><!-- End .filter-item -->
+{{--                                    {{ request()->category }}--}}
+                                    <form action="{{ route('filter') }}" method="GET">
+                                        <div class="filter-items filter-items-count">
+                                            @foreach($cats as $cat)
+                                                <div class="filter-item">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" name="category[]" class="custom-control-input" onChange="this.form.submit()" value="{{ $cat->slug }}" id="{{ $cat->slug }}" {{ $cat->id == $category->id? 'checked':null }}
+                                                            @isset(request()->category)
+                                                            @foreach(request()->category as $c)
+                                                                {{ $c == $cat->slug? 'checked':null }}
+                                                               @endforeach
+                                                            @endisset
+                                                        >
+                                                        <label class="custom-control-label" for="{{ $cat->slug }}">{{ $cat->name }}</label>
+                                                    </div><!-- End .custom-checkbox -->
+                                                    <span class="item-count">{{ $category->products->count() }}</span>
+                                                </div><!-- End .filter-item -->
                                             @endforeach
-                                </div><!-- End .widget-body -->
+{{--                                            <button type="submit"> submit</button>--}}
+                                        </div><!-- End .widget-body -->
+                                    </form>
+
                             </div><!-- End .collapse -->
 
 

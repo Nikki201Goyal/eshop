@@ -15,18 +15,16 @@
             <div class="row">
                 <div class="col-lg-9">
                     <div class="toolbox">
-                        <div class="toolbox-left">
-                          
-                        </div><!-- End .toolbox-left -->
+
 
                         <div class="toolbox-right">
                             <div class="toolbox-sort">
                                 <label for="sortby">Sort by:</label>
                                 <div class="select-custom">
                                     <select name="sortby" id="sortby" class="form-control">
-                                        <option value="popularity" selected="selected">Higher Price</option>
-                                        <option value="rating">Lower Price</option>
-                                        <option value="date">Sort by newness</option>
+                                        <option value="higher_price" {{ request('sortBy') == 'higher_price' ? 'selected' : null }}>Higher Price</option>
+                                        <option value="lower_price" {{ request('sortBy') == 'lower_price' ? 'selected' : null }}>Lower Price</option>
+                                        <option value="newness" {{ request('sortBy') == 'newness' ? 'selected' : null }}>Latest</option>
                                     </select>
                                 </div>
                             </div><!-- End .toolbox-sort -->
@@ -101,7 +99,13 @@
                                         </div><!-- End .product-action-vertical -->
 
                                         <div class="product-action">
-                                            <a href="#" class="btn-product btn-cart" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $pro->id }}"><span>add to cart</span></a>
+                                            @if ($pro->stock == 1)
+                                            <a href="#" class="btn-product btn-cart" title="Add to cart" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $pro->id }}"><span>add to
+                                                cart</span></a>
+                                            @else
+                                            <button href="#" class="btn-product btn-cart" title="Add to cart" disabled ><span>Out Of Stock</span></button>
+                                            @endif
+
                                         </div><!-- End .product-action -->
                                     </figure><!-- End .product-media -->
 
@@ -149,64 +153,28 @@
 
                             <div class="collapse show" id="widget-1">
                                 <div class="widget-body">
-                                    <div class="filter-items filter-items-count">
-                                        <div class="filter-item">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="cat-1">
-                                                <label class="custom-control-label" for="cat-1">Electronics</label>
-                                            </div><!-- End .custom-checkbox -->
-                                            <span class="item-count">3</span>
-                                        </div><!-- End .filter-item -->
+{{--                                    {{ request()->category }}--}}
+                                    <form action="{{ route('filter') }}" method="GET">
+                                        <div class="filter-items filter-items-count">
+                                            @foreach($cats as $cat)
+                                                <div class="filter-item">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" name="category[]" class="custom-control-input" onChange="this.form.submit()" value="{{ $cat->slug }}" id="{{ $cat->slug }}" {{ $cat->id == $category->id? 'checked':null }}
+                                                            @isset(request()->category)
+                                                            @foreach(request()->category as $c)
+                                                                {{ $c == $cat->slug? 'checked':null }}
+                                                               @endforeach
+                                                            @endisset
+                                                        >
+                                                        <label class="custom-control-label" for="{{ $cat->slug }}">{{ $cat->name }}</label>
+                                                    </div><!-- End .custom-checkbox -->
+                                                    <span class="item-count">{{ $category->products->count() }}</span>
+                                                </div><!-- End .filter-item -->
+                                            @endforeach
+{{--                                            <button type="submit"> submit</button>--}}
+                                        </div><!-- End .widget-body -->
+                                    </form>
 
-                                        <div class="filter-item">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="cat-2">
-                                                <label class="custom-control-label" for="cat-2">Furniture</label>
-                                            </div><!-- End .custom-checkbox -->
-                                            <span class="item-count">0</span>
-                                        </div><!-- End .filter-item -->
-
-                                        <div class="filter-item">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="cat-3">
-                                                <label class="custom-control-label" for="cat-3">Bags</label>
-                                            </div><!-- End .custom-checkbox -->
-                                            <span class="item-count">4</span>
-                                        </div><!-- End .filter-item -->
-
-                                        <div class="filter-item">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="cat-4">
-                                                <label class="custom-control-label" for="cat-4">Shoes</label>
-                                            </div><!-- End .custom-checkbox -->
-                                            <span class="item-count">2</span>
-                                        </div><!-- End .filter-item -->
-
-                                        <div class="filter-item">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="cat-5">
-                                                <label class="custom-control-label" for="cat-5">Musical Instruments</label>
-                                            </div><!-- End .custom-checkbox -->
-                                            <span class="item-count">2</span>
-                                        </div><!-- End .filter-item -->
-
-                                        <div class="filter-item">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="cat-6">
-                                                <label class="custom-control-label" for="cat-6">Cooking Appliances</label>
-                                            </div><!-- End .custom-checkbox -->
-                                            <span class="item-count">1</span>
-                                        </div><!-- End .filter-item -->
-
-                                        <div class="filter-item">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="cat-7">
-                                                <label class="custom-control-label" for="cat-7">Clothing</label>
-                                            </div><!-- End .custom-checkbox -->
-                                            <span class="item-count">1</span>
-                                        </div><!-- End .filter-item -->
-                                    </div><!-- End .filter-items -->
-                                </div><!-- End .widget-body -->
                             </div><!-- End .collapse -->
 
 
@@ -244,4 +212,28 @@
         </div><!-- End .container -->
     </div><!-- End .page-content -->
 </main><!-- End .main -->
+@endsection
+@section('page-scripts')
+
+<script>
+    // $('#sortby').on('change',function(){
+    //     let by = $(this).val();
+    //     console.log(by);
+    // })
+    $('#sortby').change(function () {
+        var by = $(this).val();
+        console.log(sortby);
+
+        // var url = $(this).attr('data-url');
+        var url = '{{ route('sortBy',':slug') }}';
+        n_url = url.replace(':slug', '{{ $category->slug }}');
+        let redirect = n_url+'?sortBy='+by;
+       window.location.replace(redirect);
+
+        // $.get(n_url,function(d){
+        //         console.log(d);
+        // });
+
+    });
+</script>
 @endsection

@@ -25,7 +25,7 @@
                                 </div>
                             </li>
                             @auth
-                            <li><a href="#signin-modal">Logout</a></li>
+                            <li><a href="{{ route('logout') }}">Logout</a></li>
 
                             @else
                             <li><a href="#signin-modal" data-toggle="modal">Login / Register</a></li>
@@ -46,7 +46,7 @@
                     <i class="icon-bars"></i>
                 </button>
 
-                <a href="index.html" class="logo">
+                <a href="{{ url('/') }}" class="logo">
                     <!-- <img src="{{asset('FrontEnd/assets/images/Image/Slider/logo.png')}}" alt="Molla Logo" width="105" height="25"> -->
                 </a>
             </div><!-- End .header-left -->
@@ -67,19 +67,15 @@
 
             <div class="header-right">
                 @auth
-                <div class="dropdown compare-dropdown">
-                    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false" data-display="static" title="Compare Products"
-                        aria-label="Compare Products">
-                        <div class="icon">
-                            <i class="icon-random"></i>
-                        </div>
-                        <p>Compare</p>
-                    </a>
+                    <div class="wishlist">
+                        <a href="{{ route('compare') }}" title="Wishlist">
+                            <div class="icon">
+                                <i class="icon-random"></i>
 
-
-                </div><!-- End .compare-dropdown -->
-
+                            </div>
+                            <p>Compare</p>
+                        </a>
+                    </div><!-- End .compare-dropdown -->
 
                 <div class="wishlist">
                     <a href="{{ route('wishlist') }}" title="Wishlist">

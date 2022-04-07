@@ -48,59 +48,52 @@ Route::get('/storeSubscribe',[App\Http\Controllers\FrontEndController::class,'st
 Route::post('/wishlists',[App\Http\Controllers\WishlistController::class,'store'])->name('wishlists');
 Route::post('/carts',[App\Http\Controllers\CartController::class,'store'])->name('carts');
 
+Route::get('/filter',[App\Http\Controllers\FrontEndController::class,'filter'])->name('filter');
+
+Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+
 Route::group(['middleware'=>'auth'], function(){
-
-Route::get('/wishlist', [App\HTTP\Controllers\FrontEndController::class, 'wishlist'])->name('wishlist');
-Route::get('/wishlist/{id}/Cart', [App\HTTP\Controllers\CartController::class, 'fromWishlist'])->name('wishlist.Cart');
-Route::get('/wishlist/{id}/Delete', [App\HTTP\Controllers\WishlistController::class, 'destroy'])->name('wishlist.Delete');
-Route::get('/cart', [App\HTTP\Controllers\FrontEndController::class, 'cart'])->name('cart');
-Route::get('/cart/{id}/remove', [App\HTTP\Controllers\CartController::class, 'destroy'])->name('cart.remove');
-Route::post('/cart/update', [App\HTTP\Controllers\CartController::class, 'update'])->name('cart.update');
-Route::post('/address',  [App\HTTP\Controllers\AddressController::class, 'store'])->name('address');
-Route::post('/address/edit',  [App\HTTP\Controllers\AddressController::class, 'update'])->name('address.edit');
-Route::post('/address/{id}/activate',  [App\HTTP\Controllers\AddressController::class, 'activate'])->name('address.activate');
-Route::post('/placeOrder',   [App\HTTP\Controllers\OrderController::class, 'placeOrder'])->name('placeOrder');
-Route::get('/orderCompleted',   [App\HTTP\Controllers\FrontEndController::class, 'orderCompleted'])->name('orderCompleted');
-
+    Route::get('/wishlist', [App\HTTP\Controllers\FrontEndController::class, 'wishlist'])->name('wishlist');
+    Route::get('/wishlist/{id}/Cart', [App\HTTP\Controllers\CartController::class, 'fromWishlist'])->name('wishlist.Cart');
+    Route::get('/wishlist/{id}/Delete', [App\HTTP\Controllers\WishlistController::class, 'destroy'])->name('wishlist.Delete');
+    Route::get('/cart', [App\HTTP\Controllers\FrontEndController::class, 'cart'])->name('cart');
+    Route::get('/cart/{id}/remove', [App\HTTP\Controllers\CartController::class, 'destroy'])->name('cart.remove');
+    Route::post('/cart/update', [App\HTTP\Controllers\CartController::class, 'update'])->name('cart.update');
+    Route::post('/address',  [App\HTTP\Controllers\AddressController::class, 'store'])->name('address');
+    Route::post('/address/edit',  [App\HTTP\Controllers\AddressController::class, 'update'])->name('address.edit');
+    Route::post('/address/{id}/activate',  [App\HTTP\Controllers\AddressController::class, 'activate'])->name('address.activate');
+    Route::post('/placeOrder',   [App\HTTP\Controllers\OrderController::class, 'placeOrder'])->name('placeOrder');
+    Route::get('/orderCompleted',   [App\HTTP\Controllers\FrontEndController::class, 'orderCompleted'])->name('orderCompleted');
 });
 
 Route::group(['middleware'=>'role:super|admin'], function(){
 //Backend
-Route::get('/admin', [App\HTTP\Controllers\BackEndController::class, 'admin'])->name('admin');
-Route::get('/Contact', [App\Http\Controllers\BackEndController::class,'Contact'])->name('Contact');
-Route::get('/conInfo/{id}',[App\Http\Controllers\BackEndController::class,'conInfo'])->name('conInfo');
-Route::get('/subscribe', [App\Http\Controllers\BackEndController::class,'subscribe'])->name('subscribe');
-
-
+    Route::get('/admin', [App\HTTP\Controllers\BackEndController::class, 'admin'])->name('admin');
+    Route::get('/Contact', [App\Http\Controllers\BackEndController::class,'Contact'])->name('Contact');
+    Route::get('/conInfo/{id}',[App\Http\Controllers\BackEndController::class,'conInfo'])->name('conInfo');
+    Route::get('/subscribe', [App\Http\Controllers\BackEndController::class,'subscribe'])->name('subscribe');
 //Blogs
-Route::get('/createBlogs', [App\Http\Controllers\BlogController::class, 'create'])->name('createBlogs');
-Route::post('/storeBlogs', [App\Http\Controllers\BlogController::class, 'store'])->name('storeBlogs');
-Route::get('/editBlogs/{id}', [App\Http\Controllers\BlogController::class, 'edit'])->name('editBlogs');
-Route::post('/updateBlogs/{id}', [App\Http\Controllers\BlogController::class, 'update'])->name('updateBlogs');
-Route::get('/deleteBlogs/{id}', [App\Http\Controllers\BlogController::class, 'delete'])->name('deleteBlogs');
-Route::get('/viewBlogs', [App\Http\Controllers\BlogController::class, 'index'])->name('viewBlogs');
-Route::get('/status-updateBlog/{id}',[App\Http\Controllers\BlogController::class,'status'])->name('statusBlogs');
-
+    Route::get('/createBlogs', [App\Http\Controllers\BlogController::class, 'create'])->name('createBlogs');
+    Route::post('/storeBlogs', [App\Http\Controllers\BlogController::class, 'store'])->name('storeBlogs');
+    Route::get('/editBlogs/{id}', [App\Http\Controllers\BlogController::class, 'edit'])->name('editBlogs');
+    Route::post('/updateBlogs/{id}', [App\Http\Controllers\BlogController::class, 'update'])->name('updateBlogs');
+    Route::get('/deleteBlogs/{id}', [App\Http\Controllers\BlogController::class, 'delete'])->name('deleteBlogs');
+    Route::get('/viewBlogs', [App\Http\Controllers\BlogController::class, 'index'])->name('viewBlogs');
+    Route::get('/status-updateBlog/{id}',[App\Http\Controllers\BlogController::class,'status'])->name('statusBlogs');
 //category
-Route::resource('admin/categories', CategoryController::class);
-
+    Route::resource('admin/categories', CategoryController::class);
 //Products
-Route::resource('admin/products', ProductsController::class);
-Route::get('admin/products/{id}/changeStatus', [App\Http\Controllers\ProductsController::class, 'toggleStatus'])->name('Product.toggleStatus');
-Route::get('admin/delete/{id}', [App\Http\Controllers\ProductsController::class, 'delete'])->name('admin.delete');
-
-
+    Route::resource('admin/products', ProductsController::class);
+    Route::get('admin/products/{id}/changeStatus', [App\Http\Controllers\ProductsController::class, 'toggleStatus'])->name('Product.toggleStatus');
+    Route::get('admin/delete/{id}', [App\Http\Controllers\ProductsController::class, 'delete'])->name('admin.delete');
 //user
-Route::resource('admin/users', UserController::class);
-Route::get('admin/users/{id}/changeStatus', [App\Http\Controllers\UserController::class, 'toggleStatus'])->name('user.toggleStatus');
-Route::get('users/delete/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('user.delete');
-
+    Route::resource('admin/users', UserController::class);
+    Route::get('admin/users/{id}/changeStatus', [App\Http\Controllers\UserController::class, 'toggleStatus'])->name('user.toggleStatus');
+    Route::get('users/delete/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('user.delete');
 //order
-Route::resource('admin/orders', OrderController::class);
-Route::post('admin/order/changeStatus', [App\Http\Controllers\OrderController::class, 'changeStatus'])->name('Order.changeStatus');
-
+    Route::resource('admin/orders', OrderController::class);
+    Route::post('admin/order/changeStatus', [App\Http\Controllers\OrderController::class, 'changeStatus'])->name('Order.changeStatus');
 });
-
 Route::get('/mail/OrderConfirmed', [App\Http\Controllers\MailController::class, 'orderConfirmed'])->name('mail.OrderConfirmed');
 
 //compare

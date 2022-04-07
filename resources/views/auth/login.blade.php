@@ -106,7 +106,7 @@
       font-weight: 500;
     }
 
-   
+
 
     .btn {
       width: 150px;
@@ -374,7 +374,9 @@
         left: 50%;
       }
     }
-
+.is-invalid{
+    border: 1px solid red;
+}
 </style>
 </head>
 <body>
@@ -384,14 +386,26 @@
             <form action=""{{ route('login') }} class="sign-in-form" method="POST">
                 @csrf
               <h2 class="title">Sign in</h2>
-              <div class="input-field">
+              <div class="input-field @error('email') is-invalid @enderror">
                 <i class="fas fa-user"></i>
                 <input type="text" placeholder="Email" name="email" />
+
               </div>
-              <div class="input-field">
+                @error('email')
+                <span class="invalid-feedback" style="color: red" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+              <div class="input-field @error('password') is-invalid @enderror">
                 <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Password" name="password" />
+                <input type="password" placeholder="Password" name="password" class="@error('password') is-invalid @enderror" />
+
               </div>
+                @error('password')
+                    <span class="invalid-feedback" style="color: red" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
               <input type="submit" value="Login" class="btn solid" />
               {{-- <p class="social-text">Or Sign in with social platforms</p> --}}
               {{-- <div class="social-media">

@@ -158,32 +158,26 @@
                             <div class="tab-pane fade show active" id="tab-account" role="tabpanel" aria-labelledby="tab-account-link">
                                 <form action="#">
                                     <div class="row">
-                                        <div class="col-sm-6">
-                                            <label>First Name *</label>
-                                            <input type="text" class="form-control" required>
-                                        </div><!-- End .col-sm-6 -->
+                                      <label> Name *</label>
+                                       <input type="text" class="form-control" required value="{{ $user->name }}" name="name">
 
-                                        <div class="col-sm-6">
-                                            <label>Last Name *</label>
-                                            <input type="text" class="form-control" required>
-                                        </div><!-- End .col-sm-6 -->
-                                    </div><!-- End .row -->
+                                    <label>Address</label>
+                                    <input type="text" class="form-control" required value="{{ $user->address }}" name="address">
 
-                                    <label>Display Name *</label>
-                                    <input type="text" class="form-control" required>
-                                    <small class="form-text">This will be how your name will be displayed in the account section and in reviews</small>
+                                    <label>Contact</label>
+                                    <input type="text" class="form-control" required value="{{ $user->contact }}" name="contact">
 
                                     <label>Email address *</label>
-                                    <input type="email" class="form-control" required>
+                                    <input type="email" class="form-control" required value="{{ $user->email }}" name="email">
 
                                     <label>Current password (leave blank to leave unchanged)</label>
-                                    <input type="password" class="form-control">
+                                    <input type="password" class="form-control" name="password">
 
                                     <label>New password (leave blank to leave unchanged)</label>
-                                    <input type="password" class="form-control">
+                                    <input type="password" class="form-control" name="newpass">
 
                                     <label>Confirm new password</label>
-                                    <input type="password" class="form-control mb-2">
+                                    <input type="password" class="form-control mb-2" name="confirmpass">
 
                                     <button type="submit" class="btn btn-outline-primary-2">
                                         <span>SAVE CHANGES</span>

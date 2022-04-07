@@ -59,6 +59,7 @@ class WishlistController extends Controller
                     'user_id' => $request->user_id,
                     'product_id' => $request->product_id,
 
+
                 ]);
                 return response()->json(['message' => 'success']);
             }

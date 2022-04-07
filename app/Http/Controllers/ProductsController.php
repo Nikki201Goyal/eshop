@@ -54,6 +54,7 @@ class ProductsController extends Controller
             'cover' => 'required',
 
         ]);
+        // dd($request);
         if ($request->hasFile('image')) {
         $image = $request->file('image');
         $imageName = time() . $image->getClientOriginalName();
@@ -65,7 +66,7 @@ class ProductsController extends Controller
         $coverName = time() . $image->getClientOriginalName();
         $cover->move('uploads/product/images/', $coverName);
         }
-        
+
         products::create([
             'name' => $request->name,
             'description' => $request->description,

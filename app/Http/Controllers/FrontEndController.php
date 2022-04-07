@@ -161,15 +161,35 @@ class FrontEndController extends Controller
     public function dashboard(){
         if(Auth::check()){
         $order=Order::where('user_id', Auth::user()->id)->get();
-
+        $user=Auth::user();
         $address= Address::where('user_id', Auth::user()->id)->get();
-        return view('FrontEnd.dashboard', compact('address', 'order'));
+        return view('FrontEnd.dashboard', compact('address', 'order', 'user'));
 
     }
     else{
         return redirect()->route('login');
     }
 }
+
+public function editprofile(){
+
+        $request->validate([
+            'name' => 'required',
+            'contact' => 'required',
+            'address' => 'required',
+            'email' => 'required',
+            'postcode' => 'required',
+        ]);
+
+        $address = Address::findorFail($request->id);
+        $address->name = $request->name;
+        $address->contact = $request->contact;
+        $address->address = $request->address;
+        $address->postcode = $request->postcode;
+        $address->email = $request->email;
+        $address->save();
+        return redirect()->back();
+    }
 
     public function wishlist(){
         if(Auth::check()){
@@ -241,20 +261,49 @@ class FrontEndController extends Controller
     }
 
     public function SortBy(Request $request,$slug){
+
         $sort = $request->sortBy;
         $category=Category::where('slug', $slug)->first();
         $PopularProducts=products::inRandomOrder()->get()->take(5);
         if($sort=='higher_price'){
-            $products = $category->products()->orderBy('price','desc')->paginate(10);
+            $products = $category->products()->orderBy('price','desc')->paginate(10)->withQueryString();
         }
         elseif($sort=='lower_price'){
-            $products = $category->products()->orderBy('price','asc')->paginate(10);
+            $products = $category->products()->orderBy('price','asc')->paginate(10)->withQueryString();
         }
         elseif($sort=='newness'){
-            $products = $category->products()->orderBy('created_at','desc')->paginate(10);
+            $products = $category->products()->orderBy('created_at','desc')->paginate(10)->withQueryString();
         }
 
         return view('FrontEnd.Category', compact('products','category','PopularProducts'));
+
+
+    }
+
+    public function filter(Request $request){
+//        dd($request);
+        $ids= array();
+        if (isset($request->category)){
+            foreach ($request->category as $slug) {
+                $category=Category::where('slug', $slug)->first();
+                array_push($ids, $category->id);
+            }
+        }
+
+//        dd($ids);
+        $products = products::whereIn('category_id', $ids)->paginate(10)->withQueryString();
+//        dd($products);
+        $PopularProducts=products::inRandomOrder()->get()->take(5);
+        $category=Category::where('slug', $slug)->first();
+//        $products=$category->products()->paginate(5);
+//$products = $prods->paginate(10);
+        return view('FrontEnd.category', compact('category', 'PopularProducts', 'products'));
+    }
+
+
+    public function logout(){
+        Auth::logout();
+        return redirect()->back();
     }
 }
 

@@ -44,9 +44,16 @@
 								</td>
 								<td class="price-col">{{ $wish->product->price }}</td>
 								<td class="stock-col"><span class="in-stock">{{ $wish->product->stock }}</span></td>
+                                @if ($wish->product->stock == 1)
                                 <td class="action-col">
 									<a href="{{ route('wishlist.Cart', $wish->id) }}" class="btn btn-block btn-outline-primary-2"><i class="icon-cart-plus"></i>Add to Cart</a >
 								</td>
+                                @else
+                                <td class="action-col">
+                                    <button href="" class="btn btn-block btn-outline-primary-2" disabled>Out Of Stock</button >
+                                </td>
+                                @endif
+
 								<td class="remove-col"><a href="{{ route('wishlist.Delete', $wish->id) }}" class="btn-remove"><i class="icon-close"></i></a></td>
 							</tr>
                             @endforeach

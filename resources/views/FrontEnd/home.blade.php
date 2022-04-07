@@ -260,8 +260,13 @@
                                         </div><!-- End .product-action-vertical -->
 
                                         <div class="product-action">
+                                            @if ($All->stock == 1)
                                             <a href="#" class="btn-product btn-cart" title="Add to cart" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $All->id }}"><span>add to
-                                                    cart</span></a>
+                                                cart</span></a>
+                                            @else
+                                            <button href="#" class="btn-product btn-cart" title="Add to cart" disabled ><span>Out Of Stock</span></button>
+                                            @endif
+
                                         </div><!-- End .product-action -->
                                     </figure><!-- End .product-media -->
 
@@ -351,8 +356,13 @@
                                         </div><!-- End .product-action-vertical -->
 
                                         <div class="product-action">
+                                            @if ($prod->stock == 1)
                                             <a href="#" class="btn-product btn-cart" title="Add to cart" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $prod->id }}"><span>add to
-                                                    cart</span></a>
+                                                cart</span></a>
+                                            @else
+                                            <button href="#" class="btn-product btn-cart" title="Add to cart" disabled ><span>Out Of Stock</span></button>
+                                            @endif
+
                                         </div><!-- End .product-action -->
                                     </figure><!-- End .product-media -->
 
@@ -473,8 +483,13 @@
                                     </div><!-- End .product-action-vertical -->
 
                                     <div class="product-action">
+                                        @if ($elec->stock == 1)
                                         <a href="#" class="btn-product btn-cart" title="Add to cart" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $elec->id }}"><span>add to
-                                                cart</span></a>
+                                            cart</span></a>
+                                        @else
+                                        <button href="#" class="btn-product btn-cart" title="Add to cart" disabled ><span>Out Of Stock</span></button>
+                                        @endif
+
                                     </div><!-- End .product-action -->
                                 </figure><!-- End .product-media -->
 
@@ -653,8 +668,13 @@
                                                 </div><!-- End .product-action-vertical -->
 
                                                 <div class="product-action">
-                                                    <a href="#" class="btn-product btn-cart"
-                                                        title="Add to cart" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $offer->id }}"><span>add to cart</span></a>
+                                                    @if ($offer->stock == 1)
+                                                    <a href="#" class="btn-product btn-cart" title="Add to cart" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $offer->id }}"><span>add to
+                                                        cart</span></a>
+                                                    @else
+                                                    <button href="#" class="btn-product btn-cart" title="Add to cart" disabled ><span>Out Of Stock</span></button>
+                                                    @endif
+
                                                 </div><!-- End .product-action -->
                                             </figure><!-- End .product-media -->
 
@@ -721,8 +741,13 @@
                                                 </div><!-- End .product-action-vertical -->
 
                                                 <div class="product-action">
-                                                    <a href="#" class="btn-product btn-cart"
-                                                        title="Add to cart" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $offer->id }}"><span>add to cart</span></a>
+                                                    @if ($offer->stock == 1)
+                                                    <a href="#" class="btn-product btn-cart" title="Add to cart" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $offer->id }}"><span>add to
+                                                        cart</span></a>
+                                                    @else
+                                                    <button href="#" class="btn-product btn-cart" title="Add to cart" disabled ><span>Out Of Stock</span></button>
+                                                    @endif
+
                                                 </div><!-- End .product-action -->
                                             </figure><!-- End .product-media -->
 

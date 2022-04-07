@@ -27,17 +27,16 @@ class LoginController extends Controller
      *
      * @var string
      */
-protected $redirectTo = RouteServiceProvider::HOME;
-//protected function authenticated(Request $request, $user)
-// {
-//     if($user->hasAnyRole(['super','admin'])){
-//         return redirect(to: '/login');
-
-//     }else if ($user->hasAnyRole(['customer'])){
-//         return redirect()->route(route: '');
-//     }
-// }
-   /**
+//    protected $redirectTo = RouteServiceProvider::HOME;
+    protected function authenticated(Request $request, $user)
+    {
+        if ($user->hasAnyRole(['super','admin'])) {
+            return redirect('/admin');
+        } else if ($user->hasAnyRole(['student'])) {
+            return redirect('/');
+        }
+    }
+    /**
      * Create a new controller instance.
      *
      * @return void
