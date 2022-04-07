@@ -99,6 +99,8 @@ Route::get('/mail/OrderConfirmed', [App\Http\Controllers\MailController::class, 
 //compare
 Route::get('/compare', [App\HTTP\Controllers\FrontEndController::class, 'compare'])->name('compare');
 Route::post('/rating', [App\Http\Controllers\RatingController::class, 'rating'])->name('rating');
-
+Route::get('/forgot-password', function () {
+    return view('auth.passwords.reset');
+})->middleware('guest')->name('password.request');
 
 

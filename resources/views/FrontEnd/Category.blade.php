@@ -146,6 +146,7 @@
                                 <div class="widget-body">
 {{--                                    {{ request()->category }}--}}
                                     <form action="{{ route('filter') }}" method="GET">
+                                        <input type="hidden" name="page" value="category">
                                         <div class="filter-items filter-items-count">
                                             @foreach($cats as $cat)
                                                 <div class="filter-item">
@@ -220,7 +221,7 @@
         // var url = $(this).attr('data-url');
         var url = '{{ route('sortBy',':slug') }}';
         n_url = url.replace(':slug', '{{ $category->slug }}');
-        let redirect = n_url+'?sortBy='+by;
+        let redirect = n_url+'?page=category&sortBy='+by+'';
        window.location.replace(redirect);
 
         // $.get(n_url,function(d){

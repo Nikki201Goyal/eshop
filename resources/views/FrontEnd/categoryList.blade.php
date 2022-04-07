@@ -24,11 +24,11 @@
                 					<div class="toolbox-sort">
                 						<label for="sortby">Sort by:</label>
                 						<div class="select-custom">
-											<select name="sortby" id="sortby" class="form-control">
-												<option value="popularity" selected="selected">Higher Price</option>
-												<option value="rating">Lower Price</option>
-												<option value="date">Sort by newness</option>
-											</select>
+                                            <select name="sortby" id="sortby" class="form-control">
+                                                <option value="higher_price" {{ request('sortBy') == 'higher_price' ? 'selected' : null }}>Higher Price</option>
+                                                <option value="lower_price" {{ request('sortBy') == 'lower_price' ? 'selected' : null }}>Lower Price</option>
+                                                <option value="newness" {{ request('sortBy') == 'newness' ? 'selected' : null }}>Latest</option>
+                                            </select>
 										</div>
                 					</div><!-- End .toolbox-sort -->
                 					<div class="toolbox-layout">
@@ -249,3 +249,27 @@
             </div><!-- End .page-content -->
         </main><!-- End .main -->
  @endsection
+@section('page-scripts')
+
+    <script>
+        // $('#sortby').on('change',function(){
+        //     let by = $(this).val();
+        //     console.log(by);
+        // })
+        $('#sortby').change(function () {
+            var by = $(this).val();
+            console.log(sortby);
+
+            // var url = $(this).attr('data-url');
+            var url = '{{ route('sortBy',':slug') }}';
+            n_url = url.replace(':slug', '{{ $category->slug }}');
+            let redirect = n_url+'?page=categoryList&sortBy='+by+'';
+            window.location.replace(redirect);
+
+            // $.get(n_url,function(d){
+            //         console.log(d);
+            // });
+
+        });
+    </script>
+@endsection

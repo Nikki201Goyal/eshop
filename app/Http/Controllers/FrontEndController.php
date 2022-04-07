@@ -20,6 +20,7 @@ use App\Models\Subscribe;
 use App\Models\Wishlist;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Route;
 
 class FrontEndController extends Controller
 {
@@ -241,6 +242,8 @@ class FrontEndController extends Controller
     }
 
     public function SortBy(Request $request,$slug){
+
+//        dd($request->page);
         $sort = $request->sortBy;
         $category=Category::where('slug', $slug)->first();
         $PopularProducts=products::inRandomOrder()->get()->take(5);
@@ -253,12 +256,23 @@ class FrontEndController extends Controller
         elseif($sort=='newness'){
             $products = $category->products()->orderBy('created_at','desc')->paginate(10)->withQueryString();
         }
-
-        return view('FrontEnd.Category', compact('products','category','PopularProducts'));
+        if ($request->page == 'category') {
+            return view('FrontEnd.category', compact('category', 'products', 'PopularProducts'));
+        }
+        elseif ($request->page == 'categoryList') {
+            return view('FrontEnd.categoryList', compact('category', 'products', 'PopularProducts'));
+        }
+        elseif ($request->page == 'category2grid') {
+            return view('FrontEnd.Category2Grid', compact('category', 'products', 'PopularProducts'));
+        }
+        elseif ($request->page == 'category4grid') {
+            return view('FrontEnd.Category4Grid', compact('category', 'products', 'PopularProducts'));
+        }
+//        return view('FrontEnd.Category', compact('products','category','PopularProducts'));
     }
 
     public function filter(Request $request){
-//        dd($request);
+        dd($request->page);
         $ids= array();
         if (isset($request->category)){
             foreach ($request->category as $slug) {
@@ -266,16 +280,22 @@ class FrontEndController extends Controller
                 array_push($ids, $category->id);
             }
         }
-
-
-//        dd($ids);
         $products = products::whereIn('category_id', $ids)->paginate(10)->withQueryString();
-//        dd($products);
         $PopularProducts=products::inRandomOrder()->get()->take(5);
         $category=Category::where('slug', $slug)->first();
-//        $products=$category->products()->paginate(5);
-//$products = $prods->paginate(10);
-        return view('FrontEnd.category', compact('category', 'PopularProducts', 'products'));
+        if ($request->page == 'category') {
+            return view('FrontEnd.category', compact('category', 'products', 'PopularProducts'));
+        }
+        elseif ($request->page == 'categoryList') {
+            return view('FrontEnd.categoryList', compact('category', 'products', 'PopularProducts'));
+        }
+        elseif ($request->page == 'category2grid') {
+            return view('FrontEnd.Category2Grid', compact('category', 'products', 'PopularProducts'));
+        }
+        elseif ($request->page == 'category4grid') {
+            return view('FrontEnd.Category4Grid', compact('category', 'products', 'PopularProducts'));
+        }
+//        return view('FrontEnd.category', compact('category', 'PopularProducts', 'products'));
     }
     public function logout(){
         Auth::logout();
