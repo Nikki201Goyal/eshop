@@ -47,15 +47,18 @@ class CategoryController extends Controller
             'description' => 'required',
 
         ]);
-
+        if ($request->hasFile('photo')) {
         $image = $request->file('photo');
         $imageName = time() . $image->getClientOriginalName();
         $image->move('uploads/product/images/', $imageName);
+        }
 
+        if ($request->hasFile('cover')) {
         $cover = $request->file('cover');
         $coverName = time() . $cover->getClientOriginalName();
         $cover->move('uploads/product/images/', $coverName);
-
+        }
+        
         Category::create([
             'name' => $request->name,
             'description' => $request->description,
@@ -108,7 +111,7 @@ class CategoryController extends Controller
         return view('BackEnd.Categories.show', compact('category'));
     }
 
-    
+
 
 
 

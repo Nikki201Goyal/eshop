@@ -24,15 +24,17 @@ class BlogController extends Controller
             'image'=>'required',
 
         ]);
-
+        if ($request->hasFile('image')) {
         $image = $request->file('image');
         $imageName = time().$image->getClientOriginalName();
         $image->move('uploads/product/images/', $imageName);
+        }
 
+        if ($request->hasFile('AuthorPic')) {
         $photo = $request->file('AuthorPic');
         $photoName = time().$photo->getClientOriginalName();
         $photo->move('uploads/product/images/', $photoName);
-
+        }
 
         Blog::create([
             'author' => $request->author,
