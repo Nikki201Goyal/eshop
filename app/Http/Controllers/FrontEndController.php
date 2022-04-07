@@ -276,23 +276,23 @@ public function editprofile(){
         elseif($sort=='newness'){
             $products = $category->products()->orderBy('created_at','desc')->paginate(10)->withQueryString();
         }
-        if ($request->page == 'category') {
+        if ($request->link == 'category') {
             return view('FrontEnd.category', compact('category', 'products', 'PopularProducts'));
         }
-        elseif ($request->page == 'categoryList') {
+        elseif ($request->link == 'categoryList') {
             return view('FrontEnd.categoryList', compact('category', 'products', 'PopularProducts'));
         }
-        elseif ($request->page == 'category2grid') {
+        elseif ($request->link == 'category2grid') {
             return view('FrontEnd.Category2Grid', compact('category', 'products', 'PopularProducts'));
         }
-        elseif ($request->page == 'category4grid') {
+        elseif ($request->link == 'category4grid') {
             return view('FrontEnd.Category4Grid', compact('category', 'products', 'PopularProducts'));
         }
 //        return view('FrontEnd.Category', compact('products','category','PopularProducts'));
     }
 
     public function filter(Request $request){
-        dd($request->page);
+//        dd($request->page);
         $ids= array();
         if (isset($request->category)){
             foreach ($request->category as $slug) {
@@ -303,16 +303,16 @@ public function editprofile(){
         $products = products::whereIn('category_id', $ids)->paginate(10)->withQueryString();
         $PopularProducts=products::inRandomOrder()->get()->take(5);
         $category=Category::where('slug', $slug)->first();
-        if ($request->page == 'category') {
+        if ($request->link == 'category') {
             return view('FrontEnd.category', compact('category', 'products', 'PopularProducts'));
         }
-        elseif ($request->page == 'categoryList') {
+        elseif ($request->link == 'categoryList') {
             return view('FrontEnd.categoryList', compact('category', 'products', 'PopularProducts'));
         }
-        elseif ($request->page == 'category2grid') {
+        elseif ($request->link == 'category2grid') {
             return view('FrontEnd.Category2Grid', compact('category', 'products', 'PopularProducts'));
         }
-        elseif ($request->page == 'category4grid') {
+        elseif ($request->link == 'category4grid') {
             return view('FrontEnd.Category4Grid', compact('category', 'products', 'PopularProducts'));
         }
 //        return view('FrontEnd.category', compact('category', 'PopularProducts', 'products'));

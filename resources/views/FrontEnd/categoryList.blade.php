@@ -170,6 +170,7 @@
                                 <div class="widget-body">
                                     {{-- {{ request()->category }}--}}
                                     <form action="{{ route('filter') }}" method="GET">
+                                        <input type="hidden" name="link" value="categoryList">
                                         <div class="filter-items filter-items-count">
                                             @foreach($cats as $cat)
                                             <div class="filter-item">
@@ -233,8 +234,8 @@
 @endsection
 @section('page-scripts')
 
-<script>
-    // $('#sortby').on('change',function(){
+    <script>
+        // $('#sortby').on('change',function(){
         //     let by = $(this).val();
         //     console.log(by);
         // })
@@ -245,7 +246,7 @@
             // var url = $(this).attr('data-url');
             var url = '{{ route('sortBy',':slug') }}';
             n_url = url.replace(':slug', '{{ $category->slug }}');
-            let redirect = n_url+'?page=categoryList&sortBy='+by+'';
+            let redirect = n_url+'?link=categoryList&sortBy='+by+'';
             window.location.replace(redirect);
 
             // $.get(n_url,function(d){
@@ -253,5 +254,5 @@
             // });
 
         });
-</script>
+    </script>
 @endsection
