@@ -162,15 +162,35 @@ class FrontEndController extends Controller
     public function dashboard(){
         if(Auth::check()){
         $order=Order::where('user_id', Auth::user()->id)->get();
-
+        $user=Auth::user();
         $address= Address::where('user_id', Auth::user()->id)->get();
-        return view('FrontEnd.dashboard', compact('address', 'order'));
+        return view('FrontEnd.dashboard', compact('address', 'order', 'user'));
 
     }
     else{
         return redirect()->route('login');
     }
 }
+
+public function editprofile(){
+
+        $request->validate([
+            'name' => 'required',
+            'contact' => 'required',
+            'address' => 'required',
+            'email' => 'required',
+            'postcode' => 'required',
+        ]);
+
+        $address = Address::findorFail($request->id);
+        $address->name = $request->name;
+        $address->contact = $request->contact;
+        $address->address = $request->address;
+        $address->postcode = $request->postcode;
+        $address->email = $request->email;
+        $address->save();
+        return redirect()->back();
+    }
 
     public function wishlist(){
         if(Auth::check()){
@@ -243,7 +263,7 @@ class FrontEndController extends Controller
 
     public function SortBy(Request $request,$slug){
 
-//        dd($request->page);
+
         $sort = $request->sortBy;
         $category=Category::where('slug', $slug)->first();
         $PopularProducts=products::inRandomOrder()->get()->take(5);
@@ -297,6 +317,8 @@ class FrontEndController extends Controller
         }
 //        return view('FrontEnd.category', compact('category', 'PopularProducts', 'products'));
     }
+
+
     public function logout(){
         Auth::logout();
         return redirect()->back();

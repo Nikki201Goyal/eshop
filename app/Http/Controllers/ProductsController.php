@@ -54,14 +54,18 @@ class ProductsController extends Controller
             'cover' => 'required',
 
         ]);
-
+        // dd($request);
+        if ($request->hasFile('image')) {
         $image = $request->file('image');
         $imageName = time() . $image->getClientOriginalName();
         $image->move('uploads/product/images/', $imageName);
+        }
 
+        if ($request->hasFile('cover')) {
         $cover = $request->file('cover');
         $coverName = time() . $image->getClientOriginalName();
         $cover->move('uploads/product/images/', $coverName);
+        }
 
         products::create([
             'name' => $request->name,
