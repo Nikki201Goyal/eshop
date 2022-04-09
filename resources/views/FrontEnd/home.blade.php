@@ -255,8 +255,7 @@
                                             data-image="{{ $All->image }}"
                                             data-id="{{ $All->id }}"
                                                 title="Quick view"><span>Quick view</span></a>
-                                            <a href="#" class="btn-product-icon btn-compare"
-                                                title="Compare"><span>Compare</span></a>
+
                                         </div><!-- End .product-action-vertical -->
 
                                         <div class="product-action">
@@ -264,7 +263,7 @@
                                             <a href="#" class="btn-product btn-cart" title="Add to cart" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $All->id }}"><span>add to
                                                 cart</span></a>
                                             @else
-                                            <button href="#" class="btn-product btn-cart" title="Add to cart" disabled ><span>Out Of Stock</span></button>
+                                            <button href="#" class="btn-product btn-cart"  disabled ><span>Out Of Stock</span></button>
                                             @endif
 
                                         </div><!-- End .product-action -->
@@ -351,8 +350,7 @@
 
                                                     title="Quick view"><span>Quick view</span></a>
 
-                                            <a href="#" class="btn-product-icon btn-compare"
-                                                title="Compare"><span>Compare</span></a>
+
                                         </div><!-- End .product-action-vertical -->
 
                                         <div class="product-action">
@@ -360,7 +358,7 @@
                                             <a href="#" class="btn-product btn-cart" title="Add to cart" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $prod->id }}"><span>add to
                                                 cart</span></a>
                                             @else
-                                            <button href="#" class="btn-product btn-cart" title="Add to cart" disabled ><span>Out Of Stock</span></button>
+                                            <button href="#" class="btn-product btn-cart"  disabled ><span>Out Of Stock</span></button>
                                             @endif
 
                                         </div><!-- End .product-action -->
@@ -487,7 +485,7 @@
                                         <a href="#" class="btn-product btn-cart" title="Add to cart" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $elec->id }}"><span>add to
                                             cart</span></a>
                                         @else
-                                        <button href="#" class="btn-product btn-cart" title="Add to cart" disabled ><span>Out Of Stock</span></button>
+                                        <button href="#" class="btn-product btn-cart"  disabled ><span>Out Of Stock</span></button>
                                         @endif
 
                                     </div><!-- End .product-action -->
@@ -672,7 +670,7 @@
                                                     <a href="#" class="btn-product btn-cart" title="Add to cart" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $offer->id }}"><span>add to
                                                         cart</span></a>
                                                     @else
-                                                    <button href="#" class="btn-product btn-cart" title="Add to cart" disabled ><span>Out Of Stock</span></button>
+                                                    <button href="#" class="btn-product btn-cart"  disabled ><span>Out Of Stock</span></button>
                                                     @endif
 
                                                 </div><!-- End .product-action -->
@@ -745,7 +743,7 @@
                                                     <a href="#" class="btn-product btn-cart" title="Add to cart" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $offer->id }}"><span>add to
                                                         cart</span></a>
                                                     @else
-                                                    <button href="#" class="btn-product btn-cart" title="Add to cart" disabled ><span>Out Of Stock</span></button>
+                                                    <button href="#" class="btn-product btn-cart"  disabled ><span>Out Of Stock</span></button>
                                                     @endif
 
                                                 </div><!-- End .product-action -->

@@ -95,7 +95,6 @@
                                             data-id="{{ $pro->id }}"
                                                 title="Quick view"><span>Quick view</span></a>
 
-                                            <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                                         </div><!-- End .product-action-vertical -->
 
                                         <div class="product-action">
@@ -156,6 +155,8 @@
                                 <div class="widget-body">
 {{--                                    {{ request()->category }}--}}
                                     <form action="{{ route('filter') }}" method="GET">
+                                        <input type="hidden" name="link" value="category4grid">
+
                                         <div class="filter-items filter-items-count">
                                             @foreach($cats as $cat)
                                                 <div class="filter-item">
@@ -228,7 +229,7 @@
         // var url = $(this).attr('data-url');
         var url = '{{ route('sortBy',':slug') }}';
         n_url = url.replace(':slug', '{{ $category->slug }}');
-        let redirect = n_url+'?sortBy='+by;
+        let redirect = n_url+'?link=category4grid&sortBy='+by+'';
        window.location.replace(redirect);
 
         // $.get(n_url,function(d){

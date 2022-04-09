@@ -174,22 +174,7 @@ class FrontEndController extends Controller
 
 public function editprofile(){
 
-        $request->validate([
-            'name' => 'required',
-            'contact' => 'required',
-            'address' => 'required',
-            'email' => 'required',
-            'postcode' => 'required',
-        ]);
 
-        $address = Address::findorFail($request->id);
-        $address->name = $request->name;
-        $address->contact = $request->contact;
-        $address->address = $request->address;
-        $address->postcode = $request->postcode;
-        $address->email = $request->email;
-        $address->save();
-        return redirect()->back();
     }
 
     public function wishlist(){

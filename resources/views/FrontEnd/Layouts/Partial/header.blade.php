@@ -47,7 +47,7 @@
                 </button>
 
                 <a href="{{ url('/') }}" class="logo">
-                    <!-- <img src="{{asset('FrontEnd/assets/images/Image/Slider/logo.png')}}" alt="Molla Logo" width="105" height="25"> -->
+                    <img src="{{asset('FrontEnd/assets/images/eshop logo.png')}}" alt="Molla Logo" width="200" height="25">
                 </a>
             </div><!-- End .header-left -->
 
