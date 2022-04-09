@@ -97,12 +97,9 @@
                                         </tr><!-- End .summary-total -->
                                     </tbody>
                                 </table><!-- End .table table-summary -->
-
+                                <form action="{{ route('placeOrder') }}" method="post">
+                                    @csrf
                                 <div class="accordion-summary" id="accordion-payment">
-
-                                    <form action="{{ route('placeOrder') }}" method="post">
-                                        @csrf
-
                                         <div class="custom-control custom-radio">
                                             <input type="radio" id="cash" name="payment" value="cash"
                                                    class="custom-control-input">
@@ -117,7 +114,6 @@
 
                                 </div><!-- End .accordion -->
 
-
 {{--                                    <input type="hidden" name="payment_method" value="esewa">--}}
                                     <input type="hidden" name="total" value="{{ $total }}">
                                     <input type="hidden" name="discount" value="0">
@@ -125,11 +121,13 @@
                                     {{ $address->id }}
                                     @endisset">
                                     <input type="hidden" name="order_notes" value="test">
+                                    @if(!is_null($address))
 
-                                    <button type="submit" class="btn btn-outline-primary-2 btn-order btn-block">
-                                        <span class="btn-text">Place Order</span>
-                                        <span class="btn-hover-text">Place Order</span>
-                                    </button>
+                                        <button type="submit" class="btn btn-outline-primary-2 btn-order btn-block">
+                                            <span class="btn-text">Place Order</span>
+                                            <span class="btn-hover-text">Place Order</span>
+                                        </button>
+                                    @endif
                                 </form>
 
                             </div><!-- End .summary -->
@@ -139,4 +137,19 @@
         </div><!-- End .checkout -->
     </div><!-- End .page-content -->
 </main><!-- End .main -->
+@endsection
+@section('page-scripts')
+{{--    <script>
+        // $(document).ready(function () {
+        //     let curShip = $('input[type=radio][name=payment]:checked').val();
+        //     $('#cart_total').html(parseInt(sub)+parseInt(curShip));
+        //     // console.log();
+        // });
+        $('input[type=radio][name=payment]').change(function() {
+            let type = $(this).val();
+            console.log(type);
+            // let sub = $('#sub').text();
+            // $('#cart_total').html(parseInt(sub)+parseInt(curShip));
+        });
+    </script>--}}
 @endsection
