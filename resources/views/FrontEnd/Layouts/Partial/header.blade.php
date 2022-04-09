@@ -14,11 +14,17 @@
 
                             <li>
                                 <div class="header-dropdown">
-                                    <a href="#">English</a>
+                                    <a href="#"> {{ Config::get('languages')[App::getLocale()] }}</a>
                                     <div class="header-menu">
                                         <ul>
-                                            <li><a href="#">English</a></li>
-                                            <li><a href="#">Nepali</a></li>
+                                            @foreach (Config::get('languages') as $lang => $language)
+                                                @if ($lang != App::getLocale())
+                                                    <li><a href="{{ route('language', $lang) }}">{{$language}}</a></li>
+{{--                                                    <a class="dropdown-item" href="{{ route('lang.switch', $lang) }}"> {{$language}}</a>--}}
+                                                @endif
+                                            @endforeach
+{{--                                            <li><a href="{{ route('language','en') }}">English</a></li>--}}
+{{--                                            <li><a href="{{ route('language','np') }}">Nepali</a></li>--}}
 
                                         </ul>
                                     </div><!-- End .header-menu -->
@@ -26,7 +32,6 @@
                             </li>
                             @auth
                             <li><a href="{{ route('logout') }}">Logout</a></li>
-
                             @else
                             <li><a href="#signin-modal" data-toggle="modal">Login / Register</a></li>
                             @endauth
@@ -143,9 +148,7 @@
                 <nav class="main-nav">
                     <ul class="menu sf-arrows">
                         <li class="megamenu-container active">
-                            <a href="{{route('home')}}">Home</a>
-
-
+                            <a href="{{route('home')}}">{{ __('navbar.Home') }}</a>
                         </li>
 
                         <!-- <li>
@@ -154,7 +157,7 @@
 
                         </li> -->
                         <li>
-                            <a href="#" class="sf-with-ul">Pages</a>
+                            <a href="#" class="sf-with-ul">{{ __('navbar.Pages') }}</a>
 
                             <ul>
                                 <li>
@@ -173,7 +176,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="{{route('blogs')}}">Blog</a>
+                            <a href="{{route('blogs')}}">{{ __('navbar.Blog') }}</a>
                         </li>
                     </ul><!-- End .menu -->
                 </nav><!-- End .main-nav -->

@@ -103,4 +103,4 @@ Route::get('/forgot-password', function () {
     return view('auth.passwords.reset');
 })->middleware('guest')->name('password.request');
 
-
+Route::get('/language/{lang}',[\App\Http\Controllers\LanguageController::class,'locale'])->name('language');

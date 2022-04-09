@@ -21,11 +21,13 @@ use App\Models\Wishlist;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 
 class FrontEndController extends Controller
 {
     public function home(){
 // dd(Auth::check());
+//        Session::set('locale', 'en');
         $categories=Category::all();
         $bests=products::inRandomOrder()->get()->take(3);
         $offers=products::inRandomOrder()->get()->take(2);

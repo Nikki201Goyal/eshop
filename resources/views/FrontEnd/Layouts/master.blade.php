@@ -12,6 +12,7 @@
         @include('FrontEnd.Layouts.Partial.header')
 
     <div>
+
         @yield('content')
 
     </div>
@@ -39,7 +40,7 @@
                                             <figure class="product-main-image">
                                                 <img id="product-zoom" class="product-image" src=""  alt="product image">
 
-                                               
+
                                             </figure><!-- End .product-main-image -->
 
                                         </div><!-- End .row -->
