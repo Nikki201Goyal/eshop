@@ -108,8 +108,7 @@
                                                 data-target="#quickview" data-name="{{ $pro->name }}"
                                                 data-price="{{ $pro->price }}" data-image="{{ $pro->image }}"
                                                 data-id="{{ $pro->id }}" title="Quick view"><span>Quick view</span></a>
-                                            <a href="#" class="btn-product btn-compare"
-                                                title="Compare"><span>compare</span></a>
+                                           
                                         </div><!-- End .product-action -->
                                         @if ($pro->stock == 1)
                                         <a href="#" class="btn-product btn-cart" title="Add to cart"

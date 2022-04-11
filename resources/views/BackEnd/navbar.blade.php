@@ -21,11 +21,13 @@
         </a>
       </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('logout') }}">
+            <a class="nav-link" href="{{ route('logout') }}" >
                 Logout
             </a>
         </li>
 
     </ul>
   </nav>
+
+ 
   <!-- /.navbar -->

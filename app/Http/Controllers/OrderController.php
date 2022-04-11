@@ -117,7 +117,7 @@ class OrderController extends Controller
                 'totalAmount' => $request->total,
                 'productCode' => $request->payment.'-'.$request->total.'-'.Str::random(5),
                 'returnUrl' => 'http://'.url('/orderCompleted'),
-                'failedUrl' => 'http://localhost:3000/orderCompleted',
+                'failedUrl' => 'http://localhost:3000/orderInComplete',
             ])->send();
             if ($response->isRedirect()) {
                 $order= Order::create([

@@ -4,8 +4,8 @@
     <nav aria-label="breadcrumb" class="breadcrumb-nav">
         <div class="container">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('navbar.Home') }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('navbar.Shopping Cart')}}</li>
             </ol>
         </div><!-- End .container -->
     </nav><!-- End .breadcrumb-nav -->
@@ -18,10 +18,10 @@
                         <table class="table table-cart table-mobile">
                             <thead>
                                 <tr>
-                                    <th>Product</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total</th>
+                                    <th>{{ __('navbar.Product')}}</th>
+                                    <th>{{ __('navbar.Price')}}</th>
+                                    <th>{{ __('navbar.Quantity')}}</th>
+                                    <th>{{ __('navbar.Total')}}</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -66,16 +66,16 @@
                     <aside class="col-lg-3">
                         <form action="{{route('checkout')}}" method="GET">
                             <div class="summary summary-cart">
-                                <h3 class="summary-title">Cart Total</h3><!-- End .summary-title -->
+                                <h3 class="summary-title">{{ __('navbar.Cart Total')}}</h3><!-- End .summary-title -->
 
                                 <table class="table table-summary">
                                     <tbody>
                                     <tr class="summary-subtotal">
-                                        <td>Subtotal:</td>
+                                        <td>{{ __('navbar.Subtotal')}}:</td>
                                         <td>Rs. <span id="sub">{{ $total }}</span></td>
                                     </tr><!-- End .summary-subtotal -->
                                     <tr class="summary-shipping">
-                                        <td>Shipping:</td>
+                                        <td>{{ __('navbar.Shipping')}}:</td>
                                         <td>&nbsp;</td>
                                     </tr>
 
@@ -85,10 +85,10 @@
                                                 <input type="radio" id="free-shipping" name="shipping"
                                                        value="0"
                                                        class="custom-control-input" checked>
-                                                <label class="custom-control-label" for="free-shipping" >Normal</label>
+                                                <label class="custom-control-label" for="free-shipping" >{{ __('navbar.Normal')}}</label>
                                             </div><!-- End .custom-control -->
                                         </td>
-                                        <td>Free</td>
+                                        <td>{{ __('navbar.Free')}}</td>
                                     </tr><!-- End .summary-shipping-row -->
 
                                     <tr class="summary-shipping-row">
@@ -97,7 +97,7 @@
                                                 <input type="radio" id="standart-shipping" name="shipping" value="100"
                                                        class="custom-control-input">
                                                 <label class="custom-control-label"
-                                                       for="standart-shipping">Express</label>
+                                                       for="standart-shipping">{{ __('navbar.Express')}}</label>
                                             </div><!-- End .custom-control -->
                                         </td>
                                         <td>Rs. 100.00</td>
@@ -108,35 +108,33 @@
                                             <div class="custom-control custom-radio">
                                                 <input type="radio" id="express-shipping" name="shipping" value="200"
                                                        class="custom-control-input">
-                                                <label class="custom-control-label" for="express-shipping">Same
-                                                    day</label>
+                                                <label class="custom-control-label" for="express-shipping">{{ __('navbar.Same day')}}</label>
                                             </div><!-- End .custom-control -->
                                         </td>
                                         <td>Rs. 200.00</td>
                                     </tr><!-- End .summary-shipping-row -->
 
                                     <tr class="summary-shipping-estimate">
-                                        <td>Active Address<br>
+                                        <td>{{ __('navbar.Active Address')}}<br>
                                             @isset($address)
                                                 {{ $address->address }}
-                                            @endisset<a href="{{ route('dashboard') }}">Change address</a></td>
+                                            @endisset<a href="{{ route('dashboard') }}">{{ __('navbar.Change address')}}</a></td>
                                         <td>&nbsp;</td>
                                     </tr>
                                     <!--End .summary-shipping-estimate -->
 
                                     <tr class="summary-total">
-                                        <td>Total:</td>
+                                        <td>{{ __('navbar.Total')}}:</td>
                                         <td >Rs. <span id="cart_total">{{ $total }}</span></td>
                                     </tr><!-- End .summary-total -->
                                     </tbody>
                                 </table><!-- End .table table-summary -->
 
                                 <button
-                                    class="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO CHECKOUT</button>
+                                    class="btn btn-outline-primary-2 btn-order btn-block">{{ __('navbar.PROCEED TO CHECKOUT')}}</button>
                             </div><!-- End .summary -->
 
-                            <a href="{{ route('home') }}" class="btn btn-outline-dark-2 btn-block mb-3"><span>CONTINUE
-                                SHOPPING</span><i class="icon-refresh"></i></a>
+                            <a href="{{ route('home') }}" class="btn btn-outline-dark-2 btn-block mb-3"><span>{{ __('navbar.CONTINUE SHOPPING')}}</span><i class="icon-refresh"></i></a>
                         </form>
 
                     </aside><!-- End .col-lg-3 -->

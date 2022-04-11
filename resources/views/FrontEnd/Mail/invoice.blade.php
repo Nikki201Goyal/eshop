@@ -315,7 +315,7 @@ footer {
             <div class="logo"><img src="" alt="Logo" /></div>
             <div class="title">
               <h1>Invoice</h1>
-              <p>Invoice Date: <span id="invoice_date">01 Feb 2018</span><br>
+              <p>Invoice Date: <span id="invoice_date">{{$order->created_at}}</span><br>
               </p>
             </div><!--End Title-->
           </div><!--End InvoiceTop-->
@@ -324,7 +324,7 @@ footer {
 
           <div id="invoice-mid">
             <div id="message">
-              <h2>Hello Andrea De Asmundis,</h2>
+              <h2>Hello {{$order->user->name}},</h2>
               <p>Thank you for your order</p>
             </div>
 
@@ -332,22 +332,20 @@ footer {
                   <div class="col-left">
                       <div class="clientlogo"><img src="https://cdn3.iconfinder.com/data/icons/daily-sales/512/Sale-card-address-512.png" alt="Sup" /></div>
                       <div class="clientinfo">
-                          <h2 id="supplier">Admin Name</h2>
-                          <p><span id="address">Address</span><br><span id="city">RORETO DI CHERASCO</span><br><span id="country">IT</span> - <span id="zip">12062</span><br><span id="tax_num">555-555-5555</span><br></p>
+                          <h2 id="supplier">{{$order->user->name}}</h2>
+                          <p><span id="address">Address</span><br><span id="city">{{$order->user->address}}</span><br><span id="tax_num">{{$order->user->phone}}</span><br></p>
                       </div>
                   </div>
                   <div class="col-right">
                       <table class="table">
                           <tbody>
                               <tr>
-                                  <td><span>Invoice Total</span><label id="invoice_total">61.2</label></td>
+                                  <td><span>Invoice Total</span><label id="invoice_total">{{$order->total}}</label></td>
                                   <td><span>Currency</span><label id="currency">Rupees</label></td>
                               </tr>
                               <tr>
-                                  <td><span>Payment Term</span><label id="payment_term">60 gg DFFM</label></td>
-                                  <td><span>Invoice Type</span><label id="invoice_type">EXP REP INV</label></td>
+                                  <td><span>Payment Term</span><label id="payment_term">{{$order->payment_method}}</label></td>
                               </tr>
-                              <tr><td colspan="2"><span>Note</span>#<label id="note">None</label></td></tr>
                           </tbody>
                       </table>
                   </div>
@@ -361,40 +359,26 @@ footer {
                 <thead>
                     <tr class="tabletitle">
                       <th>Type</th>
-                      <th>Description</th>
+                     
                       <th>Item Name</th>
                       <th>Quantity</th>
                       <th>Unit Price</th>
                       <th>Total</th>
                     </tr>
                 </thead>
+                @foreach($order->orderDetails as $ord)
                 <tr class="list-item">
                   <td data-label="Type" class="tableitem">ITEM</td>
-                  <td data-label="Description" class="tableitem">Servizio EDI + Traffico mese di novembre 2017</td>
-                  <td data-label="Quantity" class="tableitem">46.6</td>
-                  <td data-label="Unit Price" class="tableitem">1</td>
-                  <td data-label="Taxable Amount" class="tableitem">46.6</td>
-                  <td data-label="Tax Code" class="tableitem">DP20</td>
-                  <td data-label="%" class="tableitem">20</td>
-                  <td data-label="Tax Amount" class="tableitem">9.32</td>
-                  <td data-label="AWT" class="tableitem">None</td>
-                  <td data-label="Total" class="tableitem">55.92</td>
+                  <td data-label="Item Name" class="tableitem">{{$ord->name}}</td>
+                  <td data-label="Quantity" class="tableitem">{{$ord->quantity}}</td>
+                  <td data-label="Unit Price" class="tableitem">{{$ord->price}}</td>
+     
+                  <td data-label="Total" class="tableitem">{{$ord->qunatity * $ord->price}}</td>
                 </tr>
-               <tr class="list-item">
-                  <td data-label="Type" class="tableitem">ITEM</td>
-                  <td data-label="Description" class="tableitem">Traffico mese di novembre 2017 FRESSNAPF TIERNAHRUNGS GMBH riadd. Almo DE</td>
-                  <td data-label="Quantity" class="tableitem">4.4</td>
-                  <td data-label="Unit Price" class="tableitem">1</td>
-                  <td data-label="Taxable Amount" class="tableitem">46.6</td>
-                  <td data-label="Tax Code" class="tableitem">DP20</td>
-                  <td data-label="%" class="tableitem">20</td>
-                  <td data-label="Tax Amount" class="tableitem">9.32</td>
-                  <td data-label="AWT" class="tableitem">None</td>
-                  <td data-label="Total" class="tableitem">55.92</td>
-                </tr>
+              
                   <tr class="list-item total-row">
                       <th colspan="9" class="tableitem">Sub Total</th>
-                      <td data-label="Grand Total" class="tableitem">111.84</td>
+                      <td data-label="Grand Total" class="tableitem">{{$ord->total}}</td>
                   </tr>
                   <tr class="list-item total-row">
                     <th colspan="9" class="tableitem">Shipping and handling</th>

@@ -2,7 +2,7 @@
     <div class="header-top">
         <div class="container">
             <div class="header-left">
-                <a href="tel:#"><i class="icon-phone"></i>Call: +0123 456 789</a>
+                <a href="tel:#"><i class="icon-phone"></i>{{ __('navbar.Call')}}: +0123 456 789</a>
             </div><!-- End .header-left -->
 
             <div class="header-right">
@@ -31,9 +31,9 @@
                                 </div>
                             </li>
                             @auth
-                            <li><a href="{{ route('logout') }}">Logout</a></li>
+                            <li><a href="{{ route('logout') }}">{{ __('navbar.Logout')}}</a></li>
                             @else
-                            <li><a href="#signin-modal" data-toggle="modal">Login / Register</a></li>
+                            <li><a href="#signin-modal" data-toggle="modal">{{ __('navbar.Login')}} / {{ __('navbar.Register')}}</a></li>
                             @endauth
                         </ul>
                     </li>
@@ -52,7 +52,7 @@
                 </button>
 
                 <a href="{{ url('/') }}" class="logo">
-                    <!-- <img src="{{asset('FrontEnd/assets/images/Image/Slider/logo.png')}}" alt="Molla Logo" width="105" height="25"> -->
+                    <img src="{{asset('FrontEnd/assets/images/eshoplogo.png')}}" alt="Molla Logo" width="200" height="30" style="margin-top: -15%; margin-left:-30%">
                 </a>
             </div><!-- End .header-left -->
 
@@ -63,7 +63,7 @@
                         <div class="header-search-wrapper search-wrapper-wide">
                             <label for="q" class="sr-only">Search</label>
                             <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
-                            <input type="search" class="form-control" name="q" id="q" placeholder="Search product ..."
+                            <input type="search" class="form-control" name="q" id="q" placeholder="{{ __('navbar.Search product')}} ..."
                                 required>
                         </div><!-- End .header-search-wrapper -->
                     </form>
@@ -78,7 +78,7 @@
                                 <i class="icon-random"></i>
 
                             </div>
-                            <p>Compare</p>
+                            <p>{{ __('navbar.Compare') }}</p>
                         </a>
                     </div><!-- End .compare-dropdown -->
 
@@ -88,7 +88,7 @@
                             <i class="icon-heart-o"></i>
 
                         </div>
-                        <p>Wishlist</p>
+                        <p>{{ __('navbar.Wishlist') }}</p>
                     </a>
                 </div><!-- End .compare-dropdown -->
 
@@ -98,7 +98,7 @@
                             <i class="icon-shopping-cart"></i>
 
                         </div>
-                        <p>Cart</p>
+                        <p>{{ __('navbar.Cart') }}</p>
                     </a>
 
 
@@ -109,7 +109,7 @@
                             <i class="icon-user"></i>
 
                         </div>
-                        <p>Profile</p>
+                        <p>{{ __('navbar.Profile') }}</p>
                     </a>
                 </div><!-- End .compare-dropdown -->
                 @endauth
@@ -123,7 +123,7 @@
                 <div class="dropdown category-dropdown">
                     <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false" data-display="static" title="Browse Categories">
-                        Browse Categories <i class="icon-angle-down"></i>
+                        {{ __('navbar.Browse Categories')}}<i class="icon-angle-down"></i>
                     </a>
 
                     <div class="dropdown-menu">
@@ -161,17 +161,17 @@
 
                             <ul>
                                 <li>
-                                    <a href="{{route('about')}}">About</a>
+                                    <a href="{{route('about')}}">{{ __('navbar.About') }}</a>
 
 
                                 </li>
                                 <li>
-                                    <a href="{{route('contact')}}">Contact</a>
+                                    <a href="{{route('contact')}}">{{ __('navbar.Contact') }}</a>
 
 
                                 </li>
 
-                                <li><a href="{{route('faq')}}">FAQs</a></li>
+                                <li><a href="{{route('faq')}}">{{ __('navbar.FAQs') }}</a></li>
 
                             </ul>
                         </li>

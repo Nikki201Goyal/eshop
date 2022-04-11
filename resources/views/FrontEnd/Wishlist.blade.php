@@ -5,9 +5,9 @@
             <nav aria-label="breadcrumb" class="breadcrumb-nav">
                 <div class="container">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Shop</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Wishlist</li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('navbar.Home') }}</a></li>
+                        <li class="breadcrumb-item"><a href="#">{{ __('navbar.Shop')}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ __('navbar.Wishlist') }}</li>
                     </ol>
                 </div><!-- End .container -->
             </nav><!-- End .breadcrumb-nav -->
@@ -17,9 +17,9 @@
 					<table class="table table-wishlist table-mobile">
 						<thead>
 							<tr>
-								<th>Product</th>
-								<th>Price</th>
-								<th>Stock Status</th>
+								<th>{{ __('navbar.Product')}}</th>
+								<th>{{ __('navbar.Price') }}</th>
+								<th>{{ __('navbar.Stock') }} {{ __('navbar.Status')}}</th>
 								<th></th>
 								<th></th>
 							</tr>
@@ -46,11 +46,11 @@
 								<td class="stock-col"><span class="in-stock">{{ $wish->product->stock }}</span></td>
                                 @if ($wish->product->stock == 1)
                                 <td class="action-col">
-									<a href="{{ route('wishlist.Cart', $wish->id) }}" class="btn btn-block btn-outline-primary-2"><i class="icon-cart-plus"></i>Add to Cart</a >
+									<a href="{{ route('wishlist.Cart', $wish->id) }}" class="btn btn-block btn-outline-primary-2"><i class="icon-cart-plus"></i>{{ __('navbar.Add to Cart')}}</a >
 								</td>
                                 @else
                                 <td class="action-col">
-                                    <button href="" class="btn btn-block btn-outline-primary-2" disabled>Out Of Stock</button >
+                                    <button href="" class="btn btn-block btn-outline-primary-2" disabled>{{ __('navbar.Out Of Stock')}}</button >
                                 </td>
                                 @endif
 

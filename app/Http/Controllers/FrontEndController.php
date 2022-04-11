@@ -16,9 +16,11 @@ use Illuminate\Http\Request;
 use App\Models\contact;
 use App\Models\Order;
 use App\Models\products;
+use App\Models\User;
 use App\Models\Subscribe;
 use App\Models\Wishlist;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
@@ -46,8 +48,16 @@ class FrontEndController extends Controller
         return view('FrontEnd.contact');
     }
 
+    public function forgetPassword(){
+        return view('FrontEnd.ForgetPassword');
+    }
+
     public function orderCompleted(){
         return view('FrontEnd.orderCompleted');
+    }
+
+    public function orderInComplete(){
+        return view('FrontEnd.orderInCompleted');
     }
 
     public function about(){
@@ -174,25 +184,42 @@ class FrontEndController extends Controller
     }
 }
 
-public function editprofile(){
+public function editprofile(Request $request){
+    $request->validate([
+        'name' => 'required',
+        'address' => 'required',
+        'contact' => 'required',
+        'email' => 'required',
+    ]);
+    $User = Auth::user();
+    $User->name = $request->name;
+    $User->address = $request->address;
+    $User->contact = $request->contact;
+    $User->email = $request->email;
 
+    $User->save();
+    if($request->password!=null){
+        // dd('pass');
         $request->validate([
-            'name' => 'required',
-            'contact' => 'required',
-            'address' => 'required',
-            'email' => 'required',
-            'postcode' => 'required',
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'oldpassword' => 'required',
         ]);
-
-        $address = Address::findorFail($request->id);
-        $address->name = $request->name;
-        $address->contact = $request->contact;
-        $address->address = $request->address;
-        $address->postcode = $request->postcode;
-        $address->email = $request->email;
-        $address->save();
-        return redirect()->back();
+        if(Hash::check($request->oldpassword,$User->password)){
+            // dd('hash');
+            $User->password = bcrypt($request->password);
+            $User->save();
+            Auth::logout();
+        }
+        else{
+            return redirect()->back()->with('warning','Old Password does not match');
+        }
+   
     }
+
+    return redirect()->route('dashboard')->with([
+        'success' => 'Profile edited successfully'
+    ]);
+ }
 
     public function wishlist(){
         if(Auth::check()){
@@ -324,6 +351,12 @@ public function editprofile(){
     public function logout(){
         Auth::logout();
         return redirect()->back();
+    }
+
+    public function invoice(Request $request){
+        $order = Order::findOrFail($request->order_id);
+
+        return view('FrontEnd.Mail.invoice', compact('order'));
     }
 }
 

@@ -34,6 +34,8 @@ Route::get('/faq', [App\HTTP\Controllers\FrontEndController::class, 'faq'])->nam
 Route::get('/terms', [App\HTTP\Controllers\FrontEndController::class, 'terms'])->name('terms');
 Route::get('/privacy', [App\HTTP\Controllers\FrontEndController::class, 'privacy'])->name('privacy');
 Route::get('/dashboard', [App\HTTP\Controllers\FrontEndController::class, 'dashboard'])->name('dashboard');
+Route::post('/editprofile', [App\HTTP\Controllers\FrontEndController::class, 'editProfile'])->name('editProfile');
+Route::get('/invoice',[App\Http\Controllers\FrontEndController::class,'invoice'])->name('invoice');
 Route::get('/return', [App\HTTP\Controllers\FrontEndController::class, 'return'])->name('return');
 Route::get('/category/{slug}', [App\HTTP\Controllers\FrontEndController::class, 'category'])->name('category');
 Route::get('/categoryList/{slug}', [App\HTTP\Controllers\FrontEndController::class, 'categoryList'])->name('categoryList');
@@ -47,6 +49,7 @@ Route::get('/storeContact',[App\Http\Controllers\FrontEndController::class,'stor
 Route::get('/storeSubscribe',[App\Http\Controllers\FrontEndController::class,'storeSubscribe'])->name('storeSubscribe');
 Route::post('/wishlists',[App\Http\Controllers\WishlistController::class,'store'])->name('wishlists');
 Route::post('/carts',[App\Http\Controllers\CartController::class,'store'])->name('carts');
+Route::get('/forgetPassword',[App\Http\Controllers\FrontEndController::class,'forgetPassword'])->name('forgetPassword');
 
 Route::get('/filter',[App\Http\Controllers\FrontEndController::class,'filter'])->name('filter');
 
@@ -63,6 +66,8 @@ Route::group(['middleware'=>'auth'], function(){
     Route::post('/address/edit',  [App\HTTP\Controllers\AddressController::class, 'update'])->name('address.edit');
     Route::post('/address/{id}/activate',  [App\HTTP\Controllers\AddressController::class, 'activate'])->name('address.activate');
     Route::post('/placeOrder',   [App\HTTP\Controllers\OrderController::class, 'placeOrder'])->name('placeOrder');
+Route::get('/orderInComplete',   [App\HTTP\Controllers\FrontEndController::class, 'orderInComplete'])->name('orderInComplete');
+    
     Route::get('/orderCompleted',   [App\HTTP\Controllers\FrontEndController::class, 'orderCompleted'])->name('orderCompleted');
 });
 
@@ -95,7 +100,6 @@ Route::group(['middleware'=>'role:super|admin'], function(){
     Route::post('admin/order/changeStatus', [App\Http\Controllers\OrderController::class, 'changeStatus'])->name('Order.changeStatus');
 });
 Route::get('/mail/OrderConfirmed', [App\Http\Controllers\MailController::class, 'orderConfirmed'])->name('mail.OrderConfirmed');
-
 //compare
 Route::get('/compare', [App\HTTP\Controllers\FrontEndController::class, 'compare'])->name('compare');
 Route::post('/rating', [App\Http\Controllers\RatingController::class, 'rating'])->name('rating');
