@@ -22,9 +22,9 @@
 
                             <div class="intro-slide">
                                 <figure class="slide-image">
-                                    <picture>
+                                    <picture style="height: 100%">
                                         <source media="(max-width: 480px)" srcset="{{asset($slide->cover)}}">
-                                        <img src="{{asset($slide->cover)}}" alt="Image Desc">
+                                        <img style="height: 100%; object-fit: cover" src="{{asset($slide->cover)}}" alt="Image Desc">
                                     </picture>
                                 </figure><!-- End .slide-image -->
 
