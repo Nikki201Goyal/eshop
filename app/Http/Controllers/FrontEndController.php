@@ -48,6 +48,10 @@ class FrontEndController extends Controller
         return view('FrontEnd.contact');
     }
 
+    public function forgetPassword(){
+        return view('FrontEnd.ForgetPassword');
+    }
+
     public function orderCompleted(){
         return view('FrontEnd.orderCompleted');
     }
@@ -347,6 +351,12 @@ public function editprofile(Request $request){
     public function logout(){
         Auth::logout();
         return redirect()->back();
+    }
+
+    public function invoice(Request $request){
+        $order = Order::findOrFail($request->order_id);
+
+        return view('FrontEnd.Mail.invoice', compact('order'));
     }
 }
 

@@ -35,7 +35,7 @@ Route::get('/terms', [App\HTTP\Controllers\FrontEndController::class, 'terms'])-
 Route::get('/privacy', [App\HTTP\Controllers\FrontEndController::class, 'privacy'])->name('privacy');
 Route::get('/dashboard', [App\HTTP\Controllers\FrontEndController::class, 'dashboard'])->name('dashboard');
 Route::post('/editprofile', [App\HTTP\Controllers\FrontEndController::class, 'editProfile'])->name('editProfile');
-
+Route::get('/invoice',[App\Http\Controllers\FrontEndController::class,'invoice'])->name('invoice');
 Route::get('/return', [App\HTTP\Controllers\FrontEndController::class, 'return'])->name('return');
 Route::get('/category/{slug}', [App\HTTP\Controllers\FrontEndController::class, 'category'])->name('category');
 Route::get('/categoryList/{slug}', [App\HTTP\Controllers\FrontEndController::class, 'categoryList'])->name('categoryList');
@@ -49,6 +49,7 @@ Route::get('/storeContact',[App\Http\Controllers\FrontEndController::class,'stor
 Route::get('/storeSubscribe',[App\Http\Controllers\FrontEndController::class,'storeSubscribe'])->name('storeSubscribe');
 Route::post('/wishlists',[App\Http\Controllers\WishlistController::class,'store'])->name('wishlists');
 Route::post('/carts',[App\Http\Controllers\CartController::class,'store'])->name('carts');
+Route::get('/forgetPassword',[App\Http\Controllers\FrontEndController::class,'forgetPassword'])->name('forgetPassword');
 
 Route::get('/filter',[App\Http\Controllers\FrontEndController::class,'filter'])->name('filter');
 

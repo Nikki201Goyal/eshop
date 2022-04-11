@@ -17,6 +17,10 @@
                 <span>BACK TO HOMEPAGE</span>
                 <i class="icon-long-arrow-right"></i>
             </a>
+            <a href="" class="btn btn-outline-primary-2 btn-minwidth-lg">
+                <span>PRINT INVOIVE</span>
+                <i class="icon-long-arrow-right"></i>
+            </a>
         </div><!-- End .container -->
     </div><!-- End .error-content text-center -->
 </main><!-- End .main -->

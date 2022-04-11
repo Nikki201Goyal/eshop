@@ -16,6 +16,7 @@ class OrderFactory extends Factory
         return [
             'user_id' =>$this->faker->numberBetween(1,10),
             'total' => $this->faker->randomDigit(),
+            'Shipping' => $this->faker->randomDigit(),
             'discount' =>$this->faker->randomDigit(),
             'payment_method'=>'esewa',
             'address_id' =>$this->faker->numberBetween(1,10),
