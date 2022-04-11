@@ -107,26 +107,31 @@ class OrderController extends Controller
             'discount'=>'required',
             'payment'=>'required',
             'order_notes'=>'required',
+            'shipping'=>'required',
         ]);
         if ($request->payment == "esewa"){
+            $pid = $request->payment.'-'.$request->total.'-'.Str::random(5);
             $response =  $gateway->purchase([
                 'amount' => $request->total,
-                'deliveryCharge' => 0,
+                'deliveryCharge' => $request->shipping,
                 'serviceCharge' => 0,
                 'taxAmount' => 0,
-                'totalAmount' => $request->total,
-                'productCode' => $request->payment.'-'.$request->total.'-'.Str::random(5),
-                'returnUrl' => 'http://'.url('/orderCompleted'),
-                'failedUrl' => 'http://localhost:3000/orderInComplete',
+                'totalAmount' => $request->total+$request->shipping,
+                'productCode' => $pid,
+                'returnUrl' => 'http:'.url('/orderCompleted'),
+                'failedUrl' =>  'http:'.url('/orderInComplete'),
             ])->send();
             if ($response->isRedirect()) {
+                $response->redirect();
                 $order= Order::create([
                     'address_id' => $request->address_id,
                     'total' => $request->total,
                     'discount' => $request->discount,
                     'payment_method' => $request->payment,
                     'order_notes' => $request->order_notes,
-                    'user_id' => Auth::user()->id
+                    'user_id' => Auth::user()->id,
+                    'oid' => $pid,
+                    'shipping' => $request->shipping,
                 ]);
                 $cart=Cart::where('user_id', Auth::user()->id)->get();
                 foreach($cart as $carts){
@@ -137,10 +142,10 @@ class OrderController extends Controller
                         'order_id' => $order->id,
                     ]);
                     $carts->delete();
-                    Mail::to(Auth::user()->email)->send(new
-                    \App\Mail\OrderConfirmed($order));
                 }
-                $response->redirect();
+                Mail::to(Auth::user()->email)->send(new
+                \App\Mail\OrderConfirmed($order));
+//                dd('done');
             }
             else{
                 return back()->with('error', 'Payment Failed');

@@ -52,8 +52,9 @@ class FrontEndController extends Controller
         return view('FrontEnd.ForgetPassword');
     }
 
-    public function orderCompleted(){
-        return view('FrontEnd.orderCompleted');
+    public function orderCompleted(Request $request){
+        $order=Order::where('oid',$request->oid)->get();
+        return view('FrontEnd.orderCompleted',compact('order'));
     }
 
     public function orderInComplete(){
@@ -145,7 +146,7 @@ class FrontEndController extends Controller
                 $total+=$item->product->price*$item->quantity;
             }
 
-             return view('FrontEnd.cart', compact('cart', 'address','total'));
+            return view('FrontEnd.cart', compact('cart', 'address','total'));
 
         }
         else{
@@ -164,68 +165,64 @@ class FrontEndController extends Controller
             foreach($cart as $carts){
                 $total += $carts->quantity * $carts->product->price;
             }
-        return view('FrontEnd.checkout', compact('address', 'cart', 'total','shipping'));
+            return view('FrontEnd.checkout', compact('address', 'cart', 'total','shipping'));
+        }
+        else{
+            return redirect()->route('login');
+        }
     }
-    else{
-        return redirect()->route('login');
-    }
-}
 
     public function dashboard(){
         if(Auth::check()){
-        $order=Order::where('user_id', Auth::user()->id)->get();
-        $user=Auth::user();
-        $address= Address::where('user_id', Auth::user()->id)->get();
-        return view('FrontEnd.dashboard', compact('address', 'order', 'user'));
+            $order=Order::where('user_id', Auth::user()->id)->get();
+            $user=Auth::user();
+            $address= Address::where('user_id', Auth::user()->id)->get();
+            return view('FrontEnd.dashboard', compact('address', 'order', 'user'));
 
-    }
-    else{
-        return redirect()->route('login');
-    }
-}
-
-public function editprofile(Request $request){
-    $request->validate([
-        'name' => 'required',
-        'address' => 'required',
-        'contact' => 'required',
-        'email' => 'required',
-    ]);
-    $User = Auth::user();
-    $User->name = $request->name;
-    $User->address = $request->address;
-    $User->contact = $request->contact;
-    $User->email = $request->email;
-
-    $User->save();
-    if($request->password!=null){
-        // dd('pass');
-        $request->validate([
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'oldpassword' => 'required',
-        ]);
-        if(Hash::check($request->oldpassword,$User->password)){
-            // dd('hash');
-            $User->password = bcrypt($request->password);
-            $User->save();
-            Auth::logout();
         }
         else{
-            return redirect()->back()->with('warning','Old Password does not match');
+            return redirect()->route('login');
         }
-   
     }
 
-    return redirect()->route('dashboard')->with([
-        'success' => 'Profile edited successfully'
-    ]);
- }
-
+    public function editprofile(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'address' => 'required',
+            'contact' => 'required',
+            'email' => 'required',
+        ]);
+        $User = Auth::user();
+        $User->name = $request->name;
+        $User->address = $request->address;
+        $User->contact = $request->contact;
+        $User->email = $request->email;
+        $User->save();
+        if($request->password!=null){
+            // dd('pass');
+            $request->validate([
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'oldpassword' => 'required',
+            ]);
+            if(Hash::check($request->oldpassword,$User->password)){
+                // dd('hash');
+                $User->password = bcrypt($request->password);
+                $User->save();
+                Auth::logout();
+            }
+            else{
+                return redirect()->back()->with('warning','Old Password does not match');
+            }
+        }
+        return redirect()->route('dashboard')->with([
+            'success' => 'Profile edited successfully'
+        ]);
+    }
     public function wishlist(){
         if(Auth::check()){
             $user=Auth::user();
             $wishlist=Wishlist::where('user_id', $user->id)->get();
-             return view('FrontEnd.Wishlist', compact('wishlist'));
+            return view('FrontEnd.Wishlist', compact('wishlist'));
 
         }
         else{
@@ -244,49 +241,49 @@ public function editprofile(Request $request){
             'subject'=>'required',
             'message'=>'required',
         ]);
-       $contact= contact::create([
+        $contact= contact::create([
             'name' => $request->name,
-             'phone' => $request->phone,
-             'email' => $request->email,
-             'subject' => $request->subject,
-             'message' => $request->message,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'subject' => $request->subject,
+            'message' => $request->message,
 
 
-         ]);
-         Mail::to('nikkigoyal107@gmail.com')->send(new
-         \App\Mail\ContactMessage($contact));
-         return redirect()->back();
-      }
+        ]);
+        Mail::to('nikkigoyal107@gmail.com')->send(new
+        \App\Mail\ContactMessage($contact));
+        return redirect()->back();
+    }
 
-       public function storeSubscribe(Request $request){
+    public function storeSubscribe(Request $request){
 
         $request->validate([
             'email'=>'required',
 
         ]);
-       $subscibe= Subscribe::create([
-             'email' => $request->email,
-         ]);
-         return redirect()->back();
+        $subscibe= Subscribe::create([
+            'email' => $request->email,
+        ]);
+        return redirect()->back();
 
-      }
+    }
 
-      public function compare(){
-          return view('FrontEnd.compare');
-      }
-      public function compareData($slug){
-          $category = Category::where('slug', $slug)->first();
-          return response()->json($category->products);
-      }
-      public function compareProduct($id){
+    public function compare(){
+        return view('FrontEnd.compare');
+    }
+    public function compareData($slug){
+        $category = Category::where('slug', $slug)->first();
+        return response()->json($category->products);
+    }
+    public function compareProduct($id){
         $product = products::find($id);
         return response()->json($product);
     }
 
     public function search(Request $request){
         $products= products::query()
-        ->where('name', 'LIKE', "%{$request->q}%")
-        ->get();
+            ->where('name', 'LIKE', "%{$request->q}%")
+            ->get();
         return view('FrontEnd.search', compact('products'));
     }
 
@@ -354,9 +351,14 @@ public function editprofile(Request $request){
     }
 
     public function invoice(Request $request){
-        $order = Order::findOrFail($request->order_id);
 
-        return view('FrontEnd.Mail.invoice', compact('order'));
+        $order = Order::where('oid',$request->oid)->first();
+//        dd($order->id);
+        $total=0;
+        foreach ($order->orderDetails as $item){
+            $total+=$item->prod->price*$item->quantity;
+        }
+        return view('FrontEnd.Mail.invoice', compact('order','total'));
     }
 }
 

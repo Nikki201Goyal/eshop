@@ -17,7 +17,7 @@
                 <span>BACK TO HOMEPAGE</span>
                 <i class="icon-long-arrow-right"></i>
             </a>
-            <a href="" class="btn btn-outline-primary-2 btn-minwidth-lg">
+            <a href="{{ route('invoice',['oid'=>request('oid')]) }}" class="btn btn-outline-primary-2 btn-minwidth-lg">
                 <span>PRINT INVOIVE</span>
                 <i class="icon-long-arrow-right"></i>
             </a>

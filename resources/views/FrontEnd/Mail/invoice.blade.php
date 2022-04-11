@@ -311,9 +311,9 @@ footer {
         <div id="invoiceholder">
         <div id="invoice" class="effect2">
 
-          <div id="invoice-top">
+          <div id="invoice-top" style="padding-bottom: 30px">
             <div class="logo"><img src="" alt="Logo" /></div>
-            <div class="title">
+            <div class="title" style="padding-bottom: 10px">
               <h1>Invoice</h1>
               <p>Invoice Date: <span id="invoice_date">{{$order->created_at}}</span><br>
               </p>
@@ -359,7 +359,7 @@ footer {
                 <thead>
                     <tr class="tabletitle">
                       <th>Type</th>
-                     
+
                       <th>Item Name</th>
                       <th>Quantity</th>
                       <th>Unit Price</th>
@@ -369,25 +369,25 @@ footer {
                 @foreach($order->orderDetails as $ord)
                 <tr class="list-item">
                   <td data-label="Type" class="tableitem">ITEM</td>
-                  <td data-label="Item Name" class="tableitem">{{$ord->name}}</td>
+                  <td data-label="Item Name" class="tableitem">{{$ord->prod->name}}</td>
                   <td data-label="Quantity" class="tableitem">{{$ord->quantity}}</td>
                   <td data-label="Unit Price" class="tableitem">{{$ord->price}}</td>
-     
-                  <td data-label="Total" class="tableitem">{{$ord->qunatity * $ord->price}}</td>
+
+                  <td data-label="Total" class="tableitem">{{$ord->quantity * $ord->price}}</td>
                 </tr>
-              
+                  @endforeach
                   <tr class="list-item total-row">
-                      <th colspan="9" class="tableitem">Sub Total</th>
-                      <td data-label="Grand Total" class="tableitem">{{$ord->total}}</td>
+                      <th colspan="4" class="tableitem">Sub Total</th>
+                      <td data-label="Grand Total" class="tableitem">{{ $total }}</td>
                   </tr>
                   <tr class="list-item total-row">
-                    <th colspan="9" class="tableitem">Shipping and handling</th>
-                    <td data-label="Grand Total" class="tableitem">111.84</td>
+                    <th colspan="4" class="tableitem">Shipping and handling</th>
+                    <td data-label="Grand Total" class="tableitem">{{ $order->shipping }}</td>
                 </tr>
                 <br>
                 <tr class="list-item total-row">
-                    <th colspan="9" class="tableitem">Grand total</th>
-                    <td data-label="Grand Total" class="tableitem">1133</td>
+                    <th colspan="4" class="tableitem">Grand total</th>
+                    <td data-label="Grand Total" class="tableitem">{{ $order->shipping + $total }}</td>
                 </tr>
               </table>
             </div><!--End Table-->

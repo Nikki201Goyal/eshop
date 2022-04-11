@@ -18,8 +18,9 @@ class CreateOrdersTable extends Migration
             $table->timestamps();
             $table->string('payment_method');
             $table->string('total');
-            $table->string('Shipping');
+            $table->string('shipping');
             $table->longText('discount');
+            $table->longText('oid')->nullable();
             $table->foreignId('user_id')->default('1');
             $table->foreignId('address_id')->default('1');
             $table->longText('order_notes');
