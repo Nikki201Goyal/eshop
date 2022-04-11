@@ -181,7 +181,7 @@
                 <div class="bg-lighter trending-products">
                     <div class="heading heading-flex mb-3">
                         <div class="heading-left">
-                            <h2 class="title">Trending Today</h2><!-- End .title -->
+                            <h2 class="title">{{ __('navbar.Trending Today') }}</h2><!-- End .title -->
                         </div><!-- End .heading-left -->
 
                         <div class="heading-right">

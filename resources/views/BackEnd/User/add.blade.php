@@ -47,19 +47,19 @@
                 </div><!-- /.card-body -->
 
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Address</label>
+                  <label for="address">Address</label>
                   <input type="text" class="form-control" name="address" placeholder="Enter Address" required>
 
                 </div><!-- /.card-body -->
 
                 <div class="form-group">
-                  <label for="description">Contact</label>
+                  <label for="contact">Contact</label>
                   <input type="text" class="form-control" name="contact" placeholder="Enter Contact" required>
 
                 </div><!-- /.card-body -->
 
                 <div class="form-group">
-                    <label for="description">Email</label>
+                    <label for="email">Email</label>
                     <input type="email" class="form-control" name="email" placeholder="Enter Email">
 
                 </div><!-- /.card-body -->

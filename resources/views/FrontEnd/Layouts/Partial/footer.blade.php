@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-sm-6 col-lg-3">
                     <div class="widget widget-about">
-                        <img src="{{asset('FrontEnd/assets/images/Image/Slider/logo-footer.png')}}" class="footer-logo" alt="Footer Logo" width="105" height="25">
+                        <img src="{{asset('FrontEnd/assets/images/logoEshop.png')}}" class="footer-logo" alt="Footer Logo" width="250" height="25">
                         <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. </p>
 
                         <div class="widget-call">
@@ -17,36 +17,36 @@
 
                 <div class="col-sm-6 col-lg-3">
                     <div class="widget">
-                        <h4 class="widget-title">Useful Links</h4><!-- End .widget-title -->
+                        <h4 class="widget-title">{{ __('navbar.Useful Links') }}</h4><!-- End .widget-title -->
 
                         <ul class="widget-list">
-                            <li><a href="{{route('about')}}">About </a></li>
-                            <li><a href="{{route('faq')}}">FAQ</a></li>
-                            <li><a href="{{route('contact')}}">Contact us</a></li>
+                            <li><a href="{{route('about')}}">{{ __('navbar.About') }} </a></li>
+                            <li><a href="{{route('faq')}}">{{ __('navbar.FAQs') }}</a></li>
+                            <li><a href="{{route('contact')}}">{{ __('navbar.Contact Us') }}</a></li>
                         </ul><!-- End .widget-list -->
                     </div><!-- End .widget -->
                 </div><!-- End .col-sm-6 col-lg-3 -->
 
                 <div class="col-sm-6 col-lg-3">
                     <div class="widget">
-                        <h4 class="widget-title">Customer Service</h4><!-- End .widget-title -->
+                        <h4 class="widget-title">{{ __('navbar.Customer Service') }}</h4><!-- End .widget-title -->
 
                         <ul class="widget-list">
-                            <li><a href="{{route('return')}}">Returns</a></li>
-                            <li><a href="{{route('terms')}}">Terms and conditions</a></li>
-                            <li><a href="{{route('privacy')}}">Privacy Policy</a></li>
+                            <li><a href="{{route('return')}}">{{ __('navbar.Returns') }}</a></li>
+                            <li><a href="{{route('terms')}}">{{ __('navbar.Terms and conditions') }}</a></li>
+                            <li><a href="{{route('privacy')}}">{{ __('navbar.Privacy Policy') }}</a></li>
                         </ul><!-- End .widget-list -->
                     </div><!-- End .widget -->
                 </div><!-- End .col-sm-6 col-lg-3 -->
 
                 <div class="col-sm-6 col-lg-3">
                     <div class="widget">
-                        <h4 class="widget-title">My Account</h4><!-- End .widget-title -->
+                        <h4 class="widget-title">{{ __('navbar.My Account') }}</h4><!-- End .widget-title -->
 
                         <ul class="widget-list">
-                            <li><a href="{{ route('dashboard') }}">My Profile</a></li>
-                            <li><a href="{{ route('cart') }}">View Cart</a></li>
-                            <li><a href="{{ route('wishlist') }}">My Wishlist</a></li>
+                            <li><a href="{{ route('dashboard') }}">{{ __('navbar.My Profile') }}</a></li>
+                            <li><a href="{{ route('cart') }}">{{ __('navbar.View Cart') }}</a></li>
+                            <li><a href="{{ route('wishlist') }}">{{ __('navbar.My Wishlist')}}</a></li>
                         </ul><!-- End .widget-list -->
                     </div><!-- End .widget -->
                 </div><!-- End .col-sm-6 col-lg-3 -->

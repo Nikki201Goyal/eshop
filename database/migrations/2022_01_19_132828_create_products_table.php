@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->boolean('status')->default(true);
             $table->string('image');
-            $table->string('price');
+            $table->float('price');
             $table->longText('description');
             $table->foreignId('category_id')->default('1');
             $table->string('slug');

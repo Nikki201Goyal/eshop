@@ -34,7 +34,7 @@
                             {{ session()->get('success') }}
                         </div>
                         @endif
-                        <table class="table table-bordered datatable">
+                        <table class="table table-bordered" id="datatable">
                             <thead>
                                 <tr>
                                     <th>SN</th>

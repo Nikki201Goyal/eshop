@@ -18,11 +18,11 @@ class ProductsFactory extends Factory
             'name' => $this->faker->name,
             'image' =>$this->faker->imageUrl(250,250),
             'cover' =>$this->faker->imageUrl(500,250),
-            'price' =>$this->faker->randomDigit(),
+            'price' =>$this->faker->numberBetween(1000,10000),
             'status' =>$this->faker->boolean(true),
             'description' => $this->faker->realText(1000),
             'slug' => Str::slug($this->faker->name),
-            'stock' => $this->faker->numberBetween(0,100),
+            'stock' => $this->faker->boolean(50),
 
         ];
     }

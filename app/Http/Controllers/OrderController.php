@@ -11,6 +11,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
+use Omnipay\Omnipay;
 
 class OrderController extends Controller
 {
@@ -96,38 +98,78 @@ class OrderController extends Controller
 
     public function placeOrder(Request $request){
 //        dd($request->all());
+        $gateway = Omnipay::create('Esewa_Secure');
+        $gateway->setMerchantCode('EPAYTEST');
+        $gateway->setTestMode(true);
         $request->validate([
             'address_id' => 'required',
             'total'=> 'required',
             'discount'=>'required',
             'payment'=>'required',
             'order_notes'=>'required',
-
-
         ]);
-        $order= Order::create([
-            'address_id' => $request->address_id,
-             'total' => $request->total,
-             'discount' => $request->discount,
-             'payment_method' => $request->payment,
-             'order_notes' => $request->order_notes,
-             'user_id' => Auth::user()->id
+        if ($request->payment == "esewa"){
+            $response =  $gateway->purchase([
+                'amount' => $request->total,
+                'deliveryCharge' => 0,
+                'serviceCharge' => 0,
+                'taxAmount' => 0,
+                'totalAmount' => $request->total,
+                'productCode' => $request->payment.'-'.$request->total.'-'.Str::random(5),
+                'returnUrl' => 'http://'.url('/orderCompleted'),
+                'failedUrl' => 'http://localhost:3000/orderInComplete',
+            ])->send();
+            if ($response->isRedirect()) {
+                $order= Order::create([
+                    'address_id' => $request->address_id,
+                    'total' => $request->total,
+                    'discount' => $request->discount,
+                    'payment_method' => $request->payment,
+                    'order_notes' => $request->order_notes,
+                    'user_id' => Auth::user()->id
+                ]);
+                $cart=Cart::where('user_id', Auth::user()->id)->get();
+                foreach($cart as $carts){
+                    $orderDetails=OrderDeatils::create([
+                        'quantity' => $carts->quantity,
+                        'price' => $carts->product->price,
+                        'product_id' => $carts->product->id,
+                        'order_id' => $order->id,
+                    ]);
+                    $carts->delete();
+                    Mail::to(Auth::user()->email)->send(new
+                    \App\Mail\OrderConfirmed($order));
+                }
+                $response->redirect();
+            }
+            else{
+                return back()->with('error', 'Payment Failed');
+            }
+        }
+        else{
+            $order= Order::create([
+                'address_id' => $request->address_id,
+                'total' => $request->total,
+                'discount' => $request->discount,
+                'payment_method' => $request->payment,
+                'order_notes' => $request->order_notes,
+                'user_id' => Auth::user()->id
             ]);
+            $cart=Cart::where('user_id', Auth::user()->id)->get();
+            foreach($cart as $carts){
+                $orderDetails=OrderDeatils::create([
+                    'quantity' => $carts->quantity,
+                    'price' => $carts->product->price,
+                    'product_id' => $carts->product->id,
+                    'order_id' => $order->id,
+                ]);
+                $carts->delete();
+                Mail::to(Auth::user()->email)->send(new
+                \App\Mail\OrderConfirmed($order));
+            }
+            return view('FrontEnd.OrderCompleted');
+        }
 
-         $cart=Cart::where('user_id', Auth::user()->id)->get();
-
-         foreach($cart as $carts){
-            $orderDetails=OrderDeatils::create([
-                'quantity' => $carts->quantity,
-                'price' => $carts->product->price,
-                'product_id' => $carts->product->id,
-                'order_id' => $order->id,
-            ]);
-            $carts->delete();
-            Mail::to(Auth::user()->email)->send(new
-            \App\Mail\OrderConfirmed($order));
-         }
-         return view('FrontEnd.OrderCompleted');
 
     }
 

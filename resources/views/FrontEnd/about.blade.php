@@ -4,14 +4,14 @@
             <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
                 <div class="container">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">About us</li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">{{__('navbar.Home') }}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ __('navbar.About us') }}</li>
                     </ol>
                 </div><!-- End .container -->
             </nav><!-- End .breadcrumb-nav -->
             <div class="container">
 	        	<div class="page-header page-header-big text-center" style="background-image: url({{asset('Frontend/assets/images/Image/Products/about2.png')}})">
-        			<h1 class="page-title text-white">About us<span class="text-white">Who we are</span></h1>
+        			<h1 class="page-title text-white">{{ __('navbar.About us') }}<span class="text-white">{{ __('navbar.Who we are') }}</span></h1>
 	        	</div><!-- End .page-header -->
             </div><!-- End .container -->
 
@@ -19,12 +19,12 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6 mb-3 mb-lg-0">
-                            <h2 class="title">Our Vision</h2><!-- End .title -->
+                            <h2 class="title">{{ __('navbar.Our Vision') }}</h2><!-- End .title -->
                             <p style="text-justify: auto;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
                         </div><!-- End .col-lg-6 -->
 
                         <div class="col-lg-6">
-                            <h2 class="title">Our Mission</h2><!-- End .title -->
+                            <h2 class="title">{{ __('navbar.Our Mission') }}</h2><!-- End .title -->
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                         </div><!-- End .col-lg-6 -->
                     </div><!-- End .row -->
@@ -38,7 +38,7 @@
                                     <i class="icon-puzzle-piece"></i>
                                 </span>
                                 <div class="icon-box-content">
-                                    <h3 class="icon-box-title">Design Quality</h3><!-- End .icon-box-title -->
+                                    <h3 class="icon-box-title">{{ __('navbar.Design Quality')}}</h3><!-- End .icon-box-title -->
                                     <p>This ESHOP provides the best quality products with best and nice brands and amanzaing products with different categories.</p>
                                 </div><!-- End .icon-box-content -->
                             </div><!-- End .icon-box -->
@@ -50,7 +50,7 @@
                                     <i class="icon-life-ring"></i>
                                 </span>
                                 <div class="icon-box-content">
-                                    <h3 class="icon-box-title">Professional Support</h3><!-- End .icon-box-title -->
+                                    <h3 class="icon-box-title">{{ __('navbar.Professional Support')}}</h3><!-- End .icon-box-title -->
                                     <p>This ESHOP provides best quality products with minimum and affordable price and best brands. Hence, provides professional support too. </p>
                                 </div><!-- End .icon-box-content -->
                             </div><!-- End .icon-box -->
@@ -62,7 +62,7 @@
                                     <i class="icon-heart-o"></i>
                                 </span>
                                 <div class="icon-box-content">
-                                    <h3 class="icon-box-title">Made With Love</h3><!-- End .icon-box-title -->
+                                    <h3 class="icon-box-title">{{ __('navbar.Made With Love')}}</h3><!-- End .icon-box-title -->
                                     <p>Pellentesque a diam sit amet mi ullamcorper <br>vehicula. Nullam quis massa sit amet <br>nibh viverra malesuada.</p>
                                 </div><!-- End .icon-box-content -->
                             </div><!-- End .icon-box -->
@@ -76,12 +76,12 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-5 mb-3 mb-lg-0">
-                                <h2 class="title">Who We Are</h2><!-- End .title -->
-                                <p class="lead text-primary mb-3">PESHOP <br>One of the best Ecommerce Web App</p><!-- End .lead text-primary -->
+                                <h2 class="title">{{ __('navbar.Who We Are')}}</h2><!-- End .title -->
+                                <p class="lead text-primary mb-3">ESHOP <br>One of the best Ecommerce Web App</p><!-- End .lead text-primary -->
                                 <p class="mb-2">Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Suspendisse potenti. Sed egestas, ante et vulputate volutpat, uctus metus libero eu augue. </p>
 
                                 <a href="{{route('blogs')}}" class="btn btn-sm btn-minwidth btn-outline-primary-2">
-                                    <span>VIEW OUR NEWS</span>
+                                    <span>{{ __('navbar.VIEW OUR NEWS')}}</span>
                                     <i class="icon-long-arrow-right"></i>
                                 </a>
                             </div><!-- End .col-lg-5 -->
@@ -100,8 +100,8 @@
                     <div class="row">
                         <div class="col-lg-5">
                             <div class="brands-text">
-                                <h2 class="title">The world's premium design brands in one destination.</h2><!-- End .title -->
-                                <p>Our ESHOp provides the products of all the best and named brands all over the world.</p>
+                                <h2 class="title">{{ __('navbar.The worlds premium design brands in one destination.')}}</h2><!-- End .title -->
+                                <p>{{ __('navbar.Our ESHOP provides the products of all the best and named brands all over the world.')}}</p>
                             </div><!-- End .brands-text -->
                         </div><!-- End .col-lg-5 -->
 
@@ -176,7 +176,7 @@
                                         <div class="count-wrapper text-white">
                                             <span class="count" data-from="0" data-to="40" data-speed="3000" data-refresh-interval="50">0</span>k+
                                         </div><!-- End .count-wrapper -->
-                                        <h3 class="count-title text-white">Happy Customer</h3><!-- End .count-title -->
+                                        <h3 class="count-title text-white">{{ __('navbar.Happy Customer')}}</h3><!-- End .count-title -->
                                     </div><!-- End .count-container -->
                                 </div><!-- End .col-6 col-md-3 -->
 
@@ -185,7 +185,7 @@
                                         <div class="count-wrapper text-white">
                                             <span class="count" data-from="0" data-to="20" data-speed="3000" data-refresh-interval="50">0</span>+
                                         </div><!-- End .count-wrapper -->
-                                        <h3 class="count-title text-white">Years in Business</h3><!-- End .count-title -->
+                                        <h3 class="count-title text-white">{{ __('navbar.Years in Business')}}</h3><!-- End .count-title -->
                                     </div><!-- End .count-container -->
                                 </div><!-- End .col-6 col-md-3 -->
 
@@ -194,7 +194,7 @@
                                         <div class="count-wrapper text-white">
                                             <span class="count" data-from="0" data-to="95" data-speed="3000" data-refresh-interval="50">0</span>%
                                         </div><!-- End .count-wrapper -->
-                                        <h3 class="count-title text-white">Return Clients</h3><!-- End .count-title -->
+                                        <h3 class="count-title text-white">{{ __('navbar.Return Clients')}}</h3><!-- End .count-title -->
                                     </div><!-- End .count-container -->
                                 </div><!-- End .col-6 col-md-3 -->
 
@@ -203,7 +203,7 @@
                                         <div class="count-wrapper text-white">
                                             <span class="count" data-from="0" data-to="15" data-speed="3000" data-refresh-interval="50">0</span>
                                         </div><!-- End .count-wrapper -->
-                                        <h3 class="count-title text-white">Awards Won</h3><!-- End .count-title -->
+                                        <h3 class="count-title text-white">{{ __('navbar.Awards Won')}}</h3><!-- End .count-title -->
                                     </div><!-- End .count-container -->
                                 </div><!-- End .col-6 col-md-3 -->
                             </div><!-- End .row -->
@@ -212,7 +212,7 @@
 
                     <hr class="mt-4 mb-6">
 
-                    <h2 class="title text-center mb-4">Meet Our Team</h2><!-- End .title text-center mb-2 -->
+                    <h2 class="title text-center mb-4">{{ __('navbar.Meet Our Team')}}</h2><!-- End .title text-center mb-2 -->
 
                     <div class="row">
                         <div class="col-md-4">
@@ -290,7 +290,7 @@
 
                 <div class="about-testimonials bg-light-2 pt-6 pb-6">
                     <div class="container">
-                        <h2 class="title text-center mb-3">What Customer Say About Us</h2><!-- End .title text-center -->
+                        <h2 class="title text-center mb-3">{{ __('navbar.What Customer Say About Us')}}</h2><!-- End .title text-center -->
 
                         <div class="owl-carousel owl-simple owl-testimonials-photo" data-toggle="owl"
                             data-owl-options='{

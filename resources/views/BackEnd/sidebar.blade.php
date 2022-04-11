@@ -4,7 +4,7 @@
 
 
 
-        <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="{{asset('FrontEnd/assets/images/new log.png')}}" alt="AdminLTE Logo" width="220" style="margin-left:3%; margin-top:5%;">
 
 
   <div class="sidebar">

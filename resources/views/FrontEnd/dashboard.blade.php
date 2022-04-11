@@ -4,8 +4,8 @@
     <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3">
         <div class="container">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">My Account</li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('navbar.Home')}}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('navbar.My Account')}}</li>
             </ol>
         </div><!-- End .container -->
     </nav><!-- End .breadcrumb-nav -->
@@ -17,23 +17,23 @@
                     <aside class="col-md-4 col-lg-3">
                         <ul class="nav nav-dashboard flex-column mb-3 mb-md-0" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="tab-account-link" data-toggle="tab" href="#tab-account" role="tab" aria-controls="tab-account" aria-selected="false">Account Details</a>
+                                <a class="nav-link active" id="tab-account-link" data-toggle="tab" href="#tab-account" role="tab" aria-controls="tab-account" aria-selected="false">{{ __('navbar.Account Details')}}</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" id="tab-orders-link" data-toggle="tab" href="#tab-orders" role="tab" aria-controls="tab-orders" aria-selected="false">Orders</a>
+                                <a class="nav-link" id="tab-orders-link" data-toggle="tab" href="#tab-orders" role="tab" aria-controls="tab-orders" aria-selected="false">{{ __('navbar.Orders')}}</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" id="tab-address-link" data-toggle="tab" href="#tab-address" role="tab" aria-controls="tab-address" aria-selected="false">Adresses</a>
+                                <a class="nav-link" id="tab-address-link" data-toggle="tab" href="#tab-address" role="tab" aria-controls="tab-address" aria-selected="false">{{ __('navbar.Addresses')}}</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" id="tab-review-link" data-toggle="tab" href="#tab-review" role="tab" aria-controls="tab-address" aria-selected="false">Reviews</a>
+                                <a class="nav-link" id="tab-review-link" data-toggle="tab" href="#tab-review" role="tab" aria-controls="tab-address" aria-selected="false">{{ __('navbar.Reviews')}}</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Sign Out</a>
+                                <a class="nav-link" href="#">{{ __('navbar.Sign Out')}}</a>
                             </li>
                         </ul>
                     </aside><!-- End .col-lg-3 -->
@@ -102,8 +102,8 @@
                                     </div><!-- End .product -->
 
                                     @empty
-                                    <p>No order has been made yet.</p>
-                                    <a href="{{ route('home') }}" class="btn btn-outline-primary-2"><span>GO SHOP</span><i class="icon-long-arrow-right"></i></a>
+                                    <p>{{ __('navbar.No order has been made yet.')}}</p>
+                                    <a href="{{ route('home') }}" class="btn btn-outline-primary-2"><span>{{ __('navbar.GO SHOP')}}</span><i class="icon-long-arrow-right"></i></a>
                                 @endforelse
 
                                 </div>
@@ -113,13 +113,13 @@
 
 
                             <div class="tab-pane fade" id="tab-address" role="tabpanel" aria-labelledby="tab-address-link">
-                                <p>The following addresses will be used on the checkout page by default.</p>  <a href="#" data-toggle="modal" data-target="#exampleModal">Add <i class="icon-plus"></i></a>
+                                <p>{{ __('navbar.The following addresses will be used on the checkout page by default.')}}</p>  <a href="#" data-toggle="modal" data-target="#exampleModal">Add <i class="icon-plus"></i></a>
                                 <div class="row">@foreach ($address as $i=>$add )
 
                                     <div class="col-lg-6">
                                         <div class="card card-dashboard">
                                             <div class="card-body">
-                                                <h3 class="card-title">Address {{ $i+1 }}</h3><!-- End .card-title -->
+                                                <h3 class="card-title">{{ __('navbar.Address')}} {{ $i+1 }}</h3><!-- End .card-title -->
 
                                                 <p>User Name : {{ $add->name }}<br>
                                                 Address : {{ $add->address }}<br>
@@ -156,31 +156,32 @@
                             </div><!-- .End .tab-pane -->
 
                             <div class="tab-pane fade show active" id="tab-account" role="tabpanel" aria-labelledby="tab-account-link">
-                                <form action="#">
+                                <form action="{{route('editProfile')}}" method="POST">
+                                  @csrf
                                     <div class="row">
-                                      <label> Name *</label>
+                                      <label> {{ __('navbar.Name')}} *</label>
                                        <input type="text" class="form-control" required value="{{ $user->name }}" name="name">
 
-                                    <label>Address</label>
+                                    <label>{{ __('navbar.Address')}}</label>
                                     <input type="text" class="form-control" required value="{{ $user->address }}" name="address">
 
-                                    <label>Contact</label>
+                                    <label>{{ __('navbar.Contact')}}</label>
                                     <input type="text" class="form-control" required value="{{ $user->contact }}" name="contact">
 
-                                    <label>Email address *</label>
+                                    <label>{{ __('navbar.Email address')}} *</label>
                                     <input type="email" class="form-control" required value="{{ $user->email }}" name="email">
 
-                                    <label>Current password (leave blank to leave unchanged)</label>
+                                    <label>{{ __('navbar.Current password')}} {{__('navbar.(leave blank to leave unchanged)')}}</label>
+                                    <input type="password" class="form-control" name="oldpassword">
+
+                                    <label>{{ __('navbar.New password')}}  {{__('navbar.(leave blank to leave unchanged)')}}</label>
                                     <input type="password" class="form-control" name="password">
 
-                                    <label>New password (leave blank to leave unchanged)</label>
-                                    <input type="password" class="form-control" name="newpass">
-
-                                    <label>Confirm new password</label>
-                                    <input type="password" class="form-control mb-2" name="confirmpass">
+                                    <label>{{ __('navbar.Confirm new password')}}</label>
+                                    <input type="password" class="form-control mb-2" name="password_confirmation">
 
                                     <button type="submit" class="btn btn-outline-primary-2">
-                                        <span>SAVE CHANGES</span>
+                                        <span>{{ __('navbar.SAVE CHANGES')}}</span>
                                         <i class="icon-long-arrow-right"></i>
                                     </button>
                                 </form>
@@ -237,7 +238,7 @@
                                             </div><!-- End .col-lg-6 -->
 
                                             <div class="col-12">
-                                                <h4>My Reviews</h4>
+                                                <h4>{{ __('navbar.My Reviews')}}</h4>
                                                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit earum perspiciatis, beatae velit reiciendis magnam quam quos perferendis nisi esse veritatis nulla! Natus, aut fuga est neque accusantium fugiat mollitia?</p>
                                              </div>
 
@@ -273,7 +274,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Add</h5>
+          <h5 class="modal-title" id="exampleModalLabel">{{ __('navbar.Add')}}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -282,33 +283,33 @@
           <form action="{{ route('address') }}" method="POST" class="p-2">
             @csrf
             <div class="form-group">
-                <label for="register-email">Name</label>
+                <label for="register-email">{{ __('navbar.Name')}}</label>
                 <input type="text" class="form-control" id="name" name="name" required>
             </div><!-- End .form-group -->
 
             <div class="form-group">
-                <label for="register-email">Your email address *</label>
+                <label for="register-email">{{ __('navbar.Email address')}} *</label>
                 <input type="email" class="form-control" id="register-email" name="email" required>
             </div><!-- End .form-group -->
 
             <div class="form-group">
-                <label for="register-email">Contact *</label>
+                <label for="register-email">{{ __('navbar.Contact')}}  *</label>
                 <input type="text" class="form-control" id="contact" name="contact" required>
             </div><!-- End .form-group -->
 
             <div class="form-group">
-                <label for="register-email">Address *</label>
+                <label for="register-email">{{ __('navbar.Address')}}  *</label>
                 <input type="text" class="form-control" id="address" name="address" required>
             </div><!-- End .form-group -->
 
             <div class="form-group">
-                <label for="register-email">Post Code *</label>
+                <label for="register-email">{{ __('navbar.Post Code')}}  *</label>
                 <input type="text" class="form-control" id="postcode" name="postcode" required>
             </div><!-- End .form-group -->
 
             <div class="form-group">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
+                <button type="submit" class="btn btn-primary">{{ __('navbar.SAVE CHANGES')}}</button>
               </div>
 
           </form>
@@ -322,7 +323,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <h5 class="modal-title" id="exampleModalLabel">{{ __('navbar.New message')}}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -331,33 +332,33 @@
         @csrf
         <input type="hidden" name="id" id="id_edit">
         <div class="form-group">
-            <label for="register-email">Name</label>
+            <label for="register-email">{{ __('navbar.Name')}}</label>
             <input type="text" class="form-control" id="name_edit" name="name" required>
         </div><!-- End .form-group -->
 
         <div class="form-group">
-            <label for="register-email">Your email address *</label>
+            <label for="register-email">{{ __('navbar.Email address')}} *</label>
             <input type="email" class="form-control" id="email_edit" name="email" required>
         </div><!-- End .form-group -->
 
         <div class="form-group">
-            <label for="register-email">Contact *</label>
+            <label for="register-email">{{ __('navbar.Contact')}} *</label>
             <input type="text" class="form-control" id="contact_edit" name="contact" required>
         </div><!-- End .form-group -->
 
         <div class="form-group">
-            <label for="register-email">Address *</label>
+            <label for="register-email">{{ __('navbar.Address')}} *</label>
             <input type="text" class="form-control" id="address_edit" name="address" required>
         </div><!-- End .form-group -->
 
         <div class="form-group">
-            <label for="register-email">Post Code *</label>
+            <label for="register-email">{{ __('navbar.Post Code')}}*</label>
             <input type="text" class="form-control" id="postcode_edit" name="postcode" required>
         </div><!-- End .form-group -->
 
         <div class="form-group">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('navbar.Close')}}</button>
+            <button type="submit" class="btn btn-primary">{{ __('navbar.SAVE CHANGES')}}</button>
           </div>
 
       </form>
@@ -369,7 +370,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Add Review</h5>
+          <h5 class="modal-title" id="exampleModalLabel">{{ __('navbar.Add Review')}}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -426,7 +427,7 @@
                             <div class="col-md-12">
                                 <textarea class="form-control" style="width: 100%" name="comment" required placeholder="Message *"></textarea>
                                 <hr>
-                                <button class="btn btn-primary" type="submit">Submit</button>
+                                <button class="btn btn-primary" type="submit">{{ __('navbar.SUBMIT')}}</button>
                              </div>
                         </div>
                     </div>
