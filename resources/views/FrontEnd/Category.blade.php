@@ -81,7 +81,8 @@
                                     <figure class="product-media">
 
                                         <a href="{{route('product',$pro->slug)}}">
-                                            <img src="{{asset($pro->image)}}" alt="Product image" class="product-image">
+                                            <img src="{{asset($pro->image)}}" alt="Product image" class="product-image" style=" height: 300px;
+                                        object-fit: cover;">
                                         </a>
 
                                         <div class="product-action-vertical">
@@ -184,7 +185,8 @@
                                         <div class="product product-sm">
                                             <figure class="product-media">
                                                 <a href="{{route('product', $popProduct->slug)}}">
-                                                    <img src="{{asset($popProduct->image)}}" alt="Product image" class="product-image">
+                                                    <img src="{{asset($popProduct->image)}}" alt="Product image" class="product-image" style=" height: 80px;
+                                        object-fit: cover;">
                                                 </a>
                                             </figure>
 

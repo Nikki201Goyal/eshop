@@ -397,7 +397,7 @@ footer {
           <footer>
             <div id="legalcopy" class="clearfix">
               <p class="col-right">Our mailing address is:
-                  <span class="email"><a href="mailto:supplier.portal@almonature.com">supplier.portal@almonature.com</a></span>
+                  <span class="email"><a href="mailto:nikkigoyal107@gmail.com">nikkigoyal107@gmail.com</a></span>
               </p>
             </div>
           </footer>
