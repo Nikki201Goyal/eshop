@@ -66,8 +66,16 @@
                             </div><!-- End .product-details-action -->
 
                             <div>
-                               <button> <a href="#" class="btn-product" style="border-block-color: orange;"><span>Buy NOW</span></a></button>
-
+                                <style>
+                                    .btn-buy{
+                                        background-color: white;
+                                        border: 1px solid orange;
+                                        width: 100px;
+                                    }
+                                </style>
+                                @if(Auth::user())
+                                    <a href="{{ route('buyNow',$product->slug) }}" class="btn-product btn-buy"><span>Buy NOW</span></a>
+                                @endif
                             </div>
 
 

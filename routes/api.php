@@ -19,5 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('category-products/{slug}',[FrontEndController::class,'compareData'])->name('api.compare');
-Route::get('category-product/{id}',[FrontEndController::class,'compareProduct'])->name('api.product');
+Route::get('category-product/{slug}',[FrontEndController::class,'compareProduct'])->name('api.product');
 
