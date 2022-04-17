@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\OrderDeatils;
 use Illuminate\Http\Request;
 use App\Models\contact;
 use App\Models\Order;
@@ -17,7 +18,13 @@ class BackEndController extends Controller
         $users=User::all();
         $order=Order::all();
         $subscribe=Subscribe::all();
-         return view('BackEnd.home', compact('products', 'users', 'order', 'subscribe'));
+        $sales = OrderDeatils::where('status', '=', '1')->get();
+        $sum = 0;
+        foreach ($sales as $sale) {
+            $sum += $sale->price * $sale->quantity;
+        }
+
+         return view('BackEnd.home', compact('products', 'users', 'order', 'subscribe', 'sum'));
 
      }
 

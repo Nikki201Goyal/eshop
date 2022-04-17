@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Http\Requests\StoreCartRequest;
 use App\Http\Requests\UpdateCartRequest;
+use App\Models\products;
 use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,7 +31,25 @@ class CartController extends Controller
     {
         //
     }
+    public function buyNow($slug){
+        $product=products::where('slug', $slug)->first();
+        $cart = Cart::all();
+        if(Auth::check()){
+            foreach($cart as $carts){
+                $carts->delete();
+            }
+                Cart::create([
+                    'user_id' => Auth::user()->id,
+                    'product_id' => $product->id,
 
+                ]);
+            return redirect()->route('cart');
+            }
+        else{
+            return response()->json(['message' => 'login']);
+        }
+
+    }
     /**
      * Store a newly created resource in storage.
      *

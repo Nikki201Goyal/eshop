@@ -50,7 +50,7 @@ Route::get('/storeSubscribe',[App\Http\Controllers\FrontEndController::class,'st
 Route::post('/wishlists',[App\Http\Controllers\WishlistController::class,'store'])->name('wishlists');
 Route::post('/carts',[App\Http\Controllers\CartController::class,'store'])->name('carts');
 Route::get('/forgetPassword',[App\Http\Controllers\FrontEndController::class,'forgetPassword'])->name('forgetPassword');
-
+Route::get('buy-now/{id}',[App\Http\Controllers\CartController::class,'buyNow'])->name('buyNow');
 Route::get('/filter',[App\Http\Controllers\FrontEndController::class,'filter'])->name('filter');
 
 Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
@@ -67,7 +67,7 @@ Route::group(['middleware'=>'auth'], function(){
     Route::post('/address/{id}/activate',  [App\HTTP\Controllers\AddressController::class, 'activate'])->name('address.activate');
     Route::post('/placeOrder',   [App\HTTP\Controllers\OrderController::class, 'placeOrder'])->name('placeOrder');
 Route::get('/orderInComplete',   [App\HTTP\Controllers\FrontEndController::class, 'orderInComplete'])->name('orderInComplete');
-    
+
     Route::get('/orderCompleted',   [App\HTTP\Controllers\FrontEndController::class, 'orderCompleted'])->name('orderCompleted');
 });
 
@@ -103,8 +103,9 @@ Route::get('/mail/OrderConfirmed', [App\Http\Controllers\MailController::class, 
 //compare
 Route::get('/compare', [App\HTTP\Controllers\FrontEndController::class, 'compare'])->name('compare');
 Route::post('/rating', [App\Http\Controllers\RatingController::class, 'rating'])->name('rating');
-Route::get('/forgot-password', function () {
-    return view('auth.passwords.reset');
-})->middleware('guest')->name('password.request');
-
 Route::get('/language/{lang}',[\App\Http\Controllers\LanguageController::class,'locale'])->name('language');
+
+
+Route::get('/forgot-password', function () {
+    return view('auth.passwords.email');
+})->middleware('guest')->name('password.request');
