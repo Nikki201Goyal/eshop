@@ -101,36 +101,11 @@
             <!-- Left col -->
             <section class="col-lg-7 connectedSortable">
               <!-- Custom tabs (Charts with tabs)-->
-              <div class="card">
-                <div class="card-header">
-                  <h3 class="card-title">
-                    <i class="fas fa-chart-pie mr-1"></i>
-                    Sales
-                  </h3>
-                  <div class="card-tools">
-                    <ul class="nav nav-pills ml-auto">
-                      <li class="nav-item">
-                        <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div><!-- /.card-header -->
-                <div class="card-body">
-                  <div class="tab-content p-0">
-                    <!-- Morris chart - Sales -->
-                    <div class="chart tab-pane active" id="revenue-chart"
-                         style="position: relative; height: 300px;">
-                        <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
-                     </div>
-                    <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
-                      <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
+                <div class="card">
+                    <div class="card-body">
+                        <canvas id="myChart" style="width: 100%; height: 300px"></canvas>
                     </div>
-                  </div>
-                </div><!-- /.card-body -->
-              </div>
+                </div>
               <!-- /.card -->
 
 
@@ -204,7 +179,7 @@
                 <!-- tools card -->
                 <div class="card-tools">
                   <!-- button with a dropdown -->
-              
+
                   <button type="button" class="btn btn-success btn-sm" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>
                   </button>
@@ -227,8 +202,37 @@
             <!-- right col -->
           </div>
         <!-- /.row (main row) -->
+
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
 
 @endsection
+@section('admin-scripts')
+    <script>
+        var xValues = [100,200,300,400,500,600,700,800,900,1000];
+
+        new Chart("myChart", {
+            type: "line",
+            data: {
+                labels: xValues,
+                datasets: [{
+                    data: [860,1140,1060,1060,1070,1110,1330,2210,7830,2478],
+                    borderColor: "red",
+                    fill: false
+                },{
+                    data: [1600,1700,1700,1900,2000,2700,4000,5000,6000,7000],
+                    borderColor: "green",
+                    fill: false
+                },{
+                    data: [300,700,2000,5000,6000,4000,2000,1000,200,100],
+                    borderColor: "blue",
+                    fill: false
+                }]
+            },
+            options: {
+                legend: {display: false}
+            }
+        });
+    </script>
+    @endsection
