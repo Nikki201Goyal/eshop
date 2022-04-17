@@ -74,7 +74,7 @@
                                     }
                                 </style>
                                 @if(Auth::user())
-                                    <a href="{{ route('buyNow',$product->slug) }}" class="btn-product btn-buy"><span>Buy NOW</span></a>
+                                    <a href="{{ route('buyNow',$product->slug) }}" class="btn-product btn-buy"><span><i class="fa-solid fa-basket-shopping"></i>Buy NOW</span></a>
                                 @endif
                             </div>
 

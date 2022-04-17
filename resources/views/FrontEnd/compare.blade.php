@@ -63,7 +63,7 @@
                                     </a>
 
                                     <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable" id="first_btn_wishlist"><span>add to
                                             wishlist</span></a>
                                     </div><!-- End .product-action-vertical -->
 
@@ -95,7 +95,7 @@
                                     </a>
 
                                     <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable" id="second_btn_wishlist"><span>add to
                                             wishlist</span></a>
                                     </div><!-- End .product-action-vertical -->
 
@@ -173,7 +173,8 @@
                 firstCol.find('#first_prod_desc').text(data.description);
                 firstCol.find('#first_btn_cart').attr('user',{{ Auth::user()->id }});
                 firstCol.find('#first_btn_cart').attr('product',data.id);
-
+                firstCol.find('#first_btn_wishlist').attr('user',{{ Auth::user()->id }});
+                firstCol.find('#first_btn_wishlist').attr('product',data.id);
             });
         });
         $('#second_prod').change(function () {
@@ -192,6 +193,8 @@
                 secCol.find('#second_prod_desc').text(data.description);
                 secCol.find('#second_btn_cart').attr('user',{{ Auth::user()->id }});
                 secCol.find('#second_btn_cart').attr('product',data.id);
+                secCol.find('#second_btn_wishlist').attr('user',{{ Auth::user()->id }});
+                secCol.find('#second_btn_wishlist').attr('product',data.id);
             });
 
         });

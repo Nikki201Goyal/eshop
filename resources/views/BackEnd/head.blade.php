@@ -9,6 +9,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('BackEnd/css/adminlte.min.css')}}">
   <link rel="stylesheet" href="{{asset('BackEnd/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+  <link rel="stylesheet" href="{{asset('BackEnd/plugins/daterangepicker/daterangepicker.css')}}">
   <link rel="stylesheet" href="{{asset('BackEnd/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css"> 
 

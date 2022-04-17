@@ -15,9 +15,9 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' =>'required',
+            'name' =>'required|max:120',
             'address' => 'required',
-            'contact'=> 'required',
+            'contact'=> 'required |regex:/(98)[0-9]{8}/',
             'email'=>'required',
 
 
@@ -27,7 +27,7 @@ class UserController extends Controller
         $imageName = time().$image->getClientOriginalName();
         $image->move('uploads/product/images/', $imageName);
 
-        User::create([
+        $user = User::create([
             'name' => $request->name,
             'address' => $request->address,
             'contact' =>$request->contact,
@@ -35,7 +35,7 @@ class UserController extends Controller
             'email' =>$request->email,
             'image'=> 'uploads/product/images/'.$imageName,
         ]);
-
+        $user->syncRoles(['admin']);
          return redirect()->route('users.index')->with('success', 'You have successfully updated a post!');
 
     }
@@ -43,7 +43,7 @@ class UserController extends Controller
     public function index()
     {
 
-        $user =User::OrderBy('created_at', 'DESC')->get();
+        $user =User::role('admin')->OrderBy('created_at', 'DESC')->get();
         $i = 1;
         return view('BackEnd.User.view', compact('user', 'i'));
     }

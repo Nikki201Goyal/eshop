@@ -18,6 +18,7 @@
 {{-- <script src="{{asset('Backend/plugins/chart.js/Chart.bundle.js')}}"></script> --}}
 {{-- <script src="{{asset('Backend/plugins/chart.js/Chart.bundle.min.js')}}"></script> --}}
 <script src="{{asset('Backend/plugins/summernote/summernote-bs4.min.js')}}"></script>
+<script src="{{asset('Backend/plugins/daterangepicker/daterangepicker.js')}}"></script>
 
 <!-- sweet alert -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

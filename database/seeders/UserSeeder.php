@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         $admin = User::factory()->create([
-            'email' => 'admin@gmail.com'
+            'email' => 'np05cp4a190091@iic.edu.np'
         ]);
         $admin->syncRoles(['admin']);
 
@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
         $super->syncRoles(['super']);
 
        $customer =  User::factory()->create([
-            'email' => 'customer@gmail.com'
+            'email' => 'nikkigoyal107@gmail.com'
         ]);
         $customer->syncRoles(['customer']);
 

@@ -585,7 +585,6 @@
                     <div class="row">
                         @foreach ($FeaturedOne as $feature )
 
-                        @endforeach
                         <div class="col-sm-6 col-xl-12">
                             <div class="widget widget-banner intro-banners">
                                 <div class="banner banner-overlay">
@@ -603,6 +602,8 @@
                                 </div><!-- End .banner banner-overlay -->
                             </div><!-- End .widget widget-banner -->
                         </div><!-- End .col-sm-6 col-xl-12 -->
+                        @endforeach
+
 
                         <div class="col-sm-6 col-xl-12 mb-2">
                             <div class="widget widget-products">

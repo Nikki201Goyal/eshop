@@ -3,15 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Address;
-use App\Models\Appliances;
 use App\Models\Blog;
 use App\Models\Cart;
 use App\Models\Category;
-use App\Models\Clothing;
-use App\Models\electronics;
-use App\Models\furniture;
-use App\Models\Instruments;
-use App\Models\Shoes;
 use Illuminate\Http\Request;
 use App\Models\contact;
 use App\Models\Order;
@@ -112,7 +106,7 @@ class FrontEndController extends Controller
     }
 
     public function blogs(){
-        $blogs = Blog::where('status','=',1)->paginate(6);
+        $blogs = Blog::where('status','=',1)->paginate(6)->get();
 
         return view('FrontEnd.Blogs', compact('blogs'));
     }

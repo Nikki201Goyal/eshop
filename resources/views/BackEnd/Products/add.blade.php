@@ -50,7 +50,7 @@
 
                 <div class="form-group">
                   <label for="exampleInputEmail1"> Price</label>
-                  <input type="text" class="form-control" name="price" placeholder="Enter Price">
+                  <input type="number" class="form-control" name="price" placeholder="Enter Price">
 
                 </div><!-- /.card-body -->
 
@@ -78,12 +78,6 @@
                     <label class="form-control-label" for="input-image"> Cover Image</label>
                     <input type="file" name="cover" class="form-control">
                   </div>
-
-                {{-- <div class="form-group">
-                    <label for="exampleInputEmail1">Stock</label>
-                    <input type="text" class="form-control" name="stock" placeholder="Enter stock">
-
-                  </div><!-- /.card-body --> --}}
 
                   <div class="form-group">
                     <label>Stock</label>

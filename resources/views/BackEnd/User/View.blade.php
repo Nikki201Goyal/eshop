@@ -61,13 +61,13 @@
 
                                     <td>
                                         <a href="{{route('users.edit', $user->id)}}" class="btn btn-sm btn-info">
-                                            <i class="fa fa-edit"></i>Edit
+                                            <i class="fa fa-edit"></i>
                                         </a>
-
+@if($user->id != Auth::user()->id)
                                         <a href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="users-delete-{{$user->id}}">
-                                            <i class="fa fa-trash"></i>Delete
+                                            <i class="fa fa-trash"></i>
                                         </a>
-
+@endif
                                         <form id="users-delete-{{$user->id}}" action="{{route('user.delete', $user->id)}}">
                                             @csrf
                                             @method('DELETE')

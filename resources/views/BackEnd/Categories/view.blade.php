@@ -53,11 +53,11 @@
                                     <td><img src="{{asset($cate->cover)}}" style="width: 60px; height: 60px;"></td>
                                     <td>
                                         <a href="{{route('categories.edit', $cate->id)}}" class="btn btn-sm btn-info">
-                                            <i class="fa fa-edit"></i>Edit
+                                            <i class="fa fa-edit"></i>
                                         </a>
 
                                         <a href="{{route('categories.show', $cate->id)}}" class="btn btn-sm btn-success">
-                                            <i class="fa fa-desktop"></i>Details
+                                            <i class="fa fa-desktop"></i>
                                         </a>
                                     </td>
 

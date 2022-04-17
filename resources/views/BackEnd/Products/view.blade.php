@@ -66,15 +66,15 @@
 
                                     <td>
                                         <a href="{{route('products.edit', $pro->id)}}" class="btn btn-sm btn-info">
-                                            <i class="fa fa-edit"></i>Edit
+                                            <i class="fa fa-edit"></i>
                                         </a>
 
                                         <a href="{{route('products.show', $pro->id)}}" class="btn btn-sm btn-success">
-                                            <i class="fa fa-desktop"></i>Details
+                                            <i class="fa fa-desktop"></i>
                                         </a>
 
                                         <a href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="products-delete-{{$pro->id}}">
-                                            <i class="fa fa-trash"></i>Delete
+                                            <i class="fa fa-trash"></i>
                                         </a>
 
                                         <form id="products-delete-{{$pro->id}}" action="{{route('admin.delete', $pro->id)}}">
