@@ -51,7 +51,6 @@ class ProductsController extends Controller
             'description' => 'required',
             'category_id' => 'required',
             'stock' => 'required',
-            'cover' => 'required',
 
         ]);
         // dd($request);
@@ -63,7 +62,7 @@ class ProductsController extends Controller
 
         if ($request->hasFile('cover')) {
         $cover = $request->file('cover');
-        $coverName = time() . $image->getClientOriginalName();
+        $coverName = time() . $cover->getClientOriginalName();
         $cover->move('uploads/product/images/', $coverName);
         }
 
@@ -100,22 +99,26 @@ class ProductsController extends Controller
             'category_id' => 'required',
             'stock' => 'required',
         ]);
+        $products = products::find($id);
         if ($request->hasFile('image')) {
-            $image = $request->image;
+            $image = $request->file('image');
             $image_new_name = time() . $image->getClientOriginalName();
             $image->move('uploads/product/images/', $image_new_name);
+            $products->image ='uploads/product/images/' . $image_new_name;
         }
 
         if ($request->hasFile('cover')) {
-            $cover = $request->cover;
+            $cover = $request->file('cover');
             $covername = time() . $cover->getClientOriginalName();
             $cover->move('uploads/product/images/', $covername);
+            $products->cover ='uploads/product/images/' . $covername;
         }
 
-        $products = products::find($id);
+       
         $products->name = $request->name;
         $products->description = $request->description;
         $products->price = $request->price;
+        
         $products->category_id = $request->category_id;
         $products->slug =  Str::slug($request->name);
         $products->stock = $request->stock;

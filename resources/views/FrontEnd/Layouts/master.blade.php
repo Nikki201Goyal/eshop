@@ -51,13 +51,7 @@
                                     <div class="product-details">
                                         <h1 class="product-title">nikki</h1><!-- End .product-title -->
 
-                                        <div class="ratings-container">
-                                            <div class="ratings">
-                                                <div class="ratings-val" style="width: "></div><!-- End .ratings-val -->
-                                            </div><!-- End .ratings -->
-                                            <a class="ratings-text" href="#product-accordion" id="review-link">( 2 Reviews )</a>
-                                        </div><!-- End .rating-container -->
-
+                                        
                                         <div class="product-price">
                                             <h5 class="product-money">Rs. 40</h5><!-- End .product-money -->
 
@@ -65,7 +59,7 @@
                                     </div>
 
                                     <div class="product-details-action">
-                                        <a href="#" class="btn-product btn-cart" ><span color="white">add to cart</span></a>
+                                        <a href="#" class="btn-product btn-cart btn-compare-cart" ><span color="white">add to cart</span></a>
                                     </div><!-- End .product-details-action -->
                                 </div>
 
@@ -97,6 +91,8 @@
       modal.find('.product-image').attr('src', image)
       modal.find('.product-title').html(name)
       modal.find('.product-money').html(price)
+      modal.find('.btn-compare-cart').attr('user',{{ Auth::user()->id }});
+                modal.find('.btn-compare-cart').attr('product',id);
     //   modal.find('#contact_edit').val(contact)
     //   modal.find('#postcode_edit').val(postcode)
     //   modal.find('#id_edit').val(id)

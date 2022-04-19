@@ -35,9 +35,9 @@
 
                             <div class="ratings-container">
                                 <div class="ratings">
-                                    <div class="ratings-val" style="width: 0%;"></div><!-- End .ratings-val -->
+                                    <div class="ratings-val" style="width: {{ round($product->avgRating())*20 }}%;""></div><!-- End .ratings-val -->
                                 </div><!-- End .ratings -->
-                                <a class="ratings-text" href="#product-accordion" id="review-link">( 2 Reviews )</a>
+                                <a class="ratings-text" href="#product-accordion" id="review-link">( {{ $product->ratings->count() }} Reviews )</a>
                             </div><!-- End .rating-container -->
 
                             <div class="product-price">
@@ -60,8 +60,8 @@
 
                                 <div class="details-action-wrapper">
                                     <a href="#" class="btn-product btn-wishlist" title="Wishlist" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $product->id }}"><span>Add to Wishlist</span></a>
-                                    <a href="#" class="btn-product btn-compare" title="Compare"><span>Add to Compare</span></a>
-
+                                    
+                                   
                                 </div><!-- End .details-action-wrapper -->
                             </div><!-- End .product-details-action -->
 

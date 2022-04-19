@@ -96,7 +96,7 @@
 					<div class="card-header" id="heading2-2">
 						<h2 class="card-title">
 							<a class="collapsed" role="button" data-toggle="collapse" href="#collapse2-2" aria-expanded="false" aria-controls="collapse2-2">
-							{{	__('navbar.I haven’t received my order') }}
+							{{	__('navbar.I havent received my order') }}
 							</a>
 						</h2>
 					</div><!-- End .card-header -->

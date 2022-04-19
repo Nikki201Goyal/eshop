@@ -31,7 +31,7 @@ return [
     'Change address'=>'Change address',
     'Shop'=>'Shop',
     'Add to Cart'=>'Add to Cart',
-    'Out of Stock'=>'सOut of Stock',
+    'Out of Stock'=>'Out of Stock',
     'Design Quality'=>'Design Quality',
     'Professional Support'=> 'Professional Support',
     'Made With Love'=>  'Made With Love',

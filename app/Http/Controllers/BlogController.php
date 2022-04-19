@@ -73,19 +73,22 @@ class BlogController extends Controller
             'description' => 'required',
             'title' => 'required'
         ]);
+        $blogs = Blog::find($id);
         if($request->hasFile('image')){
-            $image = $request->image;
+            $image = $request->file('image');
             $image_new_name = time().$image->getClientOriginalName();
             $image->move('uploads/product/images/', $image_new_name);
+            $blogs->image = 'uploads/product/images/' . $image_new_name;
         }
 
         if($request->hasFile('AuthorPic')){
-            $photo = $request->AuthorPic;
+            $photo = $request->file('AuthorPic');
             $photoname = time().$photo->getClientOriginalName();
             $photo->move('uploads/product/images/', $photoname);
+            $blogs->AuthorPic = 'uploads/product/images/' . $photoname;
         }
 
-        $blogs = Blog::find($id);
+       
         $blogs->title = $request->title;
         $blogs->author = $request->author;
         $blogs->date = $request->date;

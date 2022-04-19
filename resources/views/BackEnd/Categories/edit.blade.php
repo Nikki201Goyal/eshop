@@ -31,7 +31,16 @@
         <div class="card card-primary card-outline">
           <div class="card-body">
             <h5 class="card-title">Edit</h5><br>
-
+            @if($errors->any())
+            <div class="alert alert-danger">
+                <p><strong>Opps Something went wrong</strong></p>
+                <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+                </ul>
+            </div>
+            @endif
             <form action="{{route('categories.update', $cate->id)}}" method="post" enctype="multipart/form-data">
               @csrf
               @method('PUT')
@@ -57,10 +66,10 @@
               
 
                 <div class="form-group">
-                    <label for="description">Description</label>
-                <textarea name="description" id="description" cols="30" rows="10" value="{{ $cate->description }}"></textarea>
+                  <label for="exampleInputEmail1">Description</label>
+                  <textarea name="description" id="editor1" cols="30" rows="5" value="{{$cate->description}}"></textarea>
 
-                  </div>
+                </div><!-- /.card-body -->
 
               <div class="card-footer">
                 <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i>Submit</button>
@@ -80,3 +89,9 @@
 
 
 @endsection
+@section('admin-scripts')
+  <script src="https://cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script>
+  <script>
+    CKEDITOR.replace( 'description' );
+</script>
+  @endsection

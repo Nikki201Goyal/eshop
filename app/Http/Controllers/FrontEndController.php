@@ -25,15 +25,16 @@ class FrontEndController extends Controller
 // dd(Auth::check());
 //        Session::set('locale', 'en');
         $categories=Category::all();
-        $bests=products::inRandomOrder()->get()->take(3);
-        $offers=products::inRandomOrder()->get()->take(2);
+        $bests=products::inRandomOrder()->get()->take(5);
+        $offers=products::inRandomOrder()->get()->take(4);
+        $flash=products::inRandomOrder()->get()->take(4);
         $slider=products::inRandomOrder()->get()->take(3);
         $feature=products::inRandomOrder()->get()->take(3);
         $banner=category::inRandomOrder()->get()->take(2);
         $FeaturedOne=category::inRandomOrder()->get()->take(1);
         $blogs=Blog::inRandomOrder()->get()->take(3);
         $ProductAll = products::all();
-        return view('FrontEnd.home', compact('categories', 'bests', 'offers', 'slider', 'feature', 'blogs', 'banner', 'FeaturedOne', 'ProductAll'));
+        return view('FrontEnd.home', compact('categories', 'bests', 'offers', 'slider', 'feature', 'blogs', 'banner', 'FeaturedOne', 'ProductAll', 'flash'));
 
 
     }
@@ -106,7 +107,7 @@ class FrontEndController extends Controller
     }
 
     public function blogs(){
-        $blogs = Blog::where('status','=',1)->paginate(6)->get();
+        $blogs = Blog::where('status','=',1)->paginate(6);
 
         return view('FrontEnd.Blogs', compact('blogs'));
     }
@@ -122,7 +123,7 @@ class FrontEndController extends Controller
     public function product($slug){
 
         $product=products::where('slug', $slug)->first();
-        $likeProducts=products::inRandomOrder()->get()->take(3);
+        $likeProducts=products::inRandomOrder()->get()->take(7);
 
 
         // $avg=$product()->avg('rating');

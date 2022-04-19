@@ -55,7 +55,7 @@
                                     <th scope="row">{{$i++}}</th>
                                     <td>{{$pro->name}}</td>
                                     <td>{{$pro->price}}</td>
-                                    <td>{{$pro->description}}</td>
+                                    <td>{!!$pro->description!!}</td>
                                     <td><img src="{{asset($pro->image)}}" style="width: 60px; height: 60px;"></td>
                                     <td><img src="{{asset($pro->cover)}}" style="width: 60px; height: 60px;"></td>
                                     <td>{{$pro->category->name}}</td>
@@ -73,7 +73,7 @@
                                             <i class="fa fa-desktop"></i>
                                         </a>
 
-                                        <a href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="products-delete-{{$pro->id}}">
+                                        <!-- <a href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="products-delete-{{$pro->id}}">
                                             <i class="fa fa-trash"></i>
                                         </a>
 
@@ -81,7 +81,7 @@
                                             @csrf
                                             @method('DELETE')
 
-                                        </form>
+                                        </form> -->
                                     </td>
                                 </tr>
                                 @endforeach

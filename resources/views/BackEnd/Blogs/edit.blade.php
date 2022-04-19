@@ -27,7 +27,16 @@
         <div class="card card-primary card-outline">
           <div class="card-body">
             <h5 class="card-title">Edit Blogs</h5><br>
-
+            @if($errors->any())
+            <div class="alert alert-danger">
+                <p><strong>Opps Something went wrong</strong></p>
+                <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+                </ul>
+            </div>
+            @endif
             <form action="{{route('updateBlogs', $blog->id)}}" method="post" enctype="multipart/form-data">
               @csrf
               <div class="card-body">
