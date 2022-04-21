@@ -19,13 +19,28 @@ class BackEndController extends Controller
         $order=Order::all();
         $subscribe=Subscribe::all();
         $sales = OrderDeatils::where('status', '=', '1')->get();
+         $salesRecords = [];
         $sum = 0;
         foreach ($sales as $sale) {
             $sum += $sale->price * $sale->quantity;
         }
-
-         return view('BackEnd.home', compact('products', 'users', 'order', 'subscribe', 'sum'));
-
+         $oldDate = Carbon::now()->subDays(7);
+         for ($i=0;$i<7;$i++) {
+             $date = $oldDate->addDay()->format('Y-m-d');
+             foreach ($sales as $k => $sale) {
+                 if (Carbon::parse($sale->created_at)->format('Y-m-d') == $date){
+                    $salesRecords[$date][$k] = $sale->price * $sale->quantity;
+                 }
+             }
+             if (!isset($salesRecords[$date])) {
+                 $salesRecords[$date] = 0;
+             }
+             else{
+                 $salesRecords[$date] = array_sum($salesRecords[$date]);
+             }
+         }
+//         dd($salesRecords);
+         return view('BackEnd.home', compact('products', 'users', 'order', 'subscribe', 'sum','salesRecords'));
      }
 
      public function Contact(){
