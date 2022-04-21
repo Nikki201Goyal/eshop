@@ -134,7 +134,7 @@
                                                 $pro->name }}</a></h3><!-- End .product-title -->
 
                                         <div class="product-content">
-                                            <p>{{ Str::limit($pro->description, 40) }}</p>
+                                            <p>{!! Str::limit($pro->description, 40) !!}</p>
                                         </div><!-- End .product-content -->
 
 

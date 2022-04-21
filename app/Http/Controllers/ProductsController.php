@@ -114,11 +114,9 @@ class ProductsController extends Controller
             $products->cover ='uploads/product/images/' . $covername;
         }
 
-       
         $products->name = $request->name;
         $products->description = $request->description;
         $products->price = $request->price;
-        
         $products->category_id = $request->category_id;
         $products->slug =  Str::slug($request->name);
         $products->stock = $request->stock;

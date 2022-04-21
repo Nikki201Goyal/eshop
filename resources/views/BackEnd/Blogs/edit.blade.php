@@ -65,7 +65,7 @@
              
                 <div class="form-group">
                   <label for="exampleInputEmail1">Description</label>
-                  <textarea name="description" id="editor1" cols="30" rows="5"></textarea>
+                  <textarea name="description" id="editor1" cols="30" rows="5" value="{{$blog->description}}"></textarea>
 
                 </div><!-- /.card-body -->
 

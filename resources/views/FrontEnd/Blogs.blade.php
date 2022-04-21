@@ -41,7 +41,7 @@
                             </h2><!-- End .entry-title -->
 
                             <div class="entry-content">
-                                <p>{{ Str::limit($blog->description, 200) }}</p>
+                                <p>{!! Str::limit($blog->description, 200) !!}</p>
                                 <a href="{{route('blogsSingle',$blog->slug)}}" class="read-more">Continue Reading</a>
 
                             </div><!-- End .entry-content -->

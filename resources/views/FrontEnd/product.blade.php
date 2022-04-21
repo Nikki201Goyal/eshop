@@ -35,7 +35,7 @@
 
                             <div class="ratings-container">
                                 <div class="ratings">
-                                    <div class="ratings-val" style="width: {{ round($product->avgRating())*20 }}%;""></div><!-- End .ratings-val -->
+                                    <div class="ratings-val" style="width: {{ round($product->avgRating())*20 }}%;"></div><!-- End .ratings-val -->
                                 </div><!-- End .ratings -->
                                 <a class="ratings-text" href="#product-accordion" id="review-link">( {{ $product->ratings->count() }} Reviews )</a>
                             </div><!-- End .rating-container -->
@@ -56,7 +56,7 @@
 
 
                             <div class="product-details-action">
-                                <a href="#" class="btn-product btn-cart" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $product->id }}"><span>add to cart</span></a>
+                                <a href="#" class="btn-product btn-cart" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $product->id }}">add to cart</a>
 
                                 <div class="details-action-wrapper">
                                     <a href="#" class="btn-product btn-wishlist" title="Wishlist" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $product->id }}"><span>Add to Wishlist</span></a>
@@ -148,14 +148,18 @@
                                         data-image="{{ $like->image }}"
                                         data-id="{{ $like->id }}"
                                             title="Quick view"><span>Quick view</span></a>
-                                    <a href="#" class="btn-product-icon btn-compare"
-                                        title="Compare"><span>Compare</span></a>
+                                   
                                 </div><!-- End .product-action-vertical -->
 
                                 <div class="product-action">
-                                    <a href="#" class="btn-product btn-cart" title="Add to cart" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $like->id }}"><span>add to
-                                            cart</span></a>
-                                </div><!-- End .product-action -->
+                                            @if ($like->stock == 1)
+                                            <a href="#" class="btn-product btn-cart" title="Add to cart" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $like->id }}"><span>add to
+                                                cart</span></a>
+                                            @else
+                                            <button href="#" class="btn-product btn-cart"  disabled ><span>Out Of Stock</span></button>
+                                            @endif
+
+                                        </div><!-- End .product-action -->
                             </figure><!-- End .product-media -->
 
                             <div class="product-body">

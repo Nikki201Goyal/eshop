@@ -84,8 +84,8 @@
                 <div class="form-group">
                   <label>Stock</label>
                   <select class=" form-control" aria-label="Default select example" name="stock">
-                    <option value="0">In stock</option>
-                    <option value="1">Out Of stock</option>
+                    <option value="1">In stock</option>
+                    <option value="0">Out Of stock</option>
                   </select>
                 </div>
 

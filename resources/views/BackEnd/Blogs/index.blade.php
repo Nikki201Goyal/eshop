@@ -43,7 +43,6 @@
                                     <th>Author Image</th>
                                     <th> Date of Blog</th>
                                     <th>image</th>
-                                    <th>Description</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -57,7 +56,7 @@
                                     <td><img src="{{asset($blog->AuthorPic)}}" style="width: 60px; height: 60px;"></td>
                                     <td>{{$blog->date}}</td>
                                     <td><img src="{{asset($blog->image)}}" style="width: 60px; height: 60px;"></td>
-                                    <td>{{$blog->description}}</td>
+                                  
 
                                     <td>
                                         <?php if ($blog->status == '1') { ?>

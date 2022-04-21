@@ -800,7 +800,7 @@
                                             </h5><!-- End .entry-title -->
 
                                             <div class="entry-content">
-                                                <p>{{ Str::limit($blog->description, 50) }}</p>
+                                                <p>{!! Str::limit($blog->description, 50) !!}</p>
                                                 <a href="{{route('blogsSingle',$blog->slug)}}" class="read-more">Read More</a>
                                             </div><!-- End .entry-content -->
                                         </div><!-- End .entry-body -->

@@ -25,15 +25,15 @@ class FrontEndController extends Controller
 // dd(Auth::check());
 //        Session::set('locale', 'en');
         $categories=Category::all();
-        $bests=products::inRandomOrder()->get()->take(5);
-        $offers=products::inRandomOrder()->get()->take(4);
-        $flash=products::inRandomOrder()->get()->take(4);
-        $slider=products::inRandomOrder()->get()->take(3);
-        $feature=products::inRandomOrder()->get()->take(3);
+        $bests=products::inRandomOrder()->where('status',1)->get()->take(5);
+        $offers=products::inRandomOrder()->where('status',1)->get()->take(4);
+        $flash=products::inRandomOrder()->where('status',1)->get()->take(4);
+        $slider=products::inRandomOrder()->where('status',1)->get()->take(3);
+        $feature=products::inRandomOrder()->where('status',1)->get()->take(3);
         $banner=category::inRandomOrder()->get()->take(2);
         $FeaturedOne=category::inRandomOrder()->get()->take(1);
-        $blogs=Blog::inRandomOrder()->get()->take(3);
-        $ProductAll = products::all();
+        $blogs=Blog::inRandomOrder()->where('status',1)->get()->take(3);
+        $ProductAll = products::where('status',1)->get();
         return view('FrontEnd.home', compact('categories', 'bests', 'offers', 'slider', 'feature', 'blogs', 'banner', 'FeaturedOne', 'ProductAll', 'flash'));
 
 
