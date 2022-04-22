@@ -29,7 +29,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" id="tab-review-link" data-toggle="tab" href="#tab-review" role="tab" aria-controls="tab-address" aria-selected="false">{{ __('navbar.Reviews')}}</a>
+                                <a class="nav-link" id="tab-review-link" data-toggle="tab" href="#tab-review" role="tab" aria-controls="tab-review" aria-selected="false">{{ __('navbar.Reviews')}}</a>
                             </li>
 
                             <li class="nav-item">
@@ -184,6 +184,7 @@
                                         <span>{{ __('navbar.SAVE CHANGES')}}</span>
                                         <i class="icon-long-arrow-right"></i>
                                     </button>
+                                    </div>
                                 </form>
                             </div><!-- .End .tab-pane -->
 

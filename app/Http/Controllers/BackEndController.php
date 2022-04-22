@@ -18,9 +18,10 @@ class BackEndController extends Controller
         $users=User::all();
         $order=Order::all();
         $subscribe=Subscribe::all();
-        $sales = OrderDeatils::where('status', '=', '1')->get();
+        $sales = OrderDeatils::where('status', '=', '3')->get();
          $salesRecords = [];
         $sum = 0;
+        // dd($sales);
         foreach ($sales as $sale) {
             $sum += $sale->price * $sale->quantity;
         }

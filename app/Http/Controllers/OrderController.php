@@ -185,6 +185,7 @@ class OrderController extends Controller
 
     public function changeStatus(Request $request){
         $Order = OrderDeatils::FindOrFail( $request->id);
+        
         $Order->update(['status' => $request->status]);
         return back()->with('Success', 'Order status changed successfully');
     }

@@ -164,7 +164,7 @@
                                                         >
                                                         <label class="custom-control-label" for="{{ $cat->slug }}">{{ $cat->name }}</label>
                                                     </div><!-- End .custom-checkbox -->
-                                                    <span class="item-count">{{ $category->products->count() }}</span>
+                                                    <span class="item-count">{{ $cat->products->count() }}</span>
                                                 </div><!-- End .filter-item -->
                                             @endforeach
 {{--                                            <button type="submit"> submit</button>--}}
