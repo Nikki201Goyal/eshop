@@ -118,8 +118,8 @@ class OrderController extends Controller
                 'taxAmount' => 0,
                 'totalAmount' => $request->total+$request->shipping,
                 'productCode' => $pid,
-                'returnUrl' => 'http:'.url('/orderCompleted'),
-                'failedUrl' =>  'http:'.url('/orderInComplete'),
+                'returnUrl' => 'http://'.url('/orderCompleted'),
+                'failedUrl' =>  'http://'.url('/orderInComplete'),
             ])->send();
             if ($response->isRedirect()) {
                 $response->redirect();
