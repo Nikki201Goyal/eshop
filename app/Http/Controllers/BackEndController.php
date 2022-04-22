@@ -40,6 +40,7 @@ class BackEndController extends Controller
              }
          }
 //         dd($salesRecords);
+
          return view('BackEnd.home', compact('products', 'users', 'order', 'subscribe', 'sum','salesRecords'));
      }
 

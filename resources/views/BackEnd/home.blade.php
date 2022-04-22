@@ -102,6 +102,13 @@
       <section class="col-lg-7 connectedSortable">
         <!-- Custom tabs (Charts with tabs)-->
         <div class="card">
+            <div class="card-header border-0">
+                <h3 class="card-title">
+                    <i class="fas fa-th mr-1"></i>
+                    Weekly Sales Chart
+                </h3>
+
+            </div>
           <div class="card-body">
             <canvas id="myChart" style="width: 100%; height: 300px"></canvas>
           </div>
@@ -116,52 +123,19 @@
       <!-- right col (We are only adding the ID to make the widgets sortable)-->
       <section class="col-lg-5 connectedSortable">
 
-
-
         <!-- solid sales graph -->
-        <div class="card bg-gradient-info">
+        <div class="card">
           <div class="card-header border-0">
             <h3 class="card-title">
               <i class="fas fa-th mr-1"></i>
-              Sales Graph
+              Category Product Chart
             </h3>
 
-            <div class="card-tools">
-              <button type="button" class="btn bg-info btn-sm" data-card-widget="collapse">
-                <i class="fas fa-minus"></i>
-              </button>
-              <button type="button" class="btn bg-info btn-sm" data-card-widget="remove">
-                <i class="fas fa-times"></i>
-              </button>
-            </div>
           </div>
           <div class="card-body">
-            <canvas class="chart" id="line-chart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+            <canvas class="chart" id="category-product" style=""></canvas>
           </div>
           <!-- /.card-body -->
-          <div class="card-footer bg-transparent">
-            <div class="row">
-              <div class="col-4 text-center">
-                <input type="text" class="knob" data-readonly="true" value="20" data-width="60" data-height="60" data-fgColor="#39CCCC">
-
-                <div class="text-white">Mail-Orders</div>
-              </div>
-              <!-- ./col -->
-              <div class="col-4 text-center">
-                <input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60" data-fgColor="#39CCCC">
-
-                <div class="text-white">Online</div>
-              </div>
-              <!-- ./col -->
-              <div class="col-4 text-center">
-                <input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60" data-fgColor="#39CCCC">
-
-                <div class="text-white">In-Store</div>
-              </div>
-              <!-- ./col -->
-            </div>
-            <!-- /.row -->
-          </div>
           <!-- /.card-footer -->
         </div>
         <!-- /.card -->
@@ -197,6 +171,35 @@
             options: {
                 legend: {display: false}
             }
+        });
+        var myPieChart = new Chart('category-product', {
+            type: 'doughnut',
+            data: {
+                labels: [@foreach($cats as $category)'{{ $category->name }}',@endforeach],
+                datasets: [{
+                    data: [@foreach($cats as $category)'{{ $category->products->count()  }}',@endforeach],
+                    backgroundColor: [@foreach($cats as $category)'#'+Math.floor(Math.random()*16777215).toString(16),@endforeach],
+                    hoverBackgroundColor: ['darkred', '#17a673'],
+                    hoverBorderColor: "rgba(234, 236, 244, 1)",
+                }],
+            },
+            options: {
+                maintainAspectRatio: false,
+                tooltips: {
+                    backgroundColor: "rgb(255,255,255)",
+                    bodyFontColor: "#858796",
+                    borderColor: '#dddfeb',
+                    borderWidth: 1,
+                    xPadding: 15,
+                    yPadding: 15,
+                    displayColors: false,
+                    caretPadding: 10,
+                },
+                legend: {
+                    display: false
+                },
+                cutoutPercentage: 80,
+            },
         });
     </script>
     @endsection

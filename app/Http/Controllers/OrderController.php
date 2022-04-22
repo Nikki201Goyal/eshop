@@ -111,7 +111,7 @@ class OrderController extends Controller
         ]);
         $pid = $request->payment.'-'.$request->total.'-'.Str::random(5);
         if ($request->payment == "esewa"){
-            
+
             $response =  $gateway->purchase([
                 'amount' => $request->total,
                 'deliveryCharge' => $request->shipping,
