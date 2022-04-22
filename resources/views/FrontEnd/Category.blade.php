@@ -91,11 +91,10 @@
                                             data-target="#quickview"
                                             data-name="{{ $pro->name }}"
                                             data-price="{{ $pro->price }}"
-                                            data-image="{{ $pro->image }}"
+                                            data-image="{{ asset($pro->image) }}"
                                             data-id="{{ $pro->id }}"
                                                 title="Quick view"><span>Quick view</span></a>
 
-                                            <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                                         </div><!-- End .product-action-vertical -->
 
                                         <div class="product-action">

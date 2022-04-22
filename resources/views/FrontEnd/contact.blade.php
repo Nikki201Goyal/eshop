@@ -82,7 +82,7 @@
                 				<div class="row">
                 					<div class="col-sm-6">
                                         <label for="cphone" class="sr-only">{{ __('navbar.Phone') }}</label>
-                						<input type="tel" class="form-control" name="phone" id="cphone" placeholder="{{ __('navbar.Phone') }}">
+                						<input type="tel" class="form-control" name="phone" id="cphone"  pattern=" {98} [0-9]{8}" placeholder="{{ __('navbar.Phone') }}">
                 					</div><!-- End .col-sm-6 -->
 
                 					<div class="col-sm-6">

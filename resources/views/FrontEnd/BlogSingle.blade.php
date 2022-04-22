@@ -37,7 +37,7 @@
 
 
                             <div class="entry-content editor-content">
-                                <p>{{$blog->description}}</p>
+                                <p>{!!$blog->description!!}</p>
 
 
                             </div><!-- End .entry-content -->
@@ -65,7 +65,7 @@
                                 </div><!-- End .row -->
 
                                 <div class="author-content">
-                                    <p> {{ Str::limit($blog->description, 90) }}</p>
+                                    <p> {!! Str::limit($blog->description, 90) !!}</p>
                                 </div><!-- End .author-content -->
                             </div><!-- End .author-body -->
                         </div><!-- End .entry-author-details-->
@@ -99,7 +99,7 @@
                             <article class="entry entry-grid">
                                 <figure class="entry-media">
                                     <a href="{{route('blogsSingle',$blog->slug)}}">
-                                        <img src="{{asset($blog->image)}}"  alt="image desc">
+                                        <img src="{{asset($blog->image)}}"  alt="image desc" height="200px">
                                     </a>
                                 </figure><!-- End .entry-media -->
 

@@ -47,17 +47,11 @@
                                     </div><!-- End .product-gallery -->
                                 </div><!-- End .col-md-6 -->
 
-                                <div class="col-md-4">
+                                <div class="col-md-4" style="margin-top: 2%;">
                                     <div class="product-details">
                                         <h1 class="product-title">nikki</h1><!-- End .product-title -->
 
-                                        <div class="ratings-container">
-                                            <div class="ratings">
-                                                <div class="ratings-val" style="width: "></div><!-- End .ratings-val -->
-                                            </div><!-- End .ratings -->
-                                            <a class="ratings-text" href="#product-accordion" id="review-link">( 2 Reviews )</a>
-                                        </div><!-- End .rating-container -->
-
+                                        
                                         <div class="product-price">
                                             <h5 class="product-money">Rs. 40</h5><!-- End .product-money -->
 
@@ -65,7 +59,7 @@
                                     </div>
 
                                     <div class="product-details-action">
-                                        <a href="#" class="btn-product btn-cart" ><span color="white">add to cart</span></a>
+                                        <a href="#" class="btn-product btn-cart btn-compare-cart">ADD TO CART</span></a>
                                     </div><!-- End .product-details-action -->
                                 </div>
 
@@ -97,6 +91,12 @@
       modal.find('.product-image').attr('src', image)
       modal.find('.product-title').html(name)
       modal.find('.product-money').html(price)
+      @if(Auth::check())
+      modal.find(' .btn-compare-cart').attr('user',{{ Auth::user()->id }});
+      @else
+      modal.find(' .btn-compare-cart').attr('user',0);
+      @endif
+     modal.find(' .btn-compare-cart').attr('product',id);
     //   modal.find('#contact_edit').val(contact)
     //   modal.find('#postcode_edit').val(postcode)
     //   modal.find('#id_edit').val(id)

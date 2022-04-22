@@ -312,7 +312,7 @@ footer {
         <div id="invoice" class="effect2">
 
           <div id="invoice-top" style="padding-bottom: 30px">
-            <div class="logo"><img src="" alt="Logo" /></div>
+            <div class="logo"><img src="{{asset('FrontEnd/assets/images/logoEshop.png')}}" alt="Logo" /></div>
             <div class="title" style="padding-bottom: 10px">
               <h1>Invoice</h1>
               <p>Invoice Date: <span id="invoice_date">{{$order->created_at}}</span><br>

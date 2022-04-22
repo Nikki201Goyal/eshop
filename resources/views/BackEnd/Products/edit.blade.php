@@ -1,10 +1,6 @@
 @extends('BackEnd.starter')
 @section('content')
-@if ($message = Session::get('success'))
-<div class="alert alert-success">
-  <p>{{ $message }}</p>
-</div>
-@endif
+
 
 <div class="content-header">
   <div class="container-fluid">
@@ -31,6 +27,16 @@
         <div class="card card-primary card-outline">
           <div class="card-body">
             <h5 class="card-title">Edit Products</h5><br>
+            @if($errors->any())
+            <div class="alert alert-danger">
+                <p><strong>Opps Something went wrong</strong></p>
+                <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+                </ul>
+            </div>
+            @endif
             <form action="{{route('products.update', $pro->id)}}" method="post" enctype="multipart/form-data">
               @csrf
               @method('PUT')
@@ -45,7 +51,7 @@
 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Price</label>
-                  <input type="text" class="form-control" name="price"  value="{{$pro->price}}">
+                  <input type="text" class="form-control" name="price" value="{{$pro->price}}">
 
                 </div><!-- /.card-body -->
 
@@ -56,13 +62,13 @@
                 </div><!-- /.card-body -->
 
                 <div class="form-group">
-                    <label>Category</label>
-                    <select class=" form-control" aria-label="Default select example" name="category_id">
-                        @foreach($categories as $cate)
-                        <option value="{{ $cate->id }}" {{ $pro->category_id == $cate->id ? 'Selected':null }}>{{ $cate->name }}</option>
-                      @endforeach
+                  <label>Category</label>
+                  <select class=" form-control" aria-label="Default select example" name="category_id">
+                    @foreach($categories as $cate)
+                    <option value="{{ $cate->id }}" {{ $pro->category_id == $cate->id ? 'Selected':null }}>{{ $cate->name }}</option>
+                    @endforeach
 
-                    </select>
+                  </select>
                 </div>
 
                 <div class="form-group">
@@ -71,23 +77,23 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" for="input-image"> Cover Image</label>
-                    <input type="file" name="cover" class="form-control">
-                  </div>
+                  <label class="form-control-label" for="input-image"> Cover Image</label>
+                  <input type="file" name="cover" class="form-control">
+                </div>
 
-                  <div class="form-group">
-                    <label>Stock</label>
-                    <select class=" form-control" aria-label="Default select example" name="stock">
-                      <option value="0">In stock</option>
-                      <option value="1">Out Of stock</option>
-                    </select>
+                <div class="form-group">
+                  <label>Stock</label>
+                  <select class=" form-control" aria-label="Default select example" name="stock">
+                    <option value="1">In stock</option>
+                    <option value="0">Out Of stock</option>
+                  </select>
                 </div>
 
 
 
-              <div class="card-footer">
-                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i>Submit</button>
-              </div>
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i>Submit</button>
+                </div>
               </div>
             </form>
           </div>
@@ -104,8 +110,8 @@
 
 @endsection
 @section('admin-scripts')
-  <script src="https://cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script>
-  <script>
-    CKEDITOR.replace( 'description' );
+<script src="https://cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script>
+<script>
+  CKEDITOR.replace('description');
 </script>
-  @endsection
+@endsection

@@ -50,7 +50,7 @@
 								</td>
                                 @else
                                 <td class="action-col">
-                                    <button href="" class="btn btn-block btn-outline-primary-2" disabled>{{ __('navbar.Out Of Stock')}}</button >
+                                    <button href="" class="btn btn-block btn-outline-primary-2" disabled>{{ __('navbar.Out of Stock')}}</button >
                                 </td>
                                 @endif
 

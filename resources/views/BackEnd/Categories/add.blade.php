@@ -62,9 +62,11 @@
                
 
                 <div class="form-group">
-                    <label for="description">Description</label>
-                <textarea name="description" id="description" cols="30" rows="10"></textarea>
-              </div>
+                  <label for="exampleInputEmail1">Description</label>
+                  <textarea name="description" id="editor1" cols="30" rows="5"></textarea>
+
+                </div><!-- /.card-body -->
+
 
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Submit</button>
@@ -81,4 +83,10 @@
     <!-- /.row -->
   </div><!-- /.container-fluid -->
 
+  @endsection
+  @section('admin-scripts')
+  <script src="https://cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script>
+  <script>
+    CKEDITOR.replace( 'description' );
+</script>
   @endsection

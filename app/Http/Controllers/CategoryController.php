@@ -83,19 +83,22 @@ class CategoryController extends Controller
             'name' => 'required',
             'description' => 'required',
         ]);
+        $category = category::findOrFail($id);
         if ($request->hasFile('photo')) {
-            $image = $request->photo;
+            $image = $request->file('photo');
             $image_new_name = time() . $image->getClientOriginalName();
             $image->move('uploads/product/images/', $image_new_name);
+            $category->photo = 'uploads/product/images/' . $image_new_name;
         }
 
         if ($request->hasFile('cover')) {
-            $cover = $request->cover;
+            $cover = $request->file('cover');
             $covername = time() . $cover->getClientOriginalName();
             $cover->move('uploads/product/images/', $covername);
+            $category->cover = 'uploads/product/images/' . $covername;
         }
 
-        $category = category::findOrFail($id);
+       
         $category->name = $request->name;
         $category->description = $request->description;
         $category->slug =  Str::slug($request->name);

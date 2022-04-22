@@ -5,7 +5,7 @@
                 <div class="col-sm-6 col-lg-3">
                     <div class="widget widget-about">
                         <img src="{{asset('FrontEnd/assets/images/logoEshop.png')}}" class="footer-logo" alt="Footer Logo" width="250" height="25">
-                        <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. </p>
+                        <p> One of the best ecommerce web application, with branded product and minum rate. </p>
 
                         <div class="widget-call">
                             <i class="icon-phone"></i>

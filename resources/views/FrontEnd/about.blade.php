@@ -20,12 +20,13 @@
                     <div class="row">
                         <div class="col-lg-6 mb-3 mb-lg-0">
                             <h2 class="title">{{ __('navbar.Our Vision') }}</h2><!-- End .title -->
-                            <p style="text-justify: auto;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
+                            <p style="text-justify: auto;">E-SHOP visions itself on-trend styles catering every gadget, adhering to the concept that "everyone can enjoy the beauty of shopping with thier comfort zones"
+                            E-SHOP visions itself on-trend styles catering every gadget, adhering to the concept that "everyone can enjoy the beauty of shopping with thier comfort zones". ' </p>
                         </div><!-- End .col-lg-6 -->
 
                         <div class="col-lg-6">
                             <h2 class="title">{{ __('navbar.Our Mission') }}</h2><!-- End .title -->
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <p> We aim to buld a strong and profitable service by delivering to our customers a professional service ensuring that the statisfaction of their needs is central to everything we do. <p>
                         </div><!-- End .col-lg-6 -->
                     </div><!-- End .row -->
 
@@ -78,7 +79,7 @@
                             <div class="col-lg-5 mb-3 mb-lg-0">
                                 <h2 class="title">{{ __('navbar.Who We Are')}}</h2><!-- End .title -->
                                 <p class="lead text-primary mb-3">ESHOP <br>One of the best Ecommerce Web App</p><!-- End .lead text-primary -->
-                                <p class="mb-2">Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Suspendisse potenti. Sed egestas, ante et vulputate volutpat, uctus metus libero eu augue. </p>
+                                <p class="mb-2"> The innovating ideas giving experience to client in a professional manner to ensure the satisfaction of online shopping in your area. </p>
 
                                 <a href="{{route('blogs')}}" class="btn btn-sm btn-minwidth btn-outline-primary-2">
                                     <span>{{ __('navbar.VIEW OUR NEWS')}}</span>

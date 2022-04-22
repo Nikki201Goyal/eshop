@@ -59,7 +59,7 @@
 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Date</label>
-                  <input type="text" class="form-control" name="date" placeholder="Nov 12, 2019">
+                  <input type="date" class="form-control" name="date">
 
                 </div><!-- /.card-body -->
 

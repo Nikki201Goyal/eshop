@@ -100,7 +100,7 @@
 
                                         <h3 class="banner-title text-white"><a href="#">{{ $bann->name }}</a></h3>
                                         <!-- End .banner-title -->
-                                        <a href="{{ route('product', $bann->slug) }}" class="banner-link">Shop Now<i
+                                        <a href="{{ route('category', $bann->slug) }}" class="banner-link">Shop Now<i
                                                 class="icon-long-arrow-right"></i></a>
                                     </div><!-- End .banner-content -->
                                 </div><!-- End .banner -->
@@ -242,7 +242,7 @@
                                     <figure class="product-media">
                                         <a href="{{route('product',$All->slug)}}">
                                             <img src="{{asset($All->image)}}" alt="Product image" class="product-image">
-
+                                          
                                         </a>
 
                                         <div class="product-action-vertical">
@@ -413,11 +413,10 @@
                                     </a>
 
                                     <div class="banner-content intro-banners">
-                                        <h4 class="banner-subtitle text-white"><a href="#">Best Deals</a></h4>
+                                        <h4 class="banner-subtitle text-white"><span><a href="#">{!!$cate->description!!}</a></span></h4>
                                         <!-- End .banner-subtitle -->
-                                        <h3 class="banner-title text-white"><a href="#">Canon EOS <br>Mega Sale
-                                                <br><span>Up To 20% Off</span></a></h3><!-- End .banner-title -->
-                                        <a href="#" class="banner-link">Shop Now <i
+                                        
+                                        <a href="{{ route('category', $cate->slug) }}" class="banner-link">Shop Now <i
                                                 class="icon-long-arrow-right"></i></a>
                                     </div><!-- End .banner-content -->
                                 </div><!-- End .banner -->
@@ -463,6 +462,7 @@
                                         <img src="{{asset($elec->image)}}" alt="Product image" class="product-image"
                                             style=" height: 330px;
                                         object-fit: cover;">
+                                        
                                     </a>
 
                                     <div class="product-action-vertical">
@@ -476,8 +476,7 @@
                                             data-id="{{ $elec->id }}"
                                                 title="Quick view"><span>Quick view</span></a>
 
-                                        <a href="#" class="btn-product-icon btn-compare"
-                                            title="Compare"><span>Compare</span></a>
+                                        
                                     </div><!-- End .product-action-vertical -->
 
                                     <div class="product-action">
@@ -596,7 +595,7 @@
                                     <div class="banner-content banner-content-top banner-content-right text-right">
                                         <h3 class="banner-title text-white"><a href="#">{{ $feature->name }}</a></h3>
                                         <!-- End .banner-title -->
-                                        <a href="#" class="banner-link">Shop Now <i
+                                        <a href="{{ route('category', $feature->slug) }}" class="banner-link">Shop Now <i
                                                 class="icon-long-arrow-right"></i></a>
                                     </div><!-- End .banner-content -->
                                 </div><!-- End .banner banner-overlay -->
@@ -607,7 +606,7 @@
 
                         <div class="col-sm-6 col-xl-12 mb-2">
                             <div class="widget widget-products">
-                                <h4 class="widget-title"><span>Bestsellers</span></h4><!-- End .widget-title -->
+                                <h4 class="widget-title"><span>Best Sellers</span></h4><!-- End .widget-title -->
 
                                 <div class="products">
                                     @foreach($bests as $sell)
@@ -662,8 +661,7 @@
                                                         data-image="{{ $offer->image }}"
                                                         data-id="{{ $offer->id }}"
                                                             title="Quick view"><span>Quick view</span></a>
-                                                    <a href="#" class="btn-product-icon btn-compare"
-                                                        title="Compare"><span>Compare</span></a>
+                                                    
                                                 </div><!-- End .product-action-vertical -->
 
                                                 <div class="product-action">
@@ -713,35 +711,34 @@
 
                                 <!-- End .widget-title -->
                                 <div class="row">
-                                    @foreach ($offers as $offer )
+                                    @foreach ($flash as $flash )
 
                                     <div class="col-sm-6 col-xl-12">
 
                                         <div class="product text-center">
                                             <figure class="product-media">
-                                                <a href="{{route('product',$offer->slug)}}">
-                                                    <img src="{{asset($offer->image)}}" alt="Product image"
+                                                <a href="{{route('product',$flash->slug)}}">
+                                                    <img src="{{asset($flash->image)}}" alt="Product image"
                                                         class="product-image">
                                                 </a>
 
 
                                                 <div class="product-action-vertical">
                                                     <a href="#" class="btn-product-icon btn-wishlist"
-                                                        title="Add to wishlist"  user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{$offer->id }}"><span>add to wishlist</span></a>
+                                                        title="Add to wishlist"  user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{$flash->id }}"><span>add to wishlist</span></a>
                                                         <a href="#" class="btn-product-icon btn-quickview" data-toggle="modal"
                                                         data-target="#quickview"
-                                                        data-name="{{ $offer->name }}"
-                                                        data-price="{{ $offer->price }}"
-                                                        data-image="{{ $offer->image }}"
-                                                        data-id="{{ $offer->id }}"
+                                                        data-name="{{ $flash->name }}"
+                                                        data-price="{{ $flash->price }}"
+                                                        data-image="{{ $flash->image }}"
+                                                        data-id="{{ $flash->id }}"
                                                             title="Quick view"><span>Quick view</span></a>
-                                                    <a href="#" class="btn-product-icon btn-compare"
-                                                        title="Compare"><span>Compare</span></a>
+                                                   
                                                 </div><!-- End .product-action-vertical -->
 
                                                 <div class="product-action">
-                                                    @if ($offer->stock == 1)
-                                                    <a href="#" class="btn-product btn-cart" title="Add to cart" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $offer->id }}"><span>add to
+                                                    @if ($flash->stock == 1)
+                                                    <a href="#" class="btn-product btn-cart" title="Add to cart" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $flash->id }}"><span>add to
                                                         cart</span></a>
                                                     @else
                                                     <button href="#" class="btn-product btn-cart"  disabled ><span>Out Of Stock</span></button>
@@ -752,12 +749,12 @@
 
                                             <div class="product-body">
                                                 <div class="product-cat">
-                                                    <a href="#">{{ $offer->category->name }}</a>
+                                                    <a href="#">{{ $flash->category->name }}</a>
                                                 </div><!-- End .product-cat -->
-                                                <h3 class="product-title"><a href="{{route('product',$offer->slug)}}">{{
-                                                        $offer->name }}</a></h3><!-- End .product-title -->
+                                                <h3 class="product-title"><a href="{{route('product',$flash->slug)}}">{{
+                                                        $flash->name }}</a></h3><!-- End .product-title -->
                                                 <div class="product-price">
-                                                    <span class="new-price">{{ $offer->price }}</span>
+                                                    <span class="new-price">{{ $flash->price }}</span>
 
                                                 </div><!-- End .product-price -->
 
@@ -786,23 +783,23 @@
 
                                     <article class="entry">
                                         <figure class="entry-media">
-                                            <a href={{route('blogsSingle',$blog->slug)}}>
+                                            <a href="{{route('blogsSingle',$blog->slug)}}">
                                                 <img src="{{asset($blog->image)}}" alt="image desc">
                                             </a>
                                         </figure><!-- End .entry-media -->
 
                                         <div class="entry-body">
                                             <div class="entry-meta">
-                                                <a href={{route('blogsSingle',$blog->slug)}}>{{ $blog->date }}</a>
+                                                <a href="{{route('blogsSingle',$blog->slug)}}">{{ $blog->date }}</a>
                                             </div><!-- End .entry-meta -->
 
                                             <h5 class="entry-title">
-                                                <a href={{route('blogsSingle',$blog->slug)}}>{{ $blog->title }}</a>
+                                                <a href="{{route('blogsSingle',$blog->slug)}}">{{ $blog->title }}</a>
                                             </h5><!-- End .entry-title -->
 
                                             <div class="entry-content">
-                                                <p>{{ Str::limit($blog->description, 50) }}</p>
-                                                <a href={{route('blogsSingle',$blog->slug)}} class="read-more">Read More</a>
+                                                <p>{!! Str::limit($blog->description, 50) !!}</p>
+                                                <a href="{{route('blogsSingle',$blog->slug)}}" class="read-more">Read More</a>
                                             </div><!-- End .entry-content -->
                                         </div><!-- End .entry-body -->
                                     </article><!-- End .entry -->

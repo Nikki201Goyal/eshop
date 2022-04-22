@@ -26,14 +26,19 @@
                         data-id="{{ $pro->id }}"
                             title="Quick view"
 
-                            title="Quick view"><span>Quick view</span></a>
+                           ><span>Quick view</span></a>
 
-                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                     </div><!-- End .product-action-vertical -->
 
                     <div class="product-action">
-                        <a href="#" class="btn-product btn-cart"  user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $pro->id }}"><span>add to cart</span></a>
-                    </div><!-- End .product-action -->
+                                            @if ($pro->stock == 1)
+                                            <a href="#" class="btn-product btn-cart" title="Add to cart" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $pro->id }}"><span>add to
+                                                cart</span></a>
+                                            @else
+                                            <button href="#" class="btn-product btn-cart"  disabled ><span>Out Of Stock</span></button>
+                                            @endif
+
+                                        </div><!-- End .product-action -->
                 </figure><!-- End .product-media -->
 
                 <div class="product-body">

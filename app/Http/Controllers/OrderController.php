@@ -109,8 +109,9 @@ class OrderController extends Controller
             'order_notes'=>'required',
             'shipping'=>'required',
         ]);
+        $pid = $request->payment.'-'.$request->total.'-'.Str::random(5);
         if ($request->payment == "esewa"){
-            $pid = $request->payment.'-'.$request->total.'-'.Str::random(5);
+            
             $response =  $gateway->purchase([
                 'amount' => $request->total,
                 'deliveryCharge' => $request->shipping,
@@ -158,7 +159,10 @@ class OrderController extends Controller
                 'discount' => $request->discount,
                 'payment_method' => $request->payment,
                 'order_notes' => $request->order_notes,
-                'user_id' => Auth::user()->id
+                'user_id' => Auth::user()->id,
+                'oid' => $pid,
+                'shipping' => $request->shipping,
+
             ]);
             $cart=Cart::where('user_id', Auth::user()->id)->get();
             foreach($cart as $carts){
@@ -172,7 +176,7 @@ class OrderController extends Controller
                 Mail::to(Auth::user()->email)->send(new
                 \App\Mail\OrderConfirmed($order));
             }
-            return view('FrontEnd.OrderCompleted');
+            return redirect()->route('orderCompleted',['oid'=>$pid]);
         }
 
 

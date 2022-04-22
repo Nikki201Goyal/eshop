@@ -107,7 +107,7 @@
                                         <div class="product-action">
                                             <a href="#" class="btn-product-icon btn-quickview" data-toggle="modal"
                                                 data-target="#quickview" data-name="{{ $pro->name }}"
-                                                data-price="{{ $pro->price }}" data-image="{{ $pro->image }}"
+                                                data-price="{{ $pro->price }}" data-image="{{ asset($pro->image) }}"
                                                 data-id="{{ $pro->id }}" title="Quick view"><span>Quick view</span></a>
                                            
                                         </div><!-- End .product-action -->
@@ -134,7 +134,7 @@
                                                 $pro->name }}</a></h3><!-- End .product-title -->
 
                                         <div class="product-content">
-                                            <p>{{ Str::limit($pro->description, 40) }}</p>
+                                            <p>{!! Str::limit($pro->description, 40) !!}</p>
                                         </div><!-- End .product-content -->
 
 
