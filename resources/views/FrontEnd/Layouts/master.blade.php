@@ -91,7 +91,12 @@
       modal.find('.product-image').attr('src', image)
       modal.find('.product-title').html(name)
       modal.find('.product-money').html(price)
-    
+      @if(Auth::check())
+      modal.find(' .btn-compare-cart').attr('user',{{ Auth::user()->id }});
+      @else
+      modal.find(' .btn-compare-cart').attr('user',0);
+      @endif
+     modal.find(' .btn-compare-cart').attr('product',id);
     //   modal.find('#contact_edit').val(contact)
     //   modal.find('#postcode_edit').val(postcode)
     //   modal.find('#id_edit').val(id)

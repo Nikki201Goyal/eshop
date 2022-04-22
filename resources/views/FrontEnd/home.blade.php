@@ -413,7 +413,7 @@
                                     </a>
 
                                     <div class="banner-content intro-banners">
-                                        <h4 class="banner-subtitle text-white"><a href="#">{{$cate->description}}</a></h4>
+                                        <h4 class="banner-subtitle text-white"><span><a href="#">{!!$cate->description!!}</a></span></h4>
                                         <!-- End .banner-subtitle -->
                                         
                                         <a href="{{ route('category', $cate->slug) }}" class="banner-link">Shop Now <i
@@ -661,8 +661,7 @@
                                                         data-image="{{ $offer->image }}"
                                                         data-id="{{ $offer->id }}"
                                                             title="Quick view"><span>Quick view</span></a>
-                                                    <a href="#" class="btn-product-icon btn-compare"
-                                                        title="Compare"><span>Compare</span></a>
+                                                    
                                                 </div><!-- End .product-action-vertical -->
 
                                                 <div class="product-action">
@@ -734,8 +733,7 @@
                                                         data-image="{{ $flash->image }}"
                                                         data-id="{{ $flash->id }}"
                                                             title="Quick view"><span>Quick view</span></a>
-                                                    <a href="#" class="btn-product-icon btn-compare"
-                                                        title="Compare"><span>Compare</span></a>
+                                                   
                                                 </div><!-- End .product-action-vertical -->
 
                                                 <div class="product-action">

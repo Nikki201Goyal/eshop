@@ -37,9 +37,7 @@
                                     <th> Name</th>
                                     <th> Contact</th>
                                     <th>Total</th>
-                                    <th>Discount</th>
                                     <th>Payment-Method</th>
-
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -50,7 +48,6 @@
                                     <td>{{$ord->user->name}}</td>
                                     <td>{{$ord->user->contact}}</td>
                                     <td>{{$ord->total}}</td>
-                                    <td>{{$ord->discount}}</td>
                                     <td>{{$ord->payment_method}}</td>
 <td>
                                         <a href="{{ route('orders.show', $ord->id) }}" class="btn btn-sm btn-success">

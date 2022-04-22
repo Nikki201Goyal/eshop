@@ -133,7 +133,6 @@
 
                         <div class="product product-7 text-center">
                             <figure class="product-media">
-                                <span class="product-label label-new">New</span>
                                 <a href="{{route('product',$like->slug)}}">
                                     <img src="{{asset($like->image)}}" alt="Product image" class="product-image">
                                 </a>
@@ -172,10 +171,10 @@
                                 </div><!-- End .product-price -->
                                 <div class="ratings-container">
                                     <div class="ratings">
-                                        <div class="ratings-val" style="width: 100%;"></div>
+                                        <div class="ratings-val" style="width: {{ round($like->avgRating())*20 }}%;"></div>
                                         <!-- End .ratings-val -->
                                     </div><!-- End .ratings -->
-                                    <span class="ratings-text">( 2 Reviews )</span>
+                                    <span class="ratings-text">( {{ $like->ratings->count() }} Reviews )</span>
                                 </div><!-- End .rating-container -->
 
 

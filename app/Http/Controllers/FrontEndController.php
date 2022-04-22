@@ -78,7 +78,7 @@ class FrontEndController extends Controller
 
 
     public function category($slug){
-        $PopularProducts=products::inRandomOrder()->get()->take(5);
+        $PopularProducts=products::inRandomOrder()->where('status',1)->get()->take(5);
         $category=Category::where('slug', $slug)->first();
         $products=$category->products()->paginate(5);
 
@@ -86,21 +86,21 @@ class FrontEndController extends Controller
     }
 
     public function categoryList($slug){
-        $PopularProducts=products::inRandomOrder()->get()->take(5);
+        $PopularProducts=products::inRandomOrder()->where('status',1)->get()->take(5);
         $category=Category::where('slug', $slug)->first();
         $products=$category->products()->paginate(5);
         return view('FrontEnd.categoryList', compact('category', 'PopularProducts', 'products'));
     }
 
     public function category4Grid($slug){
-        $PopularProducts=products::inRandomOrder()->get()->take(5);
+        $PopularProducts=products::inRandomOrder()->where('status',1)->get()->take(5);
         $category=Category::where('slug', $slug)->first();
         $products=$category->products()->paginate(5);
         return view('FrontEnd.category4Grid', compact('category', 'PopularProducts', 'products'));
     }
 
     public function category2Grid($slug){
-        $PopularProducts=products::inRandomOrder()->get()->take(5);
+        $PopularProducts=products::inRandomOrder()->where('status',1)->get()->take(5);
         $category=Category::where('slug', $slug)->first();
         $products=$category->products()->paginate(5);
         return view('FrontEnd.category2Grid', compact('category', 'PopularProducts', 'products'));
@@ -114,7 +114,7 @@ class FrontEndController extends Controller
 
 
     public function singleBlog($slug){
-        $blogs = Blog::inRandomOrder()->get()->take(10);
+        $blogs = Blog::inRandomOrder()->where('status',1)->get()->take(10);
         $blog=Blog::where('slug', $slug)->first();
 
         return view('FrontEnd.BlogSingle',compact('blogs', 'blog'));
@@ -123,7 +123,7 @@ class FrontEndController extends Controller
     public function product($slug){
 
         $product=products::where('slug', $slug)->first();
-        $likeProducts=products::inRandomOrder()->get()->take(7);
+        $likeProducts=products::inRandomOrder()->where('status',1)->get()->take(7);
 
 
         // $avg=$product()->avg('rating');

@@ -87,32 +87,26 @@
                                         </a>
 
                                         <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist "  user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $pro->id }}"><span>add to wishlist</span></a>
-                                            <a href="#" class="btn-product-icon btn-quickview" data-toggle="modal"
-                                            data-target="#quickview"
-                                            data-name="{{ $pro->name }}"
-                                            data-price="{{ $pro->price }}"
-                                            data-image="{{ $pro->image }}"
-                                            data-id="{{ $pro->id }}"
-                                                title="Quick view"><span>Quick view</span></a>
+                                            <a href="#" class="btn-product-icon btn-wishlist " user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $pro->id }}"><span>add to wishlist</span></a>
+                                            <a href="#" class="btn-product-icon btn-quickview" data-toggle="modal" data-target="#quickview" data-name="{{ $pro->name }}" data-price="{{ $pro->price }}" data-image="{{ asset($pro->image) }}" data-id="{{ $pro->id }}" title="Quick view"><span>Quick view</span></a>
 
                                         </div><!-- End .product-action-vertical -->
 
                                         <div class="product-action">
                                             @if ($pro->stock == 1)
                                             <a href="#" class="btn-product btn-cart" title="Add to cart" user="@if(Auth::user()) {{  Auth::user()->id }} @else 0 @endif" product="{{ $pro->id }}"><span>add to
-                                                cart</span></a>
+                                                    cart</span></a>
                                             @else
-                                            <button href="#" class="btn-product btn-cart" title="Add to cart" disabled ><span>Out Of Stock</span></button>
+                                            <button href="#" class="btn-product btn-cart" title="Add to cart" disabled><span>Out Of Stock</span></button>
                                             @endif
 
                                         </div><!-- End .product-action -->
                                     </figure><!-- End .product-media -->
 
                                     <div class="product-body">
-                                        <h3 class="product-title"><a href="{{route('product', $pro->slug)}}">{{ $pro->name }}/a></h3><!-- End .product-title -->
+                                        <h3 class="product-title"><a href="{{route('product', $pro->slug)}}">{{ $pro->name }}</a></h3><!-- End .product-title -->
                                         <div class="product-price">
-                                          {{$pro->price}}
+                                            {{$pro->price}}
                                         </div><!-- End .product-price -->
                                         <div class="ratings-container">
                                             <div class="ratings">
@@ -127,7 +121,7 @@
                                 </div><!-- End .product -->
                             </div><!-- End .col-sm-6 -->
 
-    @endforeach
+                            @endforeach
                         </div><!-- End .row -->
                     </div><!-- End .products -->
 
@@ -153,63 +147,64 @@
 
                             <div class="collapse show" id="widget-1">
                                 <div class="widget-body">
-{{--                                    {{ request()->category }}--}}
+                                    {{-- {{ request()->category }}--}}
                                     <form action="{{ route('filter') }}" method="GET">
                                         <input type="hidden" name="link" value="category2grid">
 
                                         <div class="filter-items filter-items-count">
                                             @foreach($cats as $cat)
-                                                <div class="filter-item">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" name="category[]" class="custom-control-input" onChange="this.form.submit()" value="{{ $cat->slug }}" id="{{ $cat->slug }}" {{ $cat->id == $category->id? 'checked':null }}
-                                                            @isset(request()->category)
-                                                            @foreach(request()->category as $c)
-                                                                {{ $c == $cat->slug? 'checked':null }}
-                                                               @endforeach
-                                                            @endisset
-                                                        >
-                                                        <label class="custom-control-label" for="{{ $cat->slug }}">{{ $cat->name }}</label>
-                                                    </div><!-- End .custom-checkbox -->
-                                                    <span class="item-count">{{ $category->products->count() }}</span>
-                                                </div><!-- End .filter-item -->
+                                            <div class="filter-item">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" name="category[]" class="custom-control-input" onChange="this.form.submit()" value="{{ $cat->slug }}" id="{{ $cat->slug }}" {{ $cat->id == $category->id? 'checked':null }} @isset(request()->category)
+                                                    @foreach(request()->category as $c)
+                                                    {{ $c == $cat->slug? 'checked':null }}
+                                                    @endforeach
+                                                    @endisset
+                                                    >
+                                                    <label class="custom-control-label" for="{{ $cat->slug }}">{{ $cat->name }}</label>
+                                                </div><!-- End .custom-checkbox -->
+                                                <span class="item-count">{{ $category->products->count() }}</span>
+                                            </div><!-- End .filter-item -->
                                             @endforeach
-{{--                                            <button type="submit"> submit</button>--}}
+                                            {{-- <button type="submit"> submit</button>--}}
                                         </div><!-- End .widget-body -->
                                     </form>
 
-                            </div><!-- End .collapse -->
+                                </div><!-- End .collapse -->
+                            </div>
+                        </div>
 
 
-                            <div class="widget mercado-widget widget-product">
-                                <h2 class="widget-title">Popular Products</h2>
-                                <div class="widget-content">
-                                    <div class="products">
-                                        @foreach ( $PopularProducts as $popProduct )
+                                <div class="widget mercado-widget widget-product">
+                                    <h2 class="widget-title">Popular Products</h2>
+                                    <div class="widget-content">
+                                        <div class="products">
+                                            @foreach ( $PopularProducts as $popProduct )
 
-                                        <div class="product product-sm">
-                                            <figure class="product-media">
-                                                <a href="{{route('product', $popProduct->slug)}}">
-                                                    <img src="{{asset($popProduct->image)}}" alt="Product image" class="product-image" style=" height: 80px;
+                                            <div class="product product-sm">
+                                                <figure class="product-media">
+                                                    <a href="{{route('product', $popProduct->slug)}}">
+                                                        <img src="{{asset($popProduct->image)}}" alt="Product image" class="product-image" style=" height: 80px;
                                         object-fit: cover;">
-                                                </a>
-                                            </figure>
+                                                    </a>
+                                                </figure>
 
-                                            <div class="product-body">
-                                                <h5 class="product-title"><a href="{{route('product', $popProduct->slug)}}">Samsung smart Watch</a></h5><!-- End .product-title -->
-                                                <div class="product-price">
-                                               {{$popProduct->price}}
-                                                </div><!-- End .product-price -->
-                                            </div><!-- End .product-body -->
-                                        </div><!-- End .product product-sm -->
-                                        @endforeach
+                                                <div class="product-body">
+                                                    <h5 class="product-title"><a href="{{route('product', $popProduct->slug)}}">Samsung smart Watch</a></h5><!-- End .product-title -->
+                                                    <div class="product-price">
+                                                        {{$popProduct->price}}
+                                                    </div><!-- End .product-price -->
+                                                </div><!-- End .product-body -->
+                                            </div><!-- End .product product-sm -->
+                                            @endforeach
 
-                                    </div><!-- End .products -->
-                                </div>
-                            </div><!-- brand widget-->
-                        </div><!-- End .widget -->
+                                        </div><!-- End .products -->
+                                    </div>
+                                </div><!-- brand widget-->
+                            </div><!-- End .widget -->
 
 
-                    </div><!-- End .sidebar sidebar-shop -->
+                        </div><!-- End .sidebar sidebar-shop -->
                 </aside><!-- End .col-lg-3 -->
             </div><!-- End .row -->
         </div><!-- End .container -->
@@ -223,15 +218,16 @@
     //     let by = $(this).val();
     //     console.log(by);
     // })
-    $('#sortby').change(function () {
+    $('#sortby').change(function() {
         var by = $(this).val();
         console.log(sortby);
 
         // var url = $(this).attr('data-url');
-        var url = '{{ route('sortBy',':slug') }}';
+        var url = '{{ route('
+        sortBy ',': slug ') }}';
         n_url = url.replace(':slug', '{{ $category->slug }}');
-        let redirect = n_url+'?link=category2grid&sortBy='+by+'';
-       window.location.replace(redirect);
+        let redirect = n_url + '?link=category2grid&sortBy=' + by + '';
+        window.location.replace(redirect);
 
         // $.get(n_url,function(d){
         //         console.log(d);

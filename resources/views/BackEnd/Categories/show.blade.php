@@ -36,7 +36,6 @@
                                     <th>SN</th>
                                     <th> Name</th>
                                     <th> Price</th>
-                                    <th>Description</th>
                                     <th>image</th>
                                     <th>Status</th>
                                     <th>Action</th>
@@ -48,7 +47,6 @@
                                     <th scope="row">{{$i++}}</th>
                                     <td>{{$pro->name}}</td>
                                     <td>{{$pro->price}}</td>
-                                    <td>{{$pro->description}}</td>
                                     <td><img src="{{asset($pro->image)}}" style="width: 60px; height: 60px;"></td>
                                     <td>@if($pro->status == true) <a href="{{ route('Product.toggleStatus', $pro->id) }}" class="btn btn-primary">Enabled</a>
                                     @else <a href="{{ route('Product.toggleStatus', $pro->id) }}" class="btn btn-danger">Disabled</a>@endif </td>
@@ -58,15 +56,7 @@
                                             <i class="fa fa-edit"></i>Edit
                                         </a>
 
-                                        <a href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="products-delete-{{$pro->id}}">
-                                            <i class="fa fa-trash"></i>Delete
-                                        </a>
-
-                                        <form id="products-delete-{{$pro->id}}" action="{{route('products.destroy', $pro->id)}}">
-                                            @csrf
-                                            @method('DELETE')
-
-                                        </form>
+                                       
                                     </td>
                                 </tr>
                                 @endforeach
